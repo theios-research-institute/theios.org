@@ -1,0 +1,46 @@
+name: Cache-bust assets
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "index.html"
+      - "style.css"
+      - "favicon.png"
+      - "theios-logo-variant.png"
+      - "theios-logo-favicon.png"
+  workflow_dispatch:
+jobs:
+  bust:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Append ?v=<short-sha> to asset URLs in index.html
+        run: |
+          set -euo pipefail
+          SHA="$(git rev-parse --short=7 HEAD)"
+          cp index.html index.html.bak
+          sed -E -i 's|(href="style\.css)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
+          sed -E -i 's|(href="favicon\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
+          sed -E -i 's|(src="theios-logo-variant\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
+          sed -E -i 's|(src="theios-logo-favicon\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
+          if diff -q index.html.bak index.html >/dev/null; then
+            echo "No cache-bust changes necessary."
+            exit 0
+          fi
+          echo "Cache-busted asset URLs to ?v=$SHA"
+          rm -f index.html.bak
+      - name: Commit cache-busted HTML (if changed)
+        run: |
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name  "Codex Nexus CI"
+          git config user.email "research@theios.org"
+          git add index.html
+          git commit -m "chore: cache-bust asset URLs (?v) [$GITHUB_SHA]"
+          git push
