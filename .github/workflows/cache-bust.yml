@@ -9,6 +9,7 @@ on:
       - "theios-logo-variant.png"
       - "theios-logo-favicon.png"
   workflow_dispatch:
+
 jobs:
   bust:
     runs-on: ubuntu-latest
@@ -18,7 +19,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Append ?v=<short-sha> to asset URLs in index.html
+        continue-on-error: true   # don’t fail on cache-bust step
         run: |
           set -euo pipefail
           SHA="$(git rev-parse --short=7 HEAD)"
@@ -27,13 +30,11 @@ jobs:
           sed -E -i 's|(href="favicon\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
           sed -E -i 's|(src="theios-logo-variant\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
           sed -E -i 's|(src="theios-logo-favicon\.png)(\?[^"]*)?(")|\1?v='"$SHA"'\3|g' index.html
-          if diff -q index.html.bak index.html >/dev/null; then
-            echo "No cache-bust changes necessary."
-            exit 0
-          fi
-          echo "Cache-busted asset URLs to ?v=$SHA"
+          diff -q index.html.bak index.html || echo "Cache-bust modified."
           rm -f index.html.bak
+
       - name: Commit cache-busted HTML (if changed)
+        continue-on-error: true   # safe mode until launch
         run: |
           if git diff --quiet; then
             echo "Nothing to commit."
