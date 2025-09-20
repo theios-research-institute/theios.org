@@ -64,5 +64,15 @@ a:hover {
   margin: 0 auto;
   padding: 2rem;
 }
-body{font-family:"Merriweather", Georgia, serif !important;}
-body{font-family:"Merriweather", Georgia, serif !important;}
+
+/* --- Typography override (body sans, headings serif) --- */
+body {
+  font-family: "Inter","Helvetica Neue",Arial,sans-serif;
+}
+
+p, li { font-family: inherit; } /* inherit body (Inter) */
+
+h1.site-title,
+.site-tagline {
+  font-family: "Merriweather", Georgia, serif; /* keep scholarly headings */
+}
