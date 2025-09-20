@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -7,11 +7,11 @@
   <meta name="description" content="Theios Research Institute — applied discovery science and structural laws of emergence." />
   <meta name="theme-color" content="#0b1e34" />
 
-  <!-- Favicons (tab icons) -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
   <link rel="apple-touch-icon" href="./favicon.png" />
 
-  <!-- Social (will resolve when served from your domain) -->
+  <!-- Social -->
   <meta property="og:title" content="Theios Research Institute" />
   <meta property="og:description" content="Applied discovery science & structural laws of emergence." />
   <meta property="og:type" content="website" />
@@ -22,10 +22,16 @@
   <style>
     :root{
       --bg1:#0b1e34; --bg2:#143d66;
-      --card:#0f172a;
-      --ink:#e5e7eb; --muted:#a3afbf;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
       --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220; --btn-hover:brightness(1.1);
     }
+    /* Light tokens (used when data-theme='light') */
+    :root.light{
+      --card:#ffffff; --ink:#0e1523; --muted:#4b5563;
+      --line:#e5e7eb; --btn:#ffffff; --btn-hover:none;
+    }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -37,14 +43,23 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
       display:grid; place-items:start center;
     }
-    .wrap{width:100%; max-width:1100px; padding:28px 20px 64px}
+    .wrap{width:100%; max-width:1100px; padding:28px 20px 64px; position:relative}
 
-    /* Hero emblem (top) */
-    .hero{display:grid; place-items:center; padding:42px 0 16px}
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
+    }
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Hero emblem */
+    .hero{display:grid; place-items:center; padding:46px 0 18px}
     .hero .emblem{
-      width:clamp(160px, 22vw, 320px); /* big & crisp, responsive */
-      height:auto;
-      filter:drop-shadow(0 12px 28px rgba(0,0,0,.35));
+      width:clamp(200px, 26vw, 360px);
+      height:auto; filter:drop-shadow(0 14px 32px rgba(0,0,0,.35));
       image-rendering:auto;
     }
 
@@ -62,8 +77,8 @@
       background:rgba(255,255,255,.06);
       display:grid; place-items:center; flex:0 0 auto; overflow:hidden;
     }
-    .logo-box img{width:84%; height:auto; display:block}
-    h1{font-size:1.85rem; margin:0}
+    .logo-box img{width:86%; height:auto; display:block}
+    h1{font-size:1.9rem; margin:0}
     .tag{margin:.35rem 0 0; color:var(--muted)}
     main{padding:22px 24px}
     p{margin:0 0 12px}
@@ -71,9 +86,9 @@
     .btn{
       display:inline-block; padding:.7rem 1rem; border-radius:12px;
       text-decoration:none; border:1px solid var(--line); color:var(--ink);
-      background:#0b1220; transition:transform .05s ease, filter .15s ease;
+      background:var(--btn); transition:transform .05s ease, filter .15s ease;
     }
-    .btn:hover{filter:brightness(1.1)}
+    .btn:hover{filter:var(--btn-hover)}
     .btn.primary{background:var(--accent); border-color:transparent; color:#fff}
     .meta{
       display:grid; gap:10px; margin-top:16px;
@@ -89,31 +104,49 @@
     @media (max-width:640px){
       header.card-hd{flex-direction:column; text-align:center}
       .logo-box{width:64px;height:64px}
-      h1{font-size:1.6rem}
+      h1{font-size:1.65rem}
+      .theme-toggle{top:14px; right:14px}
     }
 
-    /* Respect light mode if user prefers */
+    /* Respect system preference by default when user has not explicitly chosen */
     @media (prefers-color-scheme: light){
-      :root{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; }
-      .btn{background:#fff; color:#0e1523; border-color:#e5e7eb}
-      .btn:hover{filter:none; background:#f6f8fb}
+      :root.auto{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; --btn:#ffffff; --btn-hover:none; }
     }
   </style>
+
+  <!-- Prevent flash: set initial class before paint -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme'); // 'light'|'dark'|'auto'
+      const pref = saved || 'auto';
+      const root = document.documentElement;
+      root.classList.remove('light','auto');
+      root.classList.add(pref);
+      root.setAttribute('data-theme', pref);
+    })();
+  </script>
 </head>
 <body>
   <div class="wrap">
-    <!-- Large, crisp emblem (local, with graceful fallback) -->
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <!-- Large hero emblem with fallback -->
     <div class="hero" aria-hidden="true">
       <img class="emblem"
            src="./theios-logo-variant.png"
            alt=""
-           width="320" height="320" loading="eager"
+           width="360" height="360" loading="eager"
            onerror="this.src='./theios-logo-favicon.png'">
     </div>
 
     <article class="card" role="main">
       <header class="card-hd">
-        <!-- In-card logo uses hi-res variant, scaled down for crispness -->
         <div class="logo-box">
           <img src="./theios-logo-variant.png"
                alt="Theios emblem" width="80" height="80" loading="lazy"
@@ -153,7 +186,34 @@
   </div>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle logic
+    const root = document.documentElement;
+    const btn  = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode){ // 'light' | 'dark' | 'auto'
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    // initialize label from current state
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    // cycle Auto → Light → Dark → Auto
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
   </script>
 </body>
 </html>
