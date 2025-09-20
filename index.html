@@ -1,166 +1,158 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Theios Research Institute</title>
-  <meta name="description" content="Theios Research Institute: applied discovery science and structural laws of emergence.">
-  <meta name="theme-color" content="#0b1e34">
+  <meta name="description" content="Theios Research Institute — applied discovery science and structural laws of emergence." />
+  <meta name="theme-color" content="#0b1e34" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=85c3d0f">
-  <link rel="apple-touch-icon" href="favicon.png?v=85c3d0f">
+  <!-- Favicons (tab icons) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./favicon.png" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Theios Research Institute">
-  <meta property="og:description" content="Applied discovery science and structural laws of emergence.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theios.org/">
-  <meta property="og:image" content="https://theios.org/theios-logo-variant.png">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Theios Research Institute",
-    "url": "https://theios.org/",
-    "logo": "https://theios.org/theios-logo-variant.png",
-    "email": "research@theios.org",
-    "sameAs": ["https://codex.nexus"]
-  }
-  </script>
+  <!-- Social (will resolve when served from your domain) -->
+  <meta property="og:title" content="Theios Research Institute" />
+  <meta property="og:description" content="Applied discovery science & structural laws of emergence." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://theios.org/" />
+  <meta property="og:image" content="./theios-logo-variant.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     :root{
-      --bg:#0b1e34;           /* deep academic blue */
-      --card:#ffffff;
-      --ink:#0e1523;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --accent:#143d66;
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a;
+      --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
     }
+    *{box-sizing:border-box}
     html,body{height:100%}
-    body {
+    body{
       margin:0;
-      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
-      background:linear-gradient(135deg,#0b1e34,#143d66);
+      background:
+        radial-gradient(1200px 700px at 50% -200px, #1f3b62 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
       color:var(--ink);
-      display:grid;
-      place-items:center;
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
     }
-    .container{width:100%; max-width:1000px; padding:28px}
+    .wrap{width:100%; max-width:1100px; padding:28px 20px 64px}
+
+    /* Hero emblem (top) */
+    .hero{display:grid; place-items:center; padding:42px 0 16px}
+    .hero .emblem{
+      width:clamp(160px, 22vw, 320px); /* big & crisp, responsive */
+      height:auto;
+      filter:drop-shadow(0 12px 28px rgba(0,0,0,.35));
+      image-rendering:auto;
+    }
+
+    /* Card */
     .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 18px 45px rgba(0,0,0,.12);
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25); overflow:hidden;
     }
-    header{
-      display:flex; gap:24px; align-items:center; padding:28px 28px 10px 28px;
-      border-bottom:1px solid var(--line);
+    header.card-hd{
+      display:flex; gap:20px; align-items:center;
+      padding:22px 24px; border-bottom:1px solid var(--line);
     }
-    .logo{
-      width:84px; height:84px; flex:0 0 auto;
-      border-radius:12px; background:#0b1e34;
-      display:grid; place-items:center; overflow:hidden;
+    .logo-box{
+      width:72px; height:72px; border-radius:12px;
+      background:rgba(255,255,255,.06);
+      display:grid; place-items:center; flex:0 0 auto; overflow:hidden;
     }
-    .logo img{width:82%; height:auto; display:block}
-    h1{font-size:1.9rem; margin:0}
-    .tagline{margin:.25rem 0 0; color:var(--muted)}
-    main{padding:22px 28px}
-    .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
+    .logo-box img{width:84%; height:auto; display:block}
+    h1{font-size:1.85rem; margin:0}
+    .tag{margin:.35rem 0 0; color:var(--muted)}
+    main{padding:22px 24px}
+    p{margin:0 0 12px}
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px}
     .btn{
-      display:inline-block; padding:.7rem 1rem; border:1px solid var(--line);
-      border-radius:12px; text-decoration:none; color:var(--ink); background:#fff;
+      display:inline-block; padding:.7rem 1rem; border-radius:12px;
+      text-decoration:none; border:1px solid var(--line); color:var(--ink);
+      background:#0b1220; transition:transform .05s ease, filter .15s ease;
     }
-    .hero {
-      text-align: center;
-      padding: 48px 20px;
-    }
-    .hero img {
-     max-width: 280px;
-     height: auto;
-    }	
-    .btn:hover{background:#f7f9fc}
-    .btn.primary{
-      background:var(--accent); color:#fff; border-color:transparent;
-    }
-    .btn.primary:hover{filter:brightness(1.05)}
+    .btn:hover{filter:brightness(1.1)}
+    .btn.primary{background:var(--accent); border-color:transparent; color:#fff}
     .meta{
-      display:grid; gap:8px; margin-top:18px;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      display:grid; gap:10px; margin-top:16px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
     }
     .meta .k{font-weight:600}
-    footer{
-      padding:18px 28px; border-top:1px solid var(--line);
-      display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      color:var(--muted); font-size:.925rem;
+    footer.card-ft{
+      padding:16px 24px; border-top:1px solid var(--line);
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      color:var(--muted); font-size:.95rem;
     }
-    .small{font-size:.9rem; color:var(--muted)}
+
     @media (max-width:640px){
-      header{flex-direction:column; text-align:center}
-      .logo{width:72px;height:72px}
-      h1{font-size:1.65rem}
+      header.card-hd{flex-direction:column; text-align:center}
+      .logo-box{width:64px;height:64px}
+      h1{font-size:1.6rem}
     }
-    @media (prefers-color-scheme: dark){
-      :root{ --card:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2; --line:#1f2937; }
-      .btn{background:#0f172a; color:#e5e7eb; border-color:#1f2937}
-      .btn:hover{background:#101826}
+
+    /* Respect light mode if user prefers */
+    @media (prefers-color-scheme: light){
+      :root{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; }
+      .btn{background:#fff; color:#0e1523; border-color:#e5e7eb}
+      .btn:hover{filter:none; background:#f6f8fb}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-<section class="hero">
-  <img src="https://theios-research-institute.github.io/theios.org/theios-logo-favicon.png"
-     alt="Theios logo" width="56" height="56" loading="eager">
-</section>
+  <div class="wrap">
+    <!-- Large, crisp emblem (local, with graceful fallback) -->
+    <div class="hero" aria-hidden="true">
+      <img class="emblem"
+           src="./theios-logo-variant.png"
+           alt=""
+           width="320" height="320" loading="eager"
+           onerror="this.src='./theios-logo-favicon.png'">
+    </div>
+
     <article class="card" role="main">
-      <header>
-        <div class="logo" aria-hidden="true">
-          <img src="https://theios-research-institute.github.io/theios.org/theios-logo-favicon.png"
-     alt="Theios logo" width="56" height="56" loading="eager">
+      <header class="card-hd">
+        <!-- In-card logo uses hi-res variant, scaled down for crispness -->
+        <div class="logo-box">
+          <img src="./theios-logo-variant.png"
+               alt="Theios emblem" width="80" height="80" loading="lazy"
+               onerror="this.src='./theios-logo-favicon.png'">
         </div>
         <div>
           <h1>Theios Research Institute</h1>
-          <p class="tagline">Applied discovery science &amp; structural laws of emergence.</p>
+          <p class="tag">Applied discovery science &amp; structural laws of emergence.</p>
         </div>
       </header>
 
       <main>
-        <p class="small">
-           <p>Theios (θείος) is a research institute dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols. Our work surfaces recurrent patterns that inform broader scientific understanding of cognition, behavior, and the structures underlying complex systems.</p>
-           <p><strong>Our mission</strong> is to advance scientific rigor through protocol-governed validation across domains.<br>  
-Findings are distilled into accessible briefs, while foundational records are maintained in secure archives for institutional partners.</p>
+        <p>Theios (θείος) is a research institute dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols. Our work surfaces recurrent patterns that inform broader scientific understanding of cognition, behavior, and the structures underlying complex systems.</p>
+        <p><strong>Our mission</strong> is to advance scientific rigor through protocol-governed validation across domains. Findings are distilled into accessible briefs, while foundational records are maintained in secure archives for institutional partners.</p>
 
         <div class="actions" aria-label="Primary actions">
           <a class="btn primary" href="https://codex.nexus">Launch Codex Nexus →</a>
           <a class="btn" href="mailto:research@theios.org">Contact: research@theios.org</a>
         </div>
 
-        <section class="meta" aria-label="At-a-glance">
+        <section class="meta" aria-label="At a glance">
           <div><span class="k">Focus:</span> Emergent structure, universals, cross-domain regularities</div>
           <div><span class="k">Methods:</span> Structured validation, reproducible workflows, cross-domain synthesis</div>
           <div><span class="k">Outputs:</span> Public briefs, artifacts, and reproducible test harnesses</div>
         </section>
       </main>
 
-      <footer>
+      <footer class="card-ft">
         <div>© <span id="y"></span> Theios Research Institute</div>
         <nav aria-label="Secondary">
           <a class="btn" href="https://github.com/theios-research-institute">GitHub</a>
           <a class="btn" href="https://codex.nexus">Codex Nexus</a>
         </nav>
-        <div class="small">Private research graph — collaborations by invitation</div>
+        <div>Private research graph — collaborations by invitation</div>
       </footer>
     </article>
   </div>
 
   <script>
-    // current year in footer (no external JS)
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
