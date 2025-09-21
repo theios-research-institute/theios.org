@@ -1,6 +1,10 @@
 /* Canonical body typography */
 body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
 p,li{font-family:inherit;}
+
+/* Canonical body typography */
+body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
+p,li{font-family:inherit;}
 /* Body: clean sans for readability */
 
 /* Base reset */
