@@ -1,3 +1,6 @@
+/* Body: clean sans for readability */
+body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
+
 /* Base reset */
 * {
   margin: 0;
@@ -79,3 +82,6 @@ h1.site-title,
 .site-tagline {
   font-family: "Merriweather", Georgia, "Times New Roman", serif;
 }
+/* Paragraphs & lists inherit body font */
+p, li { font-family: inherit; }
+
