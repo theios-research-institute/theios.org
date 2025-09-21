@@ -85,3 +85,9 @@ h1.site-title,
 /* Paragraphs & lists inherit body font */
 p, li { font-family: inherit; }
 
+
+/* --- Final typography override (wins cascade) --- */
+body{
+  font-family:"Inter","Helvetica Neue",Arial,sans-serif !important;
+}
+p, li{ font-family:inherit; }
