@@ -1,5 +1,7 @@
-/* Body: clean sans for readability */
+/* Canonical body typography */
 body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
+p,li{font-family:inherit;}
+/* Body: clean sans for readability */
 
 /* Base reset */
 * {
@@ -9,13 +11,6 @@ body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
 }
 
 /* Body – serif for academic readability */
-body {
-  font-family: "Merriweather", Georgia, serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #222;
-  background: #fff;
-}
 
 /* Site title – strong serif */
 h1.site-title {
@@ -70,9 +65,6 @@ a:hover {
 
 
 /* --- Typography override with fallbacks --- */
-body {
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-}
 
 p, li {
   font-family: inherit; /* inherit Inter for body */
@@ -87,13 +79,7 @@ p, li { font-family: inherit; }
 
 
 /* --- Final typography override (wins cascade) --- */
-body{
-  font-family:"Inter","Helvetica Neue",Arial,sans-serif !important;
-}
 p, li{ font-family:inherit; }
 
 /* --- Final typography override (wins cascade) --- */
-body{
-  font-family:"Inter","Helvetica Neue",Arial,sans-serif !important;
-}
 p, li{ font-family:inherit; }
