@@ -65,14 +65,17 @@ a:hover {
   padding: 2rem;
 }
 
-/* --- Typography override (body sans, headings serif) --- */
+
+/* --- Typography override with fallbacks --- */
 body {
-  font-family: "Inter","Helvetica Neue",Arial,sans-serif;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
-p, li { font-family: inherit; } /* inherit body (Inter) */
+p, li {
+  font-family: inherit; /* inherit Inter for body */
+}
 
 h1.site-title,
 .site-tagline {
-  font-family: "Merriweather", Georgia, serif; /* keep scholarly headings */
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
 }
