@@ -1,5 +1,4 @@
-/* Canonical body typography */
+/* Canonical body typography (single source of truth) */
 body{font-family:"Inter","Helvetica Neue",Arial,sans-serif;}
 p,li{font-family:inherit;}
-
 /* Canonical body typography */
