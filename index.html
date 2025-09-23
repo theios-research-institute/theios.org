@@ -195,6 +195,11 @@
   </div>
 
   <script>
+    // Redirect apex domain to www subdomain for SSL consistency
+    if (window.location.hostname === 'theios.org') {
+      window.location.replace('https://www.theios.org' + window.location.pathname + window.location.search + window.location.hash);
+    }
+
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
