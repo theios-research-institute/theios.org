@@ -154,10 +154,13 @@
       display:flex; flex-direction:column; gap:4px;
     }
     footer.card-ft .social-links{
-      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;
+      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; align-items:center;
     }
     footer.card-ft .social-links .btn{
       padding:.4rem .55rem; font-size:.75rem;
+    }
+    footer.card-ft .social-links .divider{
+      color:var(--muted); opacity:0.5; margin:0 2px;
     }
     @media (max-width:900px){
       footer.card-ft{ grid-template-columns:1fr; justify-items:center; text-align:center; }
@@ -246,6 +249,7 @@
           <a class="btn" href="https://github.com/theios-research-institute" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
           <a class="btn" href="https://codex.nexus" title="Codex Nexus">Codex Nexus</a>
           <a class="btn" href="https://orcid.org/0009-0004-0776-8634" target="_blank" rel="noopener noreferrer" title="ORCID">ORCID</a>
+          <span class="divider">|</span>
           <a class="btn" href="https://x.com/theios_org" target="_blank" rel="noopener noreferrer" title="X (Twitter)">X</a>
           <a class="btn" href="https://bsky.app/profile/theios.bsky.social" target="_blank" rel="noopener noreferrer" title="Bluesky">Bluesky</a>
           <a class="btn" href="https://www.facebook.com/theios.org" target="_blank" rel="noopener noreferrer" title="Facebook">Facebook</a>
