@@ -147,17 +147,21 @@
     .meta .k{font-weight:600}
     footer.card-ft{
       padding:16px 24px; border-top:1px solid var(--line);
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center;
       color:var(--muted); font-size:.95rem;
     }
     footer.card-ft .footer-left{
       display:flex; flex-direction:column; gap:4px;
     }
     footer.card-ft .social-links{
-      display:flex; gap:6px; flex-wrap:wrap;
+      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;
     }
     footer.card-ft .social-links .btn{
-      padding:.45rem .65rem; font-size:.8rem;
+      padding:.4rem .55rem; font-size:.75rem;
+    }
+    @media (max-width:900px){
+      footer.card-ft{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+      footer.card-ft .social-links{ justify-content:center; }
     }
 
     @media (max-width:640px){
