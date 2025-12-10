@@ -150,6 +150,9 @@
       display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
       color:var(--muted); font-size:.95rem;
     }
+    footer.card-ft .footer-left{
+      display:flex; flex-direction:column; gap:4px;
+    }
     footer.card-ft .social-links{
       display:flex; gap:6px; flex-wrap:wrap;
     }
@@ -231,8 +234,10 @@
       </main>
 
       <footer class="card-ft">
-        <div>© <span id="y"></span> Theios Research Institute, Inc. — A nonprofit organization</div>
-        <div>Private research graph — collaborations by invitation</div>
+        <div class="footer-left">
+          <div>© <span id="y"></span> Theios Research Institute, Inc. — A nonprofit organization</div>
+          <div>Private research graph — collaborations by invitation</div>
+        </div>
         <nav class="social-links" aria-label="Secondary">
           <a class="btn" href="https://github.com/theios-research-institute" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
           <a class="btn" href="https://codex.nexus" title="Codex Nexus">Codex Nexus</a>
