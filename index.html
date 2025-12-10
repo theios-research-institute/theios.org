@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=1758416202">
+  <link rel="stylesheet" href="./style.css?v=1733851200">
   <title>Theios Research Institute, Inc.</title>
   <meta name="description" content="Theios Research Institute, Inc. — A nonprofit dedicated to applied discovery science and structural laws of emergence." />
   <meta name="theme-color" content="#0b1e34" />
@@ -108,9 +108,15 @@
     }
     .meta .k{font-weight:600}
     footer.card-ft{
-      padding:16px 24px; border-top:1px solid var(--line);
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      color:var(--muted); font-size:.95rem;
+      padding:20px 24px; border-top:1px solid var(--line);
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center;
+      color:var(--muted); font-size:.95rem; flex-direction:column;
+    }
+    footer.card-ft .social-links{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+    }
+    footer.card-ft .social-links .btn{
+      padding:.5rem .75rem; font-size:.85rem;
     }
 
     @media (max-width:640px){
@@ -188,12 +194,13 @@
 
       <footer class="card-ft">
         <div>© <span id="y"></span> Theios Research Institute, Inc. — A nonprofit organization</div>
-        <nav aria-label="Secondary">
-          <a class="btn" href="https://github.com/theios-research-institute">GitHub</a>
-          <a class="btn" href="https://codex.nexus">Codex Nexus</a>
-          <a class="btn" href="https://x.com/theios_org" target="_blank" rel="noopener noreferrer">X</a>
-          <a class="btn" href="https://www.facebook.com/theios.org" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a class="btn" href="https://www.instagram.com/theiosresearch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <nav class="social-links" aria-label="Secondary">
+          <a class="btn" href="https://github.com/theios-research-institute" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
+          <a class="btn" href="https://codex.nexus" title="Codex Nexus">Codex Nexus</a>
+          <a class="btn" href="https://x.com/theios_org" target="_blank" rel="noopener noreferrer" title="X (Twitter)">X</a>
+          <a class="btn" href="https://bsky.app/profile/theios.bsky.social" target="_blank" rel="noopener noreferrer" title="Bluesky">Bluesky</a>
+          <a class="btn" href="https://www.facebook.com/theios.org" target="_blank" rel="noopener noreferrer" title="Facebook">Facebook</a>
+          <a class="btn" href="https://www.instagram.com/theiosresearch/" target="_blank" rel="noopener noreferrer" title="Instagram">Instagram</a>
         </nav>
         <div>Private research graph — collaborations by invitation</div>
       </footer>
