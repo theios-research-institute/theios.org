@@ -95,9 +95,24 @@
     }
     .wrap{width:100%; max-width:1100px; padding:28px 20px 64px; position:relative}
 
+    /* Top nav bar */
+    .top-nav{
+      position:absolute; top:18px; right:18px;
+      display:flex; gap:10px; align-items:center;
+    }
+    .nav-link{
+      padding:.55rem .9rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); text-decoration:none; font-size:.9rem;
+      transition:border-color .15s, background .15s;
+    }
+    .nav-link:hover{
+      border-color:var(--accent);
+      background:rgba(59,130,246,.08);
+    }
+
     /* Theme toggle */
     .theme-toggle{
-      position:absolute; top:18px; right:18px;
       display:inline-flex; gap:8px; align-items:center;
       padding:.55rem .75rem; border-radius:12px;
       border:1px solid var(--line); background:var(--btn);
@@ -194,13 +209,16 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- Theme toggle -->
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
-      </svg>
-      <span id="themeLabel">Auto</span>
-    </button>
+    <!-- Top navigation -->
+    <nav class="top-nav">
+      <a href="./pledge/" class="nav-link">The Pledge</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+        </svg>
+        <span id="themeLabel">Auto</span>
+      </button>
+    </nav>
 
     <!-- Large hero emblem with fallback -->
     <div class="hero" aria-hidden="true">
@@ -230,7 +248,6 @@
 
         <div class="actions" aria-label="Primary actions">
           <a class="btn primary" href="https://codex.nexus">Launch Codex Nexus →</a>
-          <a class="btn" href="./pledge/">The Commitment to Truth</a>
           <a class="btn" href="mailto:research@theios.org">Contact: research@theios.org</a>
         </div>
 
