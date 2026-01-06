@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>The Commitment to Truth | Theios Research Institute</title>
+  <meta name="description" content="A simple pledge. A serious promise. Commit to seeking truth—even when it's uncomfortable." />
+  <meta name="theme-color" content="#0b1e34" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../favicon.png" />
+
+  <!-- Social -->
+  <meta property="og:site_name" content="Theios Research Institute, Inc." />
+  <meta property="og:title" content="The Commitment to Truth | Theios Research Institute" />
+  <meta property="og:description" content="A simple pledge. A serious promise. Commit to seeking truth—even when it's uncomfortable." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://theios.org/pledge" />
+  <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
+  <link rel="canonical" href="https://theios.org/pledge" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "The Commitment to Truth",
+    "description": "A simple pledge. A serious promise. Commit to seeking truth—even when it's uncomfortable.",
+    "url": "https://theios.org/pledge",
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Theios Research Institute, Inc.",
+      "url": "https://theios.org",
+      "logo": "https://theios.org/theios-logo-variant.png"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220; --btn-hover:brightness(1.1);
+    }
+    /* Light tokens (used when data-theme='light') */
+    :root.light{
+      --card:#ffffff; --ink:#0e1523; --muted:#4b5563;
+      --line:#e5e7eb; --btn:#ffffff; --btn-hover:none;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, #1f3b62 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
+    }
+    .wrap{width:100%; max-width:900px; padding:28px 20px 64px; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
+    }
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Back link */
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
+    }
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    /* Header */
+    .page-header{
+      text-align:center; margin-bottom:28px;
+    }
+    .page-header h1{
+      font-size:2.2rem; margin:0 0 8px; font-weight:700;
+    }
+    .page-header .sub{
+      font-size:1.1rem; color:var(--muted); margin:0 0 12px;
+    }
+    .page-header .note{
+      font-size:1rem; color:var(--muted); max-width:680px; margin:0 auto;
+    }
+
+    /* Card */
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:24px 28px; margin-bottom:20px;
+    }
+    .card h2{
+      font-size:1.4rem; margin:0 0 14px; font-weight:600;
+    }
+    .card p{margin:0 0 12px}
+    .card p:last-child{margin-bottom:0}
+
+    /* Pledge text */
+    .pledge-text{
+      white-space:pre-line;
+      font-family:Merriweather,Georgia,serif;
+      font-size:1.05rem;
+      line-height:1.7;
+      padding:18px 22px;
+      background:rgba(255,255,255,.03);
+      border-radius:12px;
+      border-left:4px solid var(--accent);
+      margin:14px 0;
+    }
+
+    /* Google Form container */
+    .form-container{
+      margin-top:14px;
+    }
+    .form-container iframe{
+      width:100%;
+      min-height:720px;
+      border:0;
+      border-radius:8px;
+    }
+    .form-placeholder{
+      padding:40px 20px;
+      text-align:center;
+      background:rgba(255,255,255,.03);
+      border-radius:12px;
+      border:2px dashed var(--line);
+      color:var(--muted);
+    }
+
+    /* Small text */
+    .small{font-size:.92rem; color:var(--muted)}
+
+    /* Divider */
+    hr{border:0; border-top:1px solid var(--line); margin:28px 0}
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .page-header h1{font-size:1.8rem}
+      .card{padding:18px 20px}
+      .pledge-text{padding:14px 16px; font-size:1rem}
+      .theme-toggle{top:14px; right:14px}
+    }
+
+    /* Respect system preference by default when user has not explicitly chosen */
+    @media (prefers-color-scheme: light){
+      :root.auto{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; --btn:#ffffff; --btn-hover:none; }
+    }
+  </style>
+
+  <!-- Prevent flash: set initial class before paint -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme'); // 'light'|'dark'|'auto'
+      const pref = saved || 'auto';
+      const root = document.documentElement;
+      root.classList.remove('light','auto');
+      root.classList.add(pref);
+      root.setAttribute('data-theme', pref);
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <!-- Back link -->
+    <a href="../" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Theios Research Institute
+    </a>
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1>The Commitment to Truth</h1>
+      <p class="sub">A simple pledge. A serious promise.</p>
+      <p class="note">
+        Truth matters—especially when it's uncomfortable. This is a voluntary commitment to seek what is real with intellectual honesty, even when it challenges our beliefs, identity, or social comfort.
+      </p>
+    </header>
+
+    <!-- The Pledge -->
+    <article class="card">
+      <h2>The Pledge</h2>
+      <div class="pledge-text">I pledge a lifetime commitment to seeking the truth in all things and aligning myself with these truths at all costs.
+
+I commit to questioning my own assumptions, examining evidence honestly, and resisting the pull of groupthink and tribal identity.
+
+I acknowledge that this commitment may challenge my beliefs, my comfort, and even my social standing—but I affirm that truth matters more than convenience, certainty, or approval.
+
+I make this commitment freely, consciously, and in good faith.</div>
+      <p class="small">Take a moment to read carefully before signing.</p>
+    </article>
+
+    <!-- Sign the Commitment -->
+    <article class="card">
+      <h2>Sign the Commitment</h2>
+      <p>By signing, you're choosing a standard you're willing to be held to—starting with yourself.</p>
+
+      <div class="form-container">
+        <iframe data-tally-src="https://tally.so/r/OD4V1K?transparentBackground=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="The Commitment to Truth"></iframe>
+        <script async src="https://tally.so/widgets/embed.js"></script>
+      </div>
+    </article>
+
+    <!-- What this is -->
+    <article class="card">
+      <h2>What this is — and is not</h2>
+      <p><strong>This commitment is:</strong> a standard for self-accountability, a willingness to revise beliefs when evidence demands it, and a practice of honest inquiry.</p>
+      <p><strong>This commitment is not:</strong> a claim that you already "have the truth," an agreement with an ideology, or a mandate to debate everyone.</p>
+      <p class="small">Perfection isn't required. Sincerity is.</p>
+    </article>
+
+    <hr />
+
+    <p class="small" style="text-align:center; max-width:680px; margin:0 auto">
+      <strong>About Theios Research Institute:</strong> Theios Research Institute supports rigorous truth-seeking through disciplined, epistemically constrained research. The pledge stands on its own; engagement with Theios is optional.
+    </p>
+
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> <a href="../">Theios Research Institute, Inc.</a></p>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle logic
+    const root = document.documentElement;
+    const btn  = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode){ // 'light' | 'dark' | 'auto'
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    // initialize label from current state
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    // cycle Auto → Light → Dark → Auto
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+  </script>
+</body>
+</html>
