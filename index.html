@@ -95,22 +95,6 @@
     }
     .wrap{width:100%; max-width:1100px; padding:28px 20px 64px; position:relative}
 
-    /* Top nav bar */
-    .top-nav{
-      position:absolute; top:18px; right:18px;
-      display:flex; gap:10px; align-items:center;
-    }
-    .nav-link{
-      padding:.55rem .9rem; border-radius:12px;
-      border:1px solid var(--line); background:var(--btn);
-      color:var(--ink); text-decoration:none; font-size:.9rem;
-      transition:border-color .15s, background .15s;
-    }
-    .nav-link:hover{
-      border-color:var(--accent);
-      background:rgba(59,130,246,.08);
-    }
-
     /* Theme toggle */
     .theme-toggle{
       display:inline-flex; gap:8px; align-items:center;
@@ -136,6 +120,13 @@
     header.card-hd{
       display:flex; gap:20px; align-items:center;
       padding:22px 24px; border-bottom:1px solid var(--line);
+    }
+    .card-hd .title-block{flex:1 1 auto}
+    .card-hd .header-nav{
+      flex:0 0 auto; display:flex; align-items:center;
+    }
+    .card-hd .header-nav .btn{
+      padding:.6rem 1rem; font-size:.95rem;
     }
     .logo-box{
       width:72px; height:72px; border-radius:12px;
@@ -187,6 +178,7 @@
       .logo-box{width:64px;height:64px}
       h1{font-size:1.65rem}
       .theme-toggle{top:14px; right:14px}
+      .card-hd .header-nav{margin-top:12px}
     }
 
     /* Respect system preference by default when user has not explicitly chosen */
@@ -209,16 +201,13 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- Top navigation -->
-    <nav class="top-nav">
-      <a href="./pledge/" class="nav-link">The Pledge</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
-        </svg>
-        <span id="themeLabel">Auto</span>
-      </button>
-    </nav>
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
 
     <!-- Large hero emblem with fallback -->
     <div class="hero" aria-hidden="true">
@@ -236,10 +225,13 @@
                alt="Theios emblem" width="80" height="80" loading="lazy"
                onerror="this.src='./theios-logo-favicon.png'">
         </div>
-        <div>
+        <div class="title-block">
           <h1 class="site-title">Theios Research Institute, Inc.</h1>
           <p class="site-tagline tag">A nonprofit dedicated to applied discovery science &amp; structural laws of emergence</p>
         </div>
+        <nav class="header-nav">
+          <a class="btn" href="./pledge/">The Pledge</a>
+        </nav>
       </header>
 
       <main>
