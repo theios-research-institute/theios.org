@@ -92,6 +92,18 @@
     .back-link:hover{color:var(--ink)}
     .back-link svg{width:16px;height:16px}
 
+    /* Logo hero */
+    .logo-hero{
+      display:flex; justify-content:center; margin:10px 0 20px;
+    }
+    .logo-hero a{display:block}
+    .logo-hero .logo-img{
+      width:120px; height:auto;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));
+      transition:transform .15s ease;
+    }
+    .logo-hero .logo-img:hover{transform:scale(1.03)}
+
     /* Header */
     .page-header{
       text-align:center; margin-bottom:28px;
@@ -209,6 +221,13 @@
       </svg>
       Back to Theios Research Institute
     </a>
+
+    <!-- Logo -->
+    <div class="logo-hero">
+      <a href="../">
+        <img src="../theios-logo-variant.png" alt="Theios Research Institute" class="logo-img" onerror="this.src='../theios-logo-favicon.png'">
+      </a>
+    </div>
 
     <!-- Header -->
     <header class="page-header">
