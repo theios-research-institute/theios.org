@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>Wall of Truth Seekers | Theios Research Institute</title>
+  <meta name="description" content="See who has signed the Commitment to Truth. Join a growing movement of people dedicated to intellectual honesty." />
+  <meta name="theme-color" content="#0b1e34" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
+  <link rel="canonical" href="https://theios.org/pledge/signatories" />
+
+  <meta property="og:title" content="Wall of Truth Seekers | Theios Research Institute" />
+  <meta property="og:description" content="See who has signed the Commitment to Truth. Join a growing movement." />
+  <meta property="og:url" content="https://theios.org/pledge/signatories" />
+  <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
+
+  <style>
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220; --btn-hover:brightness(1.1);
+    }
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(11,30,52,0.25);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
+    }
+    .wrap{width:100%; max-width:900px; padding:28px 20px 64px; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
+    }
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Back link */
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
+    }
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    /* Header */
+    .page-header{
+      text-align:center; margin-bottom:28px;
+    }
+    .page-header h1{
+      font-size:2rem; margin:0 0 8px; font-weight:700;
+    }
+    .page-header .counter{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 20px;
+      background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.3);
+      border-radius:50px;
+      margin-bottom:12px;
+      color:#22c55e;
+      font-weight:600;
+    }
+    .page-header .sub{
+      font-size:1rem; color:var(--muted); margin:12px 0 0;
+    }
+
+    /* Card */
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:24px 28px; margin-bottom:20px;
+    }
+
+    /* Signatories list */
+    .signatories-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .signatory{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .signatory:last-child{
+      border-bottom:none;
+    }
+    .signatory-name{
+      font-weight:600;
+      color:var(--ink);
+    }
+    .signatory-meta{
+      font-size:.85rem;
+      color:var(--muted);
+      text-align:right;
+    }
+    .signatory-location{
+      display:block;
+    }
+    .signatory-date{
+      display:block;
+      font-size:.8rem;
+      opacity:.8;
+    }
+
+    /* Empty state */
+    .empty-state{
+      text-align:center;
+      padding:40px 20px;
+      color:var(--muted);
+    }
+    .empty-state p{
+      margin:0 0 16px;
+    }
+
+    /* CTA */
+    .cta-section{
+      text-align:center;
+      padding:30px;
+      background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(59,130,246,.02));
+      border-color:rgba(59,130,246,.2);
+    }
+    .cta-section h2{
+      margin:0 0 12px;
+      font-size:1.3rem;
+    }
+    .cta-section p{
+      margin:0 0 16px;
+      color:var(--muted);
+    }
+    .btn{
+      display:inline-block; padding:.8rem 1.5rem; border-radius:12px;
+      text-decoration:none; border:1px solid var(--line); color:var(--ink);
+      background:var(--btn); transition:transform .05s ease, filter .15s ease;
+      font-weight:600;
+    }
+    .btn:hover{filter:var(--btn-hover)}
+    .btn.primary{background:var(--accent); border-color:transparent; color:#fff}
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .page-header h1{font-size:1.6rem}
+      .card{padding:18px 20px}
+      .signatory{flex-direction:column; align-items:flex-start; gap:6px}
+      .signatory-meta{text-align:left}
+    }
+
+    @media (prefers-color-scheme: light){
+      :root.auto{ --bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(11,30,52,0.25); }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <!-- Back link -->
+    <a href="../" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to The Pledge
+    </a>
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1>Wall of Truth Seekers</h1>
+      <div class="counter">
+        <span>✓</span>
+        <span id="totalCount">Loading...</span> people have made the commitment
+      </div>
+      <p class="sub">These individuals have publicly affirmed their commitment to seeking truth.</p>
+    </header>
+
+    <!-- Signatories List -->
+    <article class="card">
+      <ul class="signatories-list" id="signatoriesList">
+        <!-- Signatories will be populated here -->
+        <!-- For now, showing placeholder/sample data -->
+      </ul>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p>Be the first to have your name displayed here.</p>
+        <a href="../" class="btn primary">Take the Pledge</a>
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <article class="card cta-section">
+      <h2>Join the Movement</h2>
+      <p>Add your name to the wall. Make your commitment public.</p>
+      <a href="../" class="btn primary">Take the Pledge →</a>
+    </article>
+
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> <a href="../../">Theios Research Institute, Inc.</a></p>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode){
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+
+    // Sample signatories data (replace with real data or API call)
+    const signatories = [
+      // Add signatories here in format:
+      // { name: "Full Name", location: "City, Country", date: "January 2026" }
+      // Example entries (uncomment and customize):
+      // { name: "Neil Sargisian", location: "California, USA", date: "January 2026" },
+      // { name: "Sarah Chen", location: "London, UK", date: "January 2026" },
+    ];
+
+    // Render signatories
+    const list = document.getElementById('signatoriesList');
+    const emptyState = document.getElementById('emptyState');
+    const totalCount = document.getElementById('totalCount');
+
+    if (signatories.length === 0) {
+      list.style.display = 'none';
+      emptyState.style.display = 'block';
+      totalCount.textContent = '0';
+    } else {
+      totalCount.textContent = signatories.length;
+      signatories.forEach(s => {
+        const li = document.createElement('li');
+        li.className = 'signatory';
+        li.innerHTML = `
+          <span class="signatory-name">${s.name}</span>
+          <span class="signatory-meta">
+            ${s.location ? `<span class="signatory-location">${s.location}</span>` : ''}
+            <span class="signatory-date">${s.date}</span>
+          </span>
+        `;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

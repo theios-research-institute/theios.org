@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>Group Pledges | Commitment to Truth | Theios Research Institute</title>
+  <meta name="description" content="Bring the Commitment to Truth to your organization, classroom, or community. Lead your group in a collective stand for intellectual honesty." />
+  <meta name="theme-color" content="#0b1e34" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
+  <link rel="canonical" href="https://theios.org/pledge/groups" />
+
+  <meta property="og:title" content="Group Pledges | Commitment to Truth" />
+  <meta property="og:description" content="Bring the Commitment to Truth to your organization. Lead your group in a collective stand." />
+  <meta property="og:url" content="https://theios.org/pledge/groups" />
+  <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
+
+  <style>
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220; --btn-hover:brightness(1.1);
+    }
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(11,30,52,0.25);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
+    }
+    .wrap{width:100%; max-width:900px; padding:28px 20px 64px; position:relative}
+
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
+    }
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
+    }
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    .page-header{
+      text-align:center; margin-bottom:28px;
+    }
+    .page-header h1{
+      font-size:2rem; margin:0 0 8px; font-weight:700;
+    }
+    .page-header .sub{
+      font-size:1.1rem; color:var(--muted); margin:0 0 12px; font-weight:600;
+    }
+    .page-header .note{
+      font-size:1rem; color:var(--ink); max-width:680px; margin:0 auto;
+    }
+
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:24px 28px; margin-bottom:20px;
+    }
+    .card h2{
+      font-size:1.4rem; margin:0 0 14px; font-weight:600;
+    }
+    .card p{margin:0 0 12px}
+
+    /* Group types */
+    .group-types{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+      gap:16px;
+      margin:20px 0;
+    }
+    .group-type{
+      padding:20px;
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:12px;
+      text-align:center;
+      transition:border-color .15s, transform .15s;
+    }
+    .group-type:hover{
+      border-color:var(--accent);
+      transform:translateY(-2px);
+    }
+    .group-type-icon{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+    .group-type-title{
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .group-type-desc{
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    /* Form */
+    .group-form{
+      margin-top:20px;
+    }
+    .form-group{
+      margin-bottom:20px;
+    }
+    .form-group label{
+      display:block;
+      font-weight:600;
+      margin-bottom:8px;
+      color:var(--ink);
+    }
+    .form-group label .required{
+      color:#ef4444;
+      margin-left:2px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea{
+      width:100%;
+      padding:14px 16px;
+      font-size:1rem;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      font-family:inherit;
+      transition:border-color .15s, box-shadow .15s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{
+      outline:none;
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(59,130,246,.15);
+    }
+    .form-group select{
+      cursor:pointer;
+    }
+    .form-group textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+    .submit-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:14px 28px;
+      font-size:1.05rem;
+      font-weight:600;
+      color:#fff;
+      background:var(--accent);
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      transition:transform .1s, filter .15s;
+    }
+    .submit-btn:hover{
+      filter:brightness(1.1);
+    }
+    .submit-btn svg{
+      width:18px;
+      height:18px;
+    }
+    .form-note{
+      margin-top:12px;
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    /* Benefits */
+    .benefits{
+      display:grid;
+      gap:12px;
+      margin:16px 0;
+    }
+    .benefit{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .benefit-icon{
+      color:#22c55e;
+      font-weight:bold;
+      flex-shrink:0;
+    }
+
+    /* Success/error */
+    .form-message{
+      padding:16px 20px;
+      border-radius:10px;
+      margin-top:16px;
+      display:none;
+    }
+    .form-message.success{
+      background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.3);
+      color:#22c55e;
+    }
+    .form-message.error{
+      background:rgba(239,68,68,.1);
+      border:1px solid rgba(239,68,68,.3);
+      color:#ef4444;
+    }
+
+    .small{font-size:.92rem; color:var(--muted)}
+
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .page-header h1{font-size:1.6rem}
+      .card{padding:18px 20px}
+      .group-types{grid-template-columns:1fr}
+    }
+
+    @media (prefers-color-scheme: light){
+      :root.auto{ --bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(11,30,52,0.25); }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <a href="../" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to The Pledge
+    </a>
+
+    <header class="page-header">
+      <h1>Group Pledges</h1>
+      <p class="sub">Bring the Commitment to Truth to your community.</p>
+      <p class="note">
+        Lead your organization, classroom, team, or family in a collective commitment to intellectual honesty and truth-seeking.
+      </p>
+    </header>
+
+    <!-- Group Types -->
+    <article class="card">
+      <h2>Who Can Start a Group Pledge?</h2>
+      <div class="group-types">
+        <div class="group-type">
+          <div class="group-type-icon">🏢</div>
+          <div class="group-type-title">Organizations</div>
+          <div class="group-type-desc">Companies, nonprofits, think tanks</div>
+        </div>
+        <div class="group-type">
+          <div class="group-type-icon">🎓</div>
+          <div class="group-type-title">Educational</div>
+          <div class="group-type-desc">Universities, classrooms, study groups</div>
+        </div>
+        <div class="group-type">
+          <div class="group-type-icon">👥</div>
+          <div class="group-type-title">Communities</div>
+          <div class="group-type-desc">Book clubs, meetups, online groups</div>
+        </div>
+        <div class="group-type">
+          <div class="group-type-icon">👨‍👩‍👧‍👦</div>
+          <div class="group-type-title">Families</div>
+          <div class="group-type-desc">Households committed to honest inquiry</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Benefits -->
+    <article class="card">
+      <h2>What You Get</h2>
+      <div class="benefits">
+        <div class="benefit">
+          <span class="benefit-icon">✓</span>
+          <span><strong>Group page</strong> — A dedicated page for your organization on the Wall of Truth Seekers</span>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">✓</span>
+          <span><strong>Custom invite link</strong> — Share with members to track who joins through your group</span>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">✓</span>
+          <span><strong>Group certificate</strong> — Downloadable certificate for your organization</span>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">✓</span>
+          <span><strong>Member count</strong> — Track how many from your group have committed</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Registration Form -->
+    <article class="card">
+      <h2>Register Your Group</h2>
+      <p>Fill out the form below to start a group pledge. We'll set up your group page and send you a custom invite link.</p>
+
+      <form class="group-form" id="groupForm" action="https://formspree.io/f/mdakqnbr" method="POST">
+        <input type="hidden" name="form_type" value="group_registration">
+
+        <div class="form-group">
+          <label for="groupName">Group/Organization Name<span class="required">*</span></label>
+          <input type="text" id="groupName" name="group_name" placeholder="e.g., Acme Corp, Stanford Philosophy Club" required>
+        </div>
+
+        <div class="form-group">
+          <label for="groupType">Type of Group<span class="required">*</span></label>
+          <select id="groupType" name="group_type" required>
+            <option value="">Select a type...</option>
+            <option value="company">Company / Corporation</option>
+            <option value="nonprofit">Nonprofit Organization</option>
+            <option value="university">University / College</option>
+            <option value="school">School / Classroom</option>
+            <option value="club">Club / Meetup</option>
+            <option value="community">Online Community</option>
+            <option value="family">Family</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="memberCount">Estimated Number of Members<span class="required">*</span></label>
+          <input type="number" id="memberCount" name="member_count" placeholder="e.g., 25" min="2" required>
+        </div>
+
+        <div class="form-group">
+          <label for="leaderName">Your Name (Group Leader)<span class="required">*</span></label>
+          <input type="text" id="leaderName" name="leader_name" placeholder="Your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="leaderEmail">Your Email<span class="required">*</span></label>
+          <input type="email" id="leaderEmail" name="leader_email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="groupMessage">Tell Us About Your Group (Optional)</label>
+          <textarea id="groupMessage" name="group_message" placeholder="What brings your group to the Commitment to Truth? Any specific goals or context?"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Register Group
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <p class="form-note">We'll review your registration and send setup instructions within 48 hours.</p>
+
+        <div class="form-message success" id="successMsg">
+          <strong>Thank you!</strong> Your group registration has been submitted. We'll be in touch soon with your custom invite link.
+        </div>
+        <div class="form-message error" id="errorMsg">
+          <strong>Something went wrong.</strong> Please try again or email research@theios.org directly.
+        </div>
+      </form>
+    </article>
+
+    <p class="small" style="text-align:center; max-width:600px; margin:20px auto 0;">
+      Questions about group pledges? Contact us at <a href="mailto:research@theios.org" style="color:var(--accent)">research@theios.org</a>
+    </p>
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> <a href="../../">Theios Research Institute, Inc.</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode){
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+
+    // Form handler
+    const form = document.getElementById('groupForm');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        errorMsg.style.display = 'block';
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

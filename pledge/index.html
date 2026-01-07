@@ -99,6 +99,56 @@
     .back-link:hover{color:var(--ink)}
     .back-link svg{width:16px;height:16px}
 
+    /* Movement counter */
+    .movement-counter{
+      text-align:center;
+      margin-bottom:20px;
+    }
+    .counter-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 24px;
+      background:rgba(59,130,246,.12);
+      border:1px solid rgba(59,130,246,.3);
+      border-radius:50px;
+      margin-bottom:8px;
+    }
+    .counter-icon{
+      font-size:1.2rem;
+    }
+    .counter-text{
+      font-size:1rem;
+      color:var(--ink);
+    }
+    .counter-text strong{
+      color:var(--accent);
+    }
+    .counter-sub{
+      font-size:.9rem;
+      color:var(--muted);
+      margin:0;
+    }
+    /* Stakes card */
+    .stakes-card{
+      background:linear-gradient(135deg, rgba(239,68,68,.08), rgba(239,68,68,.02));
+      border-color:rgba(239,68,68,.2);
+      margin-bottom:20px;
+    }
+    .stakes-lead{
+      font-size:1.15rem;
+      margin-bottom:12px;
+    }
+    .stakes-card p{
+      margin:0 0 10px;
+    }
+    .stakes-cta{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(239,68,68,.15);
+      font-size:1.05rem;
+    }
+
     /* Logo hero */
     .logo-hero{
       display:flex; justify-content:center; margin:10px 0 20px;
@@ -275,6 +325,130 @@
       border:1px solid rgba(239,68,68,.3);
       color:#ef4444;
     }
+    /* Enhanced success message */
+    .form-message.success{
+      background:rgba(34,197,94,.08);
+      border:1px solid rgba(34,197,94,.25);
+      padding:20px 24px;
+    }
+    .success-header{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .success-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:28px;
+      height:28px;
+      background:#22c55e;
+      color:#fff;
+      border-radius:50%;
+      font-size:14px;
+      font-weight:bold;
+    }
+    .success-header strong{
+      font-size:1.2rem;
+      color:#22c55e;
+    }
+    .success-text{
+      color:var(--ink);
+      margin:0 0 12px;
+      opacity:0.9;
+    }
+    .success-divider{
+      height:1px;
+      background:var(--line);
+      margin:14px 0;
+    }
+    .success-cta{
+      color:var(--ink);
+      margin:0 0 12px;
+      font-size:.95rem;
+    }
+    .share-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .share-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      font-size:.9rem;
+      font-weight:500;
+      border:1px solid var(--line);
+      border-radius:8px;
+      cursor:pointer;
+      transition:all .15s ease;
+      background:var(--btn);
+      color:var(--ink);
+    }
+    .share-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+    .share-btn.share-x:hover{
+      background:#000;
+      color:#fff;
+      border-color:#000;
+    }
+    .share-btn.share-fb:hover{
+      background:#1877f2;
+      color:#fff;
+      border-color:#1877f2;
+    }
+    .share-btn.share-copy:hover{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+    .share-btn.copied{
+      background:#22c55e !important;
+      color:#fff !important;
+      border-color:#22c55e !important;
+    }
+    .success-challenge{
+      font-size:.9rem;
+      color:var(--muted);
+      margin:0;
+      font-style:italic;
+    }
+    .certificate-btn{
+      background:linear-gradient(135deg, #f59e0b, #d97706);
+      border-color:#d97706;
+      color:#fff;
+    }
+    .certificate-btn:hover{
+      background:linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+      border-color:#f59e0b !important;
+      color:#fff !important;
+    }
+    /* Referral link */
+    .referral-link-box{
+      display:flex;
+      gap:8px;
+      margin-bottom:8px;
+    }
+    .referral-input{
+      flex:1;
+      padding:10px 14px;
+      font-size:.85rem;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      font-family:monospace;
+    }
+    .referral-note{
+      font-size:.85rem;
+      color:var(--muted);
+      margin:0;
+    }
 
     /* Small text */
     .small{font-size:.92rem; color:var(--muted)}
@@ -343,14 +517,28 @@
       </a>
     </div>
 
+    <!-- Movement Counter -->
+    <div class="movement-counter">
+      <div class="counter-badge">
+        <span class="counter-icon">🔥</span>
+        <span class="counter-text">Join <strong id="signerCount">the Founding 1,000</strong></span>
+      </div>
+      <p class="counter-sub">Be among the first to take the stand for truth.</p>
+    </div>
+
     <!-- Header -->
     <header class="page-header">
       <h1>The Commitment to Truth</h1>
       <p class="sub">A simple pledge. A serious promise.</p>
-      <p class="note">
-        Truth matters—especially when it's uncomfortable. This is a voluntary commitment to seek what is real with intellectual honesty, even when it challenges our beliefs, identity, or social comfort.
-      </p>
     </header>
+
+    <!-- Stakes/Urgency Section -->
+    <article class="card stakes-card">
+      <p class="stakes-lead"><strong>We're living through an epistemic crisis.</strong></p>
+      <p>Algorithms reward outrage over accuracy. Tribes demand loyalty over honesty. Comfort has become more valuable than truth.</p>
+      <p>This isn't sustainable—and change starts with individuals choosing differently.</p>
+      <p class="stakes-cta">This pledge isn't about <em>having</em> the truth. It's about <strong>seeking</strong> it—relentlessly, honestly, even when it costs you.</p>
+    </article>
 
     <!-- The Pledge -->
     <article class="card">
@@ -387,6 +575,8 @@ I make this commitment freely, consciously, and in good faith.</div>
         <input type="hidden" name="pledge_version" value="v1-2026">
         <!-- Hidden field for full name (populated from signerName) -->
         <input type="hidden" id="fullNameHidden" name="full_name" value="">
+        <!-- Signup date for anniversary tracking -->
+        <input type="hidden" id="signupDate" name="signup_date" value="">
 
         <div class="form-group">
           <label class="checkbox-group">
@@ -403,7 +593,7 @@ I make this commitment freely, consciously, and in good faith.</div>
         <div class="form-group">
           <label class="checkbox-group">
             <input type="checkbox" name="public_ledger" value="yes">
-            <span>I consent to having my name listed on a public ledger of signatories. (Optional)</span>
+            <span>I consent to having my name listed on the <a href="./signatories/" style="color:var(--accent)">public ledger of signatories</a>. (Optional)</span>
           </label>
         </div>
 
@@ -417,8 +607,47 @@ I make this commitment freely, consciously, and in good faith.</div>
         <p class="form-note">Your information is handled securely and will never be sold or shared.</p>
 
         <div class="form-message success" id="successMsg">
-          <strong>Thank you!</strong> Your commitment has been recorded. Welcome to the pursuit of truth.
+          <div class="success-header">
+            <span class="success-icon">✓</span>
+            <strong>Welcome, Truth Seeker.</strong>
+          </div>
+          <p class="success-text">You've joined a growing movement of people who refuse to let comfort override honesty. Your commitment matters.</p>
+          <div class="success-divider"></div>
+          <p class="success-cta"><strong>Help the movement grow:</strong></p>
+          <div class="share-buttons">
+            <button type="button" class="share-btn share-x" id="shareX">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Share on X
+            </button>
+            <button type="button" class="share-btn share-fb" id="shareFB">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </button>
+            <button type="button" class="share-btn share-copy" id="shareCopy">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span id="copyText">Copy Link</span>
+            </button>
+          </div>
+          <p class="success-challenge">Challenge someone you respect to take the pledge.<br>The truth needs allies.</p>
+          <div class="success-divider"></div>
+          <p class="success-cta"><strong>Get your certificate:</strong></p>
+          <button type="button" class="share-btn certificate-btn" id="downloadCert">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download Certificate
+          </button>
+          <div class="success-divider"></div>
+          <p class="success-cta"><strong>Your referral link:</strong></p>
+          <div class="referral-link-box">
+            <input type="text" id="referralLink" class="referral-input" readonly>
+            <button type="button" class="share-btn" id="copyReferral">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span id="copyReferralText">Copy</span>
+            </button>
+          </div>
+          <p class="referral-note">Share this link to track who you've inspired to join.</p>
         </div>
+        <!-- Hidden canvas for certificate generation -->
+        <canvas id="certCanvas" width="1200" height="630" style="display:none;"></canvas>
         <div class="form-message error" id="errorMsg">
           <strong>Something went wrong.</strong> Please try again or email research@theios.org directly.
         </div>
@@ -437,6 +666,10 @@ I make this commitment freely, consciously, and in good faith.</div>
 
     <p class="small" style="text-align:center; max-width:680px; margin:0 auto">
       <strong>About Theios Research Institute:</strong> Theios Research Institute supports rigorous truth-seeking through disciplined, epistemically constrained research. The pledge stands on its own; engagement with Theios is optional.
+    </p>
+
+    <p class="small" style="text-align:center; max-width:680px; margin:20px auto 0">
+      <strong>Want to bring this to your organization?</strong> <a href="./groups/" style="color:var(--accent)">Start a Group Pledge →</a>
     </p>
 
   </div>
@@ -551,6 +784,200 @@ I make this commitment freely, consciously, and in good faith.</div>
     signerNameInput.addEventListener('focus', () => {
       signerNameInput.style.borderColor = '';
       signerNameInput.style.boxShadow = '';
+    });
+
+    // Share button handlers
+    const shareUrl = 'https://theios.org/pledge';
+    const shareText = "I just signed the Commitment to Truth — a pledge to seek what's real, even when it's uncomfortable. Join me:";
+
+    document.getElementById('shareX').addEventListener('click', () => {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
+
+    document.getElementById('shareFB').addEventListener('click', () => {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
+
+    document.getElementById('shareCopy').addEventListener('click', async () => {
+      const copyBtn = document.getElementById('shareCopy');
+      const copyText = document.getElementById('copyText');
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        copyBtn.classList.add('copied');
+        copyText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyText.textContent = 'Copy Link';
+        }, 2000);
+      } catch (err) {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        copyBtn.classList.add('copied');
+        copyText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyText.textContent = 'Copy Link';
+        }, 2000);
+      }
+    });
+
+    // Referral tracking
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = urlParams.get('ref');
+    if (referrer) {
+      // Store the referrer for form submission
+      const referrerInput = document.createElement('input');
+      referrerInput.type = 'hidden';
+      referrerInput.name = 'referred_by';
+      referrerInput.value = referrer;
+      form.appendChild(referrerInput);
+    }
+
+    // Generate referral code from name
+    function generateRefCode(name) {
+      const clean = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      const hash = Math.random().toString(36).substring(2, 6);
+      return clean.substring(0, 15) + '-' + hash;
+    }
+
+    // Certificate generation
+    let signerNameForCert = '';
+    let signerRefCode = '';
+
+    // Store signer name and generate referral code when form submits
+    const originalSubmitHandler = form.onsubmit;
+    form.addEventListener('submit', () => {
+      signerNameForCert = signerNameInput.value.trim();
+      signerRefCode = generateRefCode(signerNameForCert);
+      // Update the referral link input
+      const referralLinkInput = document.getElementById('referralLink');
+      referralLinkInput.value = 'https://theios.org/pledge?ref=' + signerRefCode;
+      // Set signup date for anniversary tracking
+      document.getElementById('signupDate').value = new Date().toISOString();
+    }, true);
+
+    document.getElementById('downloadCert').addEventListener('click', () => {
+      const canvas = document.getElementById('certCanvas');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      // Background gradient (navy blue)
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, '#0b1e34');
+      gradient.addColorStop(1, '#143d66');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      // Decorative border
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.5)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(30, 30, width - 60, height - 60);
+
+      // Inner decorative line
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.2)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(50, 50, width - 100, height - 100);
+
+      // Title
+      ctx.fillStyle = '#3b82f6';
+      ctx.font = 'bold 28px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('COMMITMENT TO TRUTH', width / 2, 100);
+
+      // Decorative line under title
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(width / 2 - 200, 120);
+      ctx.lineTo(width / 2 + 200, 120);
+      ctx.stroke();
+
+      // "This certifies that"
+      ctx.fillStyle = '#a3afbf';
+      ctx.font = '20px Inter, system-ui, sans-serif';
+      ctx.fillText('This certifies that', width / 2, 180);
+
+      // Signer name
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 48px Merriweather, Georgia, serif';
+      const displayName = signerNameForCert || 'Truth Seeker';
+      ctx.fillText(displayName, width / 2, 250);
+
+      // Underline for name
+      const nameWidth = ctx.measureText(displayName).width;
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(width / 2 - nameWidth / 2 - 20, 270);
+      ctx.lineTo(width / 2 + nameWidth / 2 + 20, 270);
+      ctx.stroke();
+
+      // Description
+      ctx.fillStyle = '#e5e7eb';
+      ctx.font = '18px Inter, system-ui, sans-serif';
+      ctx.fillText('has made a commitment to seek truth with intellectual honesty,', width / 2, 330);
+      ctx.fillText('even when it challenges beliefs, comfort, or social standing.', width / 2, 360);
+
+      // Truth Seeker badge
+      ctx.fillStyle = '#22c55e';
+      ctx.font = 'bold 24px Inter, system-ui, sans-serif';
+      ctx.fillText('✓ TRUTH SEEKER', width / 2, 430);
+
+      // Date
+      const date = new Date();
+      const dateStr = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      ctx.fillStyle = '#a3afbf';
+      ctx.font = '16px Inter, system-ui, sans-serif';
+      ctx.fillText('Signed: ' + dateStr, width / 2, 480);
+
+      // Footer - organization
+      ctx.fillStyle = '#6b7280';
+      ctx.font = '14px Inter, system-ui, sans-serif';
+      ctx.fillText('Theios Research Institute, Inc.', width / 2, 560);
+      ctx.fillText('theios.org/pledge', width / 2, 585);
+
+      // Download the canvas as PNG
+      const link = document.createElement('a');
+      link.download = 'commitment-to-truth-certificate.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    // Copy referral link handler
+    document.getElementById('copyReferral').addEventListener('click', async () => {
+      const referralInput = document.getElementById('referralLink');
+      const copyBtn = document.getElementById('copyReferral');
+      const copyText = document.getElementById('copyReferralText');
+      const linkValue = referralInput.value;
+
+      if (!linkValue) return;
+
+      try {
+        await navigator.clipboard.writeText(linkValue);
+        copyBtn.classList.add('copied');
+        copyText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyText.textContent = 'Copy';
+        }, 2000);
+      } catch (err) {
+        referralInput.select();
+        document.execCommand('copy');
+        copyBtn.classList.add('copied');
+        copyText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyText.textContent = 'Copy';
+        }, 2000);
+      }
     });
   </script>
 </body>
