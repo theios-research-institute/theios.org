@@ -56,8 +56,13 @@
     }
     /* Light tokens (used when data-theme='light') */
     :root.light{
+      --bg1:#f0f4f8; --bg2:#dbe4ed;
       --card:#ffffff; --ink:#0e1523; --muted:#4b5563;
-      --line:#e5e7eb; --btn:#ffffff; --btn-hover:none;
+      --line:#d1d5db; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(200,210,225,.4);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
     }
 
     *{box-sizing:border-box}
@@ -65,7 +70,7 @@
     body{
       margin:0;
       background:
-        radial-gradient(1200px 700px at 50% -200px, #1f3b62 0%, transparent 60%),
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
         linear-gradient(135deg,var(--bg1),var(--bg2));
       color:var(--ink);
       font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -278,7 +283,7 @@
 
     /* Respect system preference by default when user has not explicitly chosen */
     @media (prefers-color-scheme: light){
-      :root.auto{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; --btn:#ffffff; --btn-hover:none; }
+      :root.auto{ --bg1:#f0f4f8; --bg2:#dbe4ed; --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#d1d5db; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(200,210,225,.4); }
     }
   </style>
 
