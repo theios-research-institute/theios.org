@@ -153,6 +153,19 @@
       border-left:4px solid var(--accent);
       margin:14px 0;
     }
+    /* Dynamic name in pledge */
+    .name-blank{
+      font-style:normal;
+      font-weight:600;
+      color:var(--accent);
+      border-bottom:2px solid var(--accent);
+      padding:0 4px;
+      transition:color .15s, border-color .15s;
+    }
+    .name-blank.filled{
+      color:var(--ink);
+      border-bottom-style:solid;
+    }
 
     /* Native form styling */
     .pledge-form{
@@ -342,7 +355,13 @@
     <!-- The Pledge -->
     <article class="card">
       <h2>The Pledge</h2>
-      <div class="pledge-text">I affirm the importance of seeking what is true, even when it is difficult or unsettling.
+
+      <div class="form-group" style="margin-bottom:18px;">
+        <label for="signerName">Enter your full name to begin<span class="required">*</span></label>
+        <input type="text" id="signerName" placeholder="Your full name" autocomplete="name">
+      </div>
+
+      <div class="pledge-text">I, <span id="nameInPledge" class="name-blank">_____________________</span>, affirm the importance of seeking what is true, even when it is difficult or unsettling.
 
 I recognize that understanding advances through honest inquiry, careful evaluation of evidence, and a willingness to revise belief in light of new information.
 
@@ -366,17 +385,14 @@ I make this commitment freely, consciously, and in good faith.</div>
       <form class="pledge-form" id="pledgeForm" action="https://formspree.io/f/mdakqnbr" method="POST">
         <!-- Hidden field for pledge text -->
         <input type="hidden" name="pledge_version" value="v1-2026">
+        <!-- Hidden field for full name (populated from signerName) -->
+        <input type="hidden" id="fullNameHidden" name="full_name" value="">
 
         <div class="form-group">
           <label class="checkbox-group">
             <input type="checkbox" name="commitment" value="confirmed" required>
             <span>I have read the pledge above and I commit to it.<span class="required">*</span></span>
           </label>
-        </div>
-
-        <div class="form-group">
-          <label for="fullName">Full Name (Signature)<span class="required">*</span></label>
-          <input type="text" id="fullName" name="full_name" placeholder="Enter your full name" required>
         </div>
 
         <div class="form-group">
@@ -459,6 +475,25 @@ I make this commitment freely, consciously, and in good faith.</div>
       setTheme(next);
     });
 
+    // Dynamic name in pledge
+    const signerNameInput = document.getElementById('signerName');
+    const nameInPledge = document.getElementById('nameInPledge');
+    const fullNameHidden = document.getElementById('fullNameHidden');
+    const defaultBlank = '_____________________';
+
+    signerNameInput.addEventListener('input', () => {
+      const name = signerNameInput.value.trim();
+      if (name) {
+        nameInPledge.textContent = name;
+        nameInPledge.classList.add('filled');
+        fullNameHidden.value = name;
+      } else {
+        nameInPledge.textContent = defaultBlank;
+        nameInPledge.classList.remove('filled');
+        fullNameHidden.value = '';
+      }
+    });
+
     // Form submission handler
     const form = document.getElementById('pledgeForm');
     const successMsg = document.getElementById('successMsg');
@@ -470,6 +505,18 @@ I make this commitment freely, consciously, and in good faith.</div>
       // Hide any previous messages
       successMsg.style.display = 'none';
       errorMsg.style.display = 'none';
+
+      // Validate name was entered
+      const name = signerNameInput.value.trim();
+      if (!name) {
+        signerNameInput.focus();
+        signerNameInput.style.borderColor = '#ef4444';
+        signerNameInput.style.boxShadow = '0 0 0 3px rgba(239,68,68,.15)';
+        return;
+      }
+
+      // Ensure hidden field is populated
+      fullNameHidden.value = name;
 
       // Get form data
       const formData = new FormData(form);
@@ -484,6 +531,11 @@ I make this commitment freely, consciously, and in good faith.</div>
         if (response.ok) {
           successMsg.style.display = 'block';
           form.reset();
+          // Reset the name display
+          signerNameInput.value = '';
+          nameInPledge.textContent = defaultBlank;
+          nameInPledge.classList.remove('filled');
+          fullNameHidden.value = '';
           // Scroll to success message
           successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
@@ -493,6 +545,12 @@ I make this commitment freely, consciously, and in good faith.</div>
         errorMsg.style.display = 'block';
         errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+    });
+
+    // Reset name field styling on input
+    signerNameInput.addEventListener('focus', () => {
+      signerNameInput.style.borderColor = '';
+      signerNameInput.style.boxShadow = '';
     });
   </script>
 </body>
