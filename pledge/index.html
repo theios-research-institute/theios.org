@@ -748,6 +748,9 @@ I make this commitment freely, consciously, and in good faith.</div>
         return;
       }
 
+      // Store email for referral link generation BEFORE async call
+      const emailForRef = document.getElementById('email').value.trim();
+
       // Ensure hidden field is populated
       fullNameHidden.value = name;
 
@@ -762,6 +765,11 @@ I make this commitment freely, consciously, and in good faith.</div>
         });
 
         if (response.ok) {
+          // Generate referral link using stored email
+          signerRefCode = generateRefCode(emailForRef);
+          const referralLinkInput = document.getElementById('referralLink');
+          referralLinkInput.value = 'https://theios.org/pledge?ref=' + signerRefCode;
+
           successMsg.style.display = 'block';
           form.reset();
           // Reset the name display
@@ -840,25 +848,31 @@ I make this commitment freely, consciously, and in good faith.</div>
       form.appendChild(referrerInput);
     }
 
-    // Generate referral code from name
-    function generateRefCode(name) {
-      const clean = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-      const hash = Math.random().toString(36).substring(2, 6);
-      return clean.substring(0, 15) + '-' + hash;
+    // Generate deterministic referral code from email (always same for same email)
+    function generateRefCode(email) {
+      // Simple hash function for consistent codes
+      let hash = 0;
+      for (let i = 0; i < email.length; i++) {
+        const char = email.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      // Convert to alphanumeric string
+      const hashStr = Math.abs(hash).toString(36);
+      // Get first part of email (before @) cleaned up
+      const emailPrefix = email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 8);
+      return emailPrefix + '-' + hashStr.substring(0, 4);
     }
 
     // Certificate generation
     let signerNameForCert = '';
     let signerRefCode = '';
 
-    // Store signer name and generate referral code when form submits
-    const originalSubmitHandler = form.onsubmit;
+    // Store signer info when form submits (before async submission)
+    let signerEmail = '';
     form.addEventListener('submit', () => {
       signerNameForCert = signerNameInput.value.trim();
-      signerRefCode = generateRefCode(signerNameForCert);
-      // Update the referral link input
-      const referralLinkInput = document.getElementById('referralLink');
-      referralLinkInput.value = 'https://theios.org/pledge?ref=' + signerRefCode;
+      signerEmail = document.getElementById('email').value.trim();
       // Set signup date for anniversary tracking
       document.getElementById('signupDate').value = new Date().toISOString();
     }, true);
