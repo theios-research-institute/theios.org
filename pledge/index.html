@@ -56,10 +56,10 @@
     }
     /* Light tokens (used when data-theme='light') */
     :root.light{
-      --bg1:#e8eef5; --bg2:#d0dcea;
-      --card:#ffffff; --ink:#0b1e34; --muted:#3d5a80;
-      --line:#b8c9dc; --btn:#ffffff; --btn-hover:none;
-      --radial-overlay:#1f3b62;
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(11,30,52,0.25);
       --heading-color:#0b1e34;
     }
     :root:not(.light){
@@ -287,7 +287,7 @@
 
     /* Respect system preference by default when user has not explicitly chosen */
     @media (prefers-color-scheme: light){
-      :root.auto{ --bg1:#e8eef5; --bg2:#d0dcea; --card:#ffffff; --ink:#0b1e34; --muted:#3d5a80; --line:#b8c9dc; --btn:#ffffff; --btn-hover:none; --radial-overlay:#1f3b62; --heading-color:#0b1e34; }
+      :root.auto{ --bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(11,30,52,0.25); --heading-color:#0b1e34; }
     }
   </style>
 
