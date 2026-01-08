@@ -277,13 +277,19 @@
       setTheme(next);
     });
 
-    // Sample signatories data (replace with real data or API call)
+    /*
+     * SIGNATORIES LIST - Manual Curation
+     * ==================================
+     * To add new signatories:
+     * 1. Check Formspree submissions at https://formspree.io/forms/mdakqnbr/submissions
+     * 2. Only add people who checked "public ledger" consent box
+     * 3. Add entry in format: { name: "Full Name", location: "City, Country", date: "Month Year" }
+     * 4. Location is optional - omit if not provided or use "" for empty
+     * 5. Commit and push to deploy
+     */
     const signatories = [
-      // Add signatories here in format:
-      // { name: "Full Name", location: "City, Country", date: "January 2026" }
-      // Example entries (uncomment and customize):
-      // { name: "Neil Sargisian", location: "California, USA", date: "January 2026" },
-      // { name: "Sarah Chen", location: "London, UK", date: "January 2026" },
+      // Newest signatories at top
+      { name: "Neil Sargisian", location: "California, USA", date: "January 2026" },
     ];
 
     // Render signatories
