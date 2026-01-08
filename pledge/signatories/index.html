@@ -86,6 +86,11 @@
       color:#22c55e;
       font-weight:600;
     }
+    :root.light .page-header .counter{
+      background:rgba(22,163,74,.15);
+      border-color:rgba(22,163,74,.4);
+      color:#15803d;
+    }
     .page-header .sub{
       font-size:1rem; color:var(--muted); margin:12px 0 0;
     }
@@ -184,6 +189,11 @@
 
     @media (prefers-color-scheme: light){
       :root.auto{ --bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(11,30,52,0.25); }
+      :root.auto .page-header .counter{
+        background:rgba(22,163,74,.15);
+        border-color:rgba(22,163,74,.4);
+        color:#15803d;
+      }
     }
   </style>
 
