@@ -571,6 +571,8 @@ I make this commitment freely, consciously, and in good faith.</div>
       <p>By signing, you're choosing a standard you're willing to be held to—starting with yourself.</p>
 
       <form class="pledge-form" id="pledgeForm" action="https://formspree.io/f/mdakqnbr" method="POST">
+        <!-- Honeypot spam protection - bots fill this, humans don't see it -->
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         <!-- Hidden field for pledge text -->
         <input type="hidden" name="pledge_version" value="v1-2026">
         <!-- Hidden field for full name (populated from signerName) -->

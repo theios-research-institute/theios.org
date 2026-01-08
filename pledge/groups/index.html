@@ -339,6 +339,8 @@
       <p>Fill out the form below to start a group pledge. We'll set up your group page and send you a custom invite link.</p>
 
       <form class="group-form" id="groupForm" action="https://formspree.io/f/mdakqnbr" method="POST">
+        <!-- Honeypot spam protection - bots fill this, humans don't see it -->
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         <input type="hidden" name="form_type" value="group_registration">
 
         <div class="form-group">
