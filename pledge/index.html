@@ -90,6 +90,62 @@
     }
     .theme-toggle svg{width:18px;height:18px;display:block}
 
+    /* Music player button */
+    .music-toggle{
+      position:absolute; top:18px; right:110px;
+      display:inline-flex; gap:6px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--muted); cursor:pointer; user-select:none;
+      font-size:.9rem; transition:all .2s ease;
+    }
+    .music-toggle:hover{
+      color:var(--ink);
+      border-color:var(--accent);
+    }
+    .music-toggle.playing{
+      color:var(--accent);
+      border-color:var(--accent);
+      background:rgba(59,130,246,.1);
+    }
+    .music-toggle .music-icon{
+      font-size:1rem;
+    }
+    .music-toggle .music-bars{
+      display:none;
+      gap:2px;
+      height:14px;
+      align-items:flex-end;
+    }
+    .music-toggle.playing .music-bars{
+      display:flex;
+    }
+    .music-toggle.playing .music-note{
+      display:none;
+    }
+    .music-bar{
+      width:3px;
+      background:var(--accent);
+      border-radius:1px;
+      animation:musicBar 0.8s ease-in-out infinite;
+    }
+    .music-bar:nth-child(1){ height:6px; animation-delay:0s; }
+    .music-bar:nth-child(2){ height:10px; animation-delay:0.2s; }
+    .music-bar:nth-child(3){ height:4px; animation-delay:0.4s; }
+    .music-bar:nth-child(4){ height:8px; animation-delay:0.1s; }
+    @keyframes musicBar{
+      0%,100%{ transform:scaleY(1); }
+      50%{ transform:scaleY(0.5); }
+    }
+    .yt-player-container{
+      position:fixed;
+      bottom:-9999px;
+      left:-9999px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+
     /* Back link */
     .back-link{
       display:inline-flex; align-items:center; gap:6px;
@@ -472,6 +528,8 @@
       .card{padding:18px 20px}
       .pledge-text{padding:14px 16px; font-size:1rem}
       .theme-toggle{top:14px; right:14px}
+      .music-toggle{top:14px; right:100px; padding:.45rem .6rem; font-size:.8rem}
+      .music-toggle #musicLabel{display:none}
     }
 
     /* Respect system preference by default when user has not explicitly chosen */
@@ -493,7 +551,24 @@
   </script>
 </head>
 <body>
+  <!-- Hidden YouTube Player -->
+  <div class="yt-player-container">
+    <div id="ytPlayer"></div>
+  </div>
+
   <div class="wrap">
+    <!-- Music toggle -->
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Play ambient music">
+      <span class="music-note">♪</span>
+      <span class="music-bars">
+        <span class="music-bar"></span>
+        <span class="music-bar"></span>
+        <span class="music-bar"></span>
+        <span class="music-bar"></span>
+      </span>
+      <span id="musicLabel">Listen</span>
+    </button>
+
     <!-- Theme toggle -->
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1068,6 +1143,112 @@ It is about how I hold, question, and revise my conclusions.</div>
         }, 2000);
       }
     });
+
+    // =====================
+    // MUSIC PLAYER (Alexander Ebert - "Truth")
+    // =====================
+    let ytPlayer = null;
+    let playerReady = false;
+    let isPlaying = false;
+    let shouldPlayAfterSubmit = false;
+
+    const musicToggle = document.getElementById('musicToggle');
+    const musicLabel = document.getElementById('musicLabel');
+
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Called by YouTube API when ready
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('ytPlayer', {
+        height: '1',
+        width: '1',
+        videoId: 'GtPK0gRdFgI',
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      playerReady = true;
+      // If form was submitted before player was ready, play now
+      if (shouldPlayAfterSubmit) {
+        playMusic();
+        shouldPlayAfterSubmit = false;
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      // YT.PlayerState.ENDED = 0
+      if (event.data === 0) {
+        // Song ended, reset button state
+        isPlaying = false;
+        musicToggle.classList.remove('playing');
+        musicLabel.textContent = 'Listen';
+      }
+    }
+
+    function playMusic() {
+      if (playerReady && ytPlayer) {
+        ytPlayer.playVideo();
+        isPlaying = true;
+        musicToggle.classList.add('playing');
+        musicLabel.textContent = 'Playing';
+      }
+    }
+
+    function pauseMusic() {
+      if (playerReady && ytPlayer) {
+        ytPlayer.pauseVideo();
+        isPlaying = false;
+        musicToggle.classList.remove('playing');
+        musicLabel.textContent = 'Listen';
+      }
+    }
+
+    function toggleMusic() {
+      if (isPlaying) {
+        pauseMusic();
+      } else {
+        playMusic();
+      }
+    }
+
+    // Music toggle button click
+    musicToggle.addEventListener('click', toggleMusic);
+
+    // Override form success to also play music
+    const originalSuccessHandler = form.onsubmit;
+    const successMsgObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+          const display = successMsg.style.display;
+          if (display === 'block' && !isPlaying) {
+            // Form was successfully submitted, play the song
+            if (playerReady) {
+              setTimeout(() => playMusic(), 500); // Small delay for better UX
+            } else {
+              shouldPlayAfterSubmit = true;
+            }
+          }
+        }
+      });
+    });
+
+    successMsgObserver.observe(successMsg, { attributes: true });
   </script>
 </body>
 </html>
