@@ -1212,7 +1212,9 @@ It is about how I hold, question, and revise my conclusions.</div>
           disablekb: 1,
           fs: 0,
           modestbranding: 1,
-          rel: 0
+          rel: 0,
+          loop: 1,
+          playlist: 'GtPK0gRdFgI' // Required for loop to work
         },
         events: {
           onReady: onPlayerReady,
@@ -1231,9 +1233,10 @@ It is about how I hold, question, and revise my conclusions.</div>
     }
 
     function onPlayerStateChange(event) {
-      // YT.PlayerState.ENDED = 0
-      if (event.data === 0) {
-        // Song ended, reset button state
+      // With loop enabled, song continues quietly
+      // Only reset if paused externally (YT.PlayerState.PAUSED = 2)
+      if (event.data === 2 && isPlaying) {
+        // Paused by something other than our fade
         isPlaying = false;
         musicToggle.classList.remove('playing');
         musicLabel.textContent = 'Listen';
@@ -1249,12 +1252,35 @@ It is about how I hold, question, and revise my conclusions.</div>
       }
     }
 
+    function fadeOutMusic(callback) {
+      if (!playerReady || !ytPlayer) return;
+
+      const startVolume = ytPlayer.getVolume();
+      const fadeSteps = 20;
+      const fadeInterval = 100; // 2 seconds total fade
+      let currentStep = 0;
+
+      const fade = setInterval(() => {
+        currentStep++;
+        const newVolume = startVolume * (1 - currentStep / fadeSteps);
+        ytPlayer.setVolume(Math.max(0, newVolume));
+
+        if (currentStep >= fadeSteps) {
+          clearInterval(fade);
+          ytPlayer.pauseVideo();
+          ytPlayer.setVolume(startVolume); // Reset for next play
+          if (callback) callback();
+        }
+      }, fadeInterval);
+    }
+
     function pauseMusic() {
       if (playerReady && ytPlayer) {
-        ytPlayer.pauseVideo();
-        isPlaying = false;
+        // Fade out instead of abrupt stop
         musicToggle.classList.remove('playing');
         musicLabel.textContent = 'Listen';
+        isPlaying = false;
+        fadeOutMusic();
       }
     }
 
@@ -1269,25 +1295,8 @@ It is about how I hold, question, and revise my conclusions.</div>
     // Music toggle button click
     musicToggle.addEventListener('click', toggleMusic);
 
-    // Override form success to also play music
-    const originalSuccessHandler = form.onsubmit;
-    const successMsgObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-          const display = successMsg.style.display;
-          if (display === 'block' && !isPlaying) {
-            // Form was successfully submitted, play the song
-            if (playerReady) {
-              setTimeout(() => playMusic(), 500); // Small delay for better UX
-            } else {
-              shouldPlayAfterSubmit = true;
-            }
-          }
-        }
-      });
-    });
-
-    successMsgObserver.observe(successMsg, { attributes: true });
+    // Music is available via the Listen button - no auto-play on form success
+    // This avoids tying music to the commitment moment, keeping it neutral
   </script>
 </body>
 </html>
