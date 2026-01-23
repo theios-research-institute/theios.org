@@ -197,19 +197,39 @@
       }
     }
 
-    /* Pledge card - stands out with warm off-white in light mode */
+    /* Pledge card - ceremonial styling */
     .pledge-card{
-      background:linear-gradient(135deg, rgba(251,191,36,.12), rgba(251,191,36,.04));
-      border-color:rgba(251,191,36,.4);
+      background:linear-gradient(135deg, rgba(251,191,36,.10), rgba(251,191,36,.03));
+      border:2px solid rgba(251,191,36,.35);
+      border-radius:24px;
+      padding:32px 36px;
+      position:relative;
+      box-shadow:0 20px 60px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .pledge-card::before{
+      content:'';
+      position:absolute;
+      top:12px; left:12px; right:12px; bottom:12px;
+      border:1px solid rgba(251,191,36,.15);
+      border-radius:16px;
+      pointer-events:none;
     }
     :root.light .pledge-card{
-      background:#fefefe;
-      border-color:rgba(180,160,140,.25);
+      background:#ffffff;
+      border-color:rgba(180,150,100,.3);
+      box-shadow:0 20px 60px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    :root.light .pledge-card::before{
+      border-color:rgba(180,150,100,.15);
     }
     @media (prefers-color-scheme: light){
       :root.auto .pledge-card{
-        background:#fefefe;
-        border-color:rgba(180,160,140,.25);
+        background:#ffffff;
+        border-color:rgba(180,150,100,.3);
+        box-shadow:0 20px 60px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.5);
+      }
+      :root.auto .pledge-card::before{
+        border-color:rgba(180,150,100,.15);
       }
     }
 
@@ -250,13 +270,100 @@
     /* Section header - standalone heading above cards */
     .section-header{
       text-align:center;
-      margin:32px 0 16px;
+      margin:40px 0 20px;
     }
     .section-header h2{
-      font-size:1.8rem;
+      font-size:2rem;
       font-weight:700;
       color:var(--heading-color);
       margin:0;
+      letter-spacing:-0.5px;
+    }
+
+    /* Section divider */
+    .section-divider{
+      width:60px;
+      height:3px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin:36px auto;
+      border-radius:2px;
+    }
+
+    /* Card divider */
+    .card-divider{
+      height:1px;
+      background:var(--line);
+      margin:20px 0;
+    }
+
+    /* Styled lists */
+    .styled-list{
+      margin:10px 0 18px;
+      padding-left:0;
+      list-style:none;
+    }
+    .styled-list li{
+      position:relative;
+      padding-left:24px;
+      margin-bottom:8px;
+      line-height:1.7;
+    }
+    .styled-list li::before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:10px;
+      width:8px;
+      height:8px;
+      background:var(--accent);
+      border-radius:50%;
+      opacity:0.6;
+    }
+
+    /* Closing note */
+    .closing-note{
+      text-align:center;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      margin-top:20px;
+      margin-bottom:0;
+    }
+
+    /* Reflective quote */
+    .reflective-quote{
+      text-align:center;
+      max-width:640px;
+      margin:32px auto;
+      padding:0 20px;
+      color:var(--muted);
+      font-style:italic;
+      line-height:1.8;
+      font-size:1.05rem;
+      border:none;
+    }
+
+    /* Signing card */
+    .signing-card{
+      border:2px solid var(--accent);
+      background:linear-gradient(135deg, rgba(59,130,246,.08), rgba(59,130,246,.02));
+    }
+    :root.light .signing-card{
+      background:linear-gradient(135deg, rgba(59,130,246,.06), rgba(59,130,246,.02));
+      border-color:rgba(59,130,246,.4);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .signing-card{
+        background:linear-gradient(135deg, rgba(59,130,246,.06), rgba(59,130,246,.02));
+        border-color:rgba(59,130,246,.4);
+      }
+    }
+    .signing-intro{
+      text-align:center;
+      font-size:1.05rem;
+      color:var(--muted);
+      margin-bottom:20px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--line);
     }
 
     /* Card */
@@ -276,15 +383,42 @@
     .pledge-text{
       white-space:pre-line;
       font-family:Merriweather,Georgia,serif;
-      font-size:1.05rem;
+      font-size:1.1rem;
       font-style:italic;
       font-weight:400;
-      line-height:1.7;
-      padding:18px 22px;
-      background:rgba(255,255,255,.03);
+      line-height:1.85;
+      padding:24px 28px;
+      background:linear-gradient(135deg, rgba(251,191,36,.06), rgba(251,191,36,.02));
       border-radius:12px;
-      border-left:4px solid var(--accent);
-      margin:14px 0;
+      border-left:4px solid rgba(251,191,36,.6);
+      margin:18px 0;
+      position:relative;
+    }
+    .pledge-text::before{
+      content:'"';
+      position:absolute;
+      top:-8px;
+      left:16px;
+      font-size:4rem;
+      font-family:Georgia,serif;
+      color:rgba(251,191,36,.25);
+      line-height:1;
+    }
+    :root.light .pledge-text{
+      background:linear-gradient(135deg, rgba(251,191,36,.08), rgba(251,191,36,.03));
+      border-left-color:rgba(202,138,4,.5);
+    }
+    :root.light .pledge-text::before{
+      color:rgba(202,138,4,.2);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .pledge-text{
+        background:linear-gradient(135deg, rgba(251,191,36,.08), rgba(251,191,36,.03));
+        border-left-color:rgba(202,138,4,.5);
+      }
+      :root.auto .pledge-text::before{
+        color:rgba(202,138,4,.2);
+      }
     }
     /* Dynamic name in pledge */
     .name-blank{
@@ -683,29 +817,20 @@
       <p class="sub">A voluntary commitment to seek understanding — and to follow evidence wherever it leads.</p>
     </header>
 
-    <!-- Why We Created This Pledge -->
-    <article class="card">
-      <h2>Why We Created This Pledge</h2>
-      <p>At <strong>Theios Research Institute, Inc.</strong>, our work focuses on how understanding actually forms — how information organizes, evolves, and reveals patterns across domains.</p>
-      <p>Through this research, one insight became unavoidable:<br>
-      truth-seeking is not just a moral ideal. It is a <strong>practice</strong> — a way of relating to evidence, uncertainty, and belief that shapes what can be discovered about reality.</p>
-      <p style="margin-bottom:0;">This pledge grows out of that insight.<br>
-      It reflects a commitment to the conditions that make genuine discovery possible.</p>
+    <!-- Why This Pledge Exists -->
+    <article class="card intro-card">
+      <h2>Why This Pledge Exists</h2>
+      <p>At <strong>Theios Research Institute</strong>, our work focuses on how understanding actually forms. Through this research, one insight became unavoidable: truth-seeking is not just a moral ideal — it is a <strong>practice</strong> that shapes what can be discovered about reality.</p>
+
+      <p><strong>We live in a strange moment.</strong> We have more access to information than ever before — and more confusion about what to trust. Confidence is often rewarded more than accuracy. Belonging can feel safer than questioning.</p>
+
+      <p>The result: people drift from understanding reality toward defending conclusions.</p>
+
+      <p style="margin-bottom:0;"><strong>This pledge is meant to interrupt that drift.</strong> It is a single, deliberate choice — one whose influence unfolds over time through alignment, not effort.</p>
     </article>
 
-    <!-- Why This Matters Now -->
-    <article class="card">
-      <h2>Why This Matters Now</h2>
-      <p><strong>We live in a strange moment.</strong></p>
-      <p>We have more access to information than ever before — and more confusion about what to trust.</p>
-      <p>Confidence is often rewarded more than accuracy.<br>
-      Belonging can feel safer than questioning.<br>
-      And it's easy to let others decide what's true for us.</p>
-      <p>The result is subtle but serious: people drift from understanding reality toward defending conclusions.</p>
-      <p><strong>This pledge is meant to interrupt that drift.</strong></p>
-      <p style="margin-bottom:0;">Signing this pledge is a single, deliberate choice.<br>
-      Its influence unfolds over time — not through effort, but through alignment.</p>
-    </article>
+    <!-- Visual Divider -->
+    <div class="section-divider"></div>
 
     <!-- The Pledge -->
     <header class="section-header">
@@ -734,52 +859,51 @@ It is about how I hold, question, and revise my conclusions.</div>
       <p class="small">Take a moment to read carefully before signing.</p>
     </article>
 
-    <!-- Value Proposition -->
+    <!-- Visual Divider -->
+    <div class="section-divider"></div>
+
+    <!-- What to Expect -->
     <article class="card">
-      <h2 style="margin-top:0;">When you sign, you:</h2>
-      <ul style="margin:0; padding-left:20px; line-height:1.8;">
+      <h2>What to Expect</h2>
+
+      <p><strong>When you sign, you:</strong></p>
+      <ul class="styled-list">
         <li>Affirm this commitment for yourself</li>
         <li>Receive a personalized certificate</li>
         <li>May share the pledge with others, if you choose</li>
-        <li>Optionally choose to affirm this commitment publicly, as a personal signal of accountability—not conformity</li>
+        <li>Optionally make your commitment public — as a signal of accountability, not conformity</li>
       </ul>
-    </article>
 
-    <!-- What this is -->
-    <article class="card">
-      <h2>What This Means (and What It Does Not)</h2>
+      <div class="card-divider"></div>
+
       <p><strong>✓ This is:</strong></p>
-      <ul style="margin:8px 0 16px; padding-left:24px; line-height:1.8;">
-        <li>A commitment to seeking understanding of how things actually are</li>
+      <ul class="styled-list">
+        <li>A commitment to understanding how things actually are</li>
         <li>A willingness to update your worldview when evidence warrants it</li>
-        <li>A practice of rigorous, curious inquiry</li>
-        <li>A refusal to let any authority — scientific, political, religious, or social — decide truth on your behalf</li>
+        <li>A refusal to let any authority decide truth on your behalf</li>
       </ul>
+
       <p><strong>✗ This is not:</strong></p>
-      <ul style="margin:8px 0 16px; padding-left:24px; line-height:1.8;">
+      <ul class="styled-list">
         <li>An endorsement of any ideology or belief system</li>
         <li>A mandate to preach, persuade, or convert others</li>
-        <li>A statement about left vs. right, science vs. religion, or any cultural divide</li>
+        <li>A statement about any cultural or political divide</li>
       </ul>
-      <p class="small" style="margin-top:8px;"><em>Note: This pledge is not specifically about interpersonal honesty or moral behavior — though we value and encourage both.</em></p>
-      <p style="margin-bottom:0;">Perfection is not required.<br>
-      <strong>Sincerity and curiosity are.</strong></p>
+
+      <p class="closing-note">Perfection is not required. <strong>Sincerity and curiosity are.</strong></p>
     </article>
 
-    <!-- Community acknowledgment -->
-    <p style="text-align:center; max-width:640px; margin:24px auto; color:var(--muted); font-style:italic; line-height:1.7;">
-      Honest inquiry can be uncomfortable.<br>
-      It often involves revising beliefs and tolerating uncertainty.<br>
-      But over time, it tends to produce clearer thinking and fewer illusions.
-    </p>
-    <p style="text-align:center; max-width:640px; margin:0 auto 24px; color:var(--muted); font-style:italic; line-height:1.7;">
-      When this approach is shared widely, its effects extend beyond any one person.
-    </p>
+    <!-- Reflective Quote -->
+    <blockquote class="reflective-quote">
+      Honest inquiry can be uncomfortable — it often involves revising beliefs and tolerating uncertainty. But over time, it produces clearer thinking and fewer illusions.
+    </blockquote>
 
     <!-- Sign the Commitment -->
-    <article class="card">
-      <h2>Sign the Commitment</h2>
-      <p>By signing, you make a personal commitment to pursue truth and understanding in good faith.</p>
+    <header class="section-header">
+      <h2>Make Your Commitment</h2>
+    </header>
+    <article class="card signing-card">
+      <p class="signing-intro">By signing below, you make a personal commitment to pursue truth and understanding in good faith.</p>
 
       <form class="pledge-form" id="pledgeForm" action="https://pledge-handler-bc3efnkumq-uc.a.run.app" method="POST">
         <!-- Honeypot spam protection - bots fill this, humans don't see it -->
