@@ -185,31 +185,31 @@
       color:var(--muted);
       margin:0;
     }
-    /* Light mode: regular cards get light blue tint */
+    /* Light mode: regular cards get very subtle blue-gray tint */
     :root.light .card{
-      background:rgba(59,130,246,.04);
-      border-color:rgba(59,130,246,.12);
+      background:rgba(100,130,160,.06);
+      border-color:rgba(100,130,160,.15);
     }
     @media (prefers-color-scheme: light){
       :root.auto .card{
-        background:rgba(59,130,246,.04);
-        border-color:rgba(59,130,246,.12);
+        background:rgba(100,130,160,.06);
+        border-color:rgba(100,130,160,.15);
       }
     }
 
-    /* Pledge card - stands out as white in light mode */
+    /* Pledge card - stands out with warm off-white in light mode */
     .pledge-card{
       background:linear-gradient(135deg, rgba(251,191,36,.12), rgba(251,191,36,.04));
       border-color:rgba(251,191,36,.4);
     }
     :root.light .pledge-card{
-      background:#ffffff;
-      border-color:var(--line);
+      background:#fefefe;
+      border-color:rgba(180,160,140,.25);
     }
     @media (prefers-color-scheme: light){
       :root.auto .pledge-card{
-        background:#ffffff;
-        border-color:var(--line);
+        background:#fefefe;
+        border-color:rgba(180,160,140,.25);
       }
     }
 
