@@ -185,28 +185,20 @@
       color:var(--muted);
       margin:0;
     }
-    /* Stakes card - discovery/illumination theme (dark mode only) */
-    .stakes-card{
-      background:linear-gradient(135deg, rgba(251,191,36,.1), rgba(251,191,36,.03));
-      border-color:rgba(251,191,36,.3);
-      margin-bottom:20px;
+    /* Pledge card - stands out with amber/gold accent */
+    .pledge-card{
+      background:linear-gradient(135deg, rgba(251,191,36,.12), rgba(251,191,36,.04));
+      border-color:rgba(251,191,36,.4);
     }
-    :root.light .stakes-card{
-      background:var(--card);
-      border-color:var(--line);
+    :root.light .pledge-card{
+      background:linear-gradient(135deg, rgba(251,191,36,.15), rgba(251,191,36,.05));
+      border-color:rgba(251,191,36,.5);
     }
     @media (prefers-color-scheme: light){
-      :root.auto .stakes-card{
-        background:var(--card);
-        border-color:var(--line);
+      :root.auto .pledge-card{
+        background:linear-gradient(135deg, rgba(251,191,36,.15), rgba(251,191,36,.05));
+        border-color:rgba(251,191,36,.5);
       }
-    }
-    .stakes-lead{
-      font-size:1.15rem;
-      margin-bottom:12px;
-    }
-    .stakes-card p{
-      margin:0 0 10px;
     }
 
     .stakes-cta{
@@ -677,8 +669,22 @@
       It reflects a commitment to the conditions that make genuine discovery possible.</p>
     </article>
 
-    <!-- The Pledge -->
+    <!-- Why This Matters Now -->
     <article class="card">
+      <h2>Why This Matters Now</h2>
+      <p><strong>We live in a strange moment.</strong></p>
+      <p>We have more access to information than ever before — and more confusion about what to trust.</p>
+      <p>Confidence is often rewarded more than accuracy.<br>
+      Belonging can feel safer than questioning.<br>
+      And it's easy to let others decide what's true for us.</p>
+      <p>The result is subtle but serious: people drift from understanding reality toward defending conclusions.</p>
+      <p><strong>This pledge is meant to interrupt that drift.</strong></p>
+      <p style="margin-bottom:0;">Signing this pledge is a single, deliberate choice.<br>
+      Its influence unfolds over time — not through effort, but through alignment.</p>
+    </article>
+
+    <!-- The Pledge -->
+    <article class="card pledge-card">
       <h2>The Pledge</h2>
 
       <div class="form-group" style="margin-bottom:18px;">
@@ -701,20 +707,6 @@ I accept that this commitment may challenge familiar beliefs and assumptions.
 <strong>This commitment is not about being right.</strong>
 It is about how I hold, question, and revise my conclusions.</div>
       <p class="small">Take a moment to read carefully before signing.</p>
-    </article>
-
-    <!-- Why This Matters Now -->
-    <article class="card stakes-card">
-      <h2>Why This Matters Now</h2>
-      <p><strong>We live in a strange moment.</strong></p>
-      <p>We have more access to information than ever before — and more confusion about what to trust.</p>
-      <p>Confidence is often rewarded more than accuracy.<br>
-      Belonging can feel safer than questioning.<br>
-      And it's easy to let others decide what's true for us.</p>
-      <p>The result is subtle but serious: people drift from understanding reality toward defending conclusions.</p>
-      <p><strong>This pledge is meant to interrupt that drift.</strong></p>
-      <p style="margin-bottom:0;">Signing this pledge is a single, deliberate choice.<br>
-      Its influence unfolds over time — not through effort, but through alignment.</p>
     </article>
 
     <!-- Value Proposition -->
