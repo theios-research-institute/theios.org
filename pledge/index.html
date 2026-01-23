@@ -414,6 +414,14 @@
       margin:0 0 12px;
       opacity:0.9;
     }
+    .success-optional{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+      margin:0 0 8px;
+      opacity:0.7;
+    }
     .success-divider{
       height:1px;
       background:var(--line);
@@ -757,13 +765,26 @@ It is about how I hold, question, and revise my conclusions.</div>
         <p class="form-note">Your information is handled securely and will never be sold or shared. See our <a href="../privacy-policy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
 
         <div class="form-message success" id="successMsg">
+          <!-- Section 1: Confirmation (primary) -->
           <div class="success-header">
             <span class="success-icon">✓</span>
-            <strong>Welcome, Truth Seeker.</strong>
+            <strong>Commitment Affirmed.</strong>
           </div>
-          <p class="success-text">You've joined a growing movement of people who refuse to let comfort override honesty. Your commitment matters.</p>
+          <p class="success-text">This pledge is made once, freely.<br>Its influence unfolds gradually — not through pressure, but through alignment.</p>
+
+          <!-- Section 2: Certificate (optional) -->
           <div class="success-divider"></div>
-          <p class="success-cta"><strong>Help the movement grow:</strong></p>
+          <p class="success-optional">Optional</p>
+          <p class="success-cta">You may download a certificate for your records.</p>
+          <button type="button" class="share-btn certificate-btn" id="downloadCert">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download Certificate
+          </button>
+
+          <!-- Section 3: Sharing (optional, de-pressurized) -->
+          <div class="success-divider"></div>
+          <p class="success-optional">Optional</p>
+          <p class="success-cta">If you choose, you may share the pledge with others who might find it meaningful.<br>There is no obligation to do so.</p>
           <div class="share-buttons">
             <button type="button" class="share-btn share-x" id="shareX">
               <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -778,15 +799,6 @@ It is about how I hold, question, and revise my conclusions.</div>
               <span id="copyText">Copy Link</span>
             </button>
           </div>
-          <p class="success-challenge">Challenge someone you respect to take the pledge.<br>The truth needs allies.</p>
-          <div class="success-divider"></div>
-          <p class="success-cta"><strong>Get your certificate:</strong></p>
-          <button type="button" class="share-btn certificate-btn" id="downloadCert">
-            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Download Certificate
-          </button>
-          <div class="success-divider"></div>
-          <p class="success-cta"><strong>Your referral link:</strong></p>
           <div class="referral-link-box">
             <input type="text" id="referralLink" class="referral-input" readonly>
             <button type="button" class="share-btn" id="copyReferral">
@@ -794,7 +806,9 @@ It is about how I hold, question, and revise my conclusions.</div>
               <span id="copyReferralText">Copy</span>
             </button>
           </div>
-          <p class="referral-note">Share this link to track who you've inspired to join.</p>
+          <p class="referral-note">You may share this link if you wish.</p>
+
+          <!-- Section 4: Public Ledger -->
           <div class="success-divider"></div>
           <div id="ledgerMessage">
             <p class="success-cta" id="ledgerText"></p>
@@ -963,7 +977,7 @@ It is about how I hold, question, and revise my conclusions.</div>
           if (formData.public_ledger === 'yes') {
             ledgerText.innerHTML = '<strong>Your name will appear on the Public Ledger shortly.</strong>';
           } else {
-            ledgerText.innerHTML = '<strong>See others who\'ve made their commitment public:</strong>';
+            ledgerText.innerHTML = '<strong>Public commitments are recorded here:</strong>';
           }
 
           // Scroll to success message
