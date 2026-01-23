@@ -266,11 +266,16 @@
       color:var(--accent);
       border-bottom:2px solid var(--accent);
       padding:0 4px;
-      transition:color .15s, border-color .15s;
+      transition:color .3s ease, background-color .3s ease;
     }
     .name-blank.filled{
       color:var(--ink);
       border-bottom-style:solid;
+      animation:nameHighlight 0.8s ease;
+    }
+    @keyframes nameHighlight{
+      0%{background-color:rgba(59,130,246,0.25)}
+      100%{background-color:transparent}
     }
 
     /* Native form styling */
@@ -358,6 +363,35 @@
     .submit-btn svg{
       width:18px;
       height:18px;
+    }
+    .submit-btn.loading{
+      pointer-events:none;
+      opacity:0.8;
+    }
+    .submit-btn .btn-text{
+      display:inline;
+    }
+    .submit-btn .btn-loading{
+      display:none;
+    }
+    .submit-btn.loading .btn-text{
+      display:none;
+    }
+    .submit-btn.loading .btn-loading{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .spinner{
+      width:18px;
+      height:18px;
+      border:2px solid rgba(255,255,255,0.3);
+      border-top-color:#fff;
+      border-radius:50%;
+      animation:spin 0.8s linear infinite;
+    }
+    @keyframes spin{
+      to{transform:rotate(360deg)}
     }
     .form-note{
       margin-top:12px;
@@ -663,7 +697,7 @@
 
       <div class="form-group" style="margin-bottom:18px;">
         <label for="signerName">Enter your full name to begin<span class="required">*</span></label>
-        <input type="text" id="signerName" placeholder="Your full name" autocomplete="name">
+        <input type="text" id="signerName" placeholder="Your full name" autocomplete="name" aria-required="true">
       </div>
 
       <div class="pledge-text">I, <span id="nameInPledge" class="name-blank">_____________________</span>, make this commitment freely and in good faith:
@@ -731,14 +765,14 @@ It is about how I hold, question, and revise my conclusions.</div>
 
         <div class="form-group">
           <label class="checkbox-group">
-            <input type="checkbox" name="commitment" value="confirmed" required>
-            <span>I have read the pledge above and I commit to it.<span class="required">*</span></span>
+            <input type="checkbox" id="commitment" name="commitment" value="confirmed" required aria-required="true">
+            <span id="commitmentLabel">I have read the pledge above and I commit to it.<span class="required">*</span></span>
           </label>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address<span class="required">*</span></label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required aria-required="true">
         </div>
 
         <div class="form-group">
@@ -749,17 +783,23 @@ It is about how I hold, question, and revise my conclusions.</div>
 
         <div class="form-group">
           <label class="checkbox-group">
-            <input type="checkbox" name="public_ledger" value="yes">
+            <input type="checkbox" id="publicLedger" name="public_ledger" value="yes" aria-describedby="publicLedgerNote">
             <span>I choose to have my name listed on the <a href="./signatories/" style="color:var(--accent)">public ledger of signatories</a> (optional).</span>
           </label>
-          <p class="small" style="margin:4px 0 0 24px; color:var(--muted); font-style:italic;">Public listing is optional. You may affirm this pledge privately.</p>
+          <p id="publicLedgerNote" class="small" style="margin:4px 0 0 24px; color:var(--muted); font-style:italic;">Public listing is optional. You may affirm this pledge privately.</p>
         </div>
 
-        <button type="submit" class="submit-btn">
-          Affirm the Commitment
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-text">
+            Affirm the Commitment
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+          <span class="btn-loading">
+            <span class="spinner"></span>
+            Affirming...
+          </span>
         </button>
 
         <p class="form-note">Your information is handled securely and will never be sold or shared. See our <a href="../privacy-policy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
@@ -821,7 +861,9 @@ It is about how I hold, question, and revise my conclusions.</div>
         <!-- Hidden canvas for certificate generation -->
         <canvas id="certCanvas" width="1200" height="630" style="display:none;"></canvas>
         <div class="form-message error" id="errorMsg">
-          <strong>Something went wrong.</strong> Please try again or email research@theios.org directly.
+          <strong>Unable to process your commitment.</strong>
+          <p style="margin:8px 0 0; font-size:.9rem;">This may be a temporary connection issue. Please try again in a moment.</p>
+          <p style="margin:8px 0 0; font-size:.9rem;">If the problem persists, you may email <a href="mailto:research@theios.org" style="color:var(--accent)">research@theios.org</a> directly.</p>
         </div>
       </form>
     </article>
@@ -908,6 +950,7 @@ It is about how I hold, question, and revise my conclusions.</div>
     const form = document.getElementById('pledgeForm');
     const successMsg = document.getElementById('successMsg');
     const errorMsg = document.getElementById('errorMsg');
+    const submitBtn = document.getElementById('submitBtn');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -924,6 +967,9 @@ It is about how I hold, question, and revise my conclusions.</div>
         signerNameInput.style.boxShadow = '0 0 0 3px rgba(239,68,68,.15)';
         return;
       }
+
+      // Show loading state
+      submitBtn.classList.add('loading');
 
       // Store email for referral link generation BEFORE async call
       const emailForRef = document.getElementById('email').value.trim();
@@ -954,6 +1000,9 @@ It is about how I hold, question, and revise my conclusions.</div>
         });
 
         if (response.ok) {
+          // Remove loading state
+          submitBtn.classList.remove('loading');
+
           // Generate referral link using stored email
           signerRefCode = generateRefCode(emailForRef);
           const refUrl = 'https://theios.org/pledge?ref=' + signerRefCode;
@@ -986,6 +1035,8 @@ It is about how I hold, question, and revise my conclusions.</div>
           throw new Error('Form submission failed');
         }
       } catch (error) {
+        // Remove loading state
+        submitBtn.classList.remove('loading');
         errorMsg.style.display = 'block';
         errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
