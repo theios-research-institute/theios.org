@@ -247,6 +247,18 @@
       font-size:1rem; color:var(--ink); max-width:680px; margin:0 auto;
     }
 
+    /* Section header - standalone heading above cards */
+    .section-header{
+      text-align:center;
+      margin:32px 0 16px;
+    }
+    .section-header h2{
+      font-size:1.8rem;
+      font-weight:700;
+      color:var(--heading-color);
+      margin:0;
+    }
+
     /* Card */
     .card{
       background:var(--card); border:1px solid var(--line);
@@ -696,9 +708,10 @@
     </article>
 
     <!-- The Pledge -->
+    <header class="section-header">
+      <h2>The Pledge</h2>
+    </header>
     <article class="card pledge-card">
-      <h2 style="font-size:1.8rem; text-align:center;">The Pledge</h2>
-
       <div class="form-group" style="margin-bottom:18px;">
         <label for="signerName">Enter your full name to begin<span class="required">*</span></label>
         <input type="text" id="signerName" placeholder="Your full name" autocomplete="name" aria-required="true">
