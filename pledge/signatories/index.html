@@ -288,45 +288,55 @@
     });
 
     /*
-     * SIGNATORIES LIST - Manual Curation
-     * ==================================
-     * To add new signatories:
-     * 1. Check Formspree submissions at https://formspree.io/forms/mdakqnbr/submissions
-     * 2. Only add people who checked "public ledger" consent box
-     * 3. Add entry in format: { name: "Full Name", location: "City, Country", date: "Month Year" }
-     * 4. Location is optional - omit if not provided or use "" for empty
-     * 5. Commit and push to deploy
+     * SIGNATORIES LIST - Auto-fetched from Cloud Storage
+     * ==================================================
+     * Signatories are now automatically added when people sign the pledge
+     * and opt into the public ledger. Data is fetched from Google Cloud Storage.
      */
-    const signatories = [
-      // Newest signatories at top
-      { name: "John Senew", location: "Utah, USA", date: "January 2026" },
-      { name: "Neil Sargisian", location: "Nevada, USA", date: "Founder · 1996" },
-    ];
+    const SIGNATORIES_URL = 'https://storage.googleapis.com/theios-pledge-data/signatories.json';
 
-    // Render signatories
     const list = document.getElementById('signatoriesList');
     const emptyState = document.getElementById('emptyState');
     const totalCount = document.getElementById('totalCount');
 
-    if (signatories.length === 0) {
-      list.style.display = 'none';
-      emptyState.style.display = 'block';
-      totalCount.textContent = '0';
-    } else {
-      totalCount.textContent = signatories.length;
-      signatories.forEach(s => {
-        const li = document.createElement('li');
-        li.className = 'signatory';
-        li.innerHTML = `
-          <span class="signatory-name">${s.name}</span>
-          <span class="signatory-meta">
-            ${s.location ? `<span class="signatory-location">${s.location}</span>` : ''}
-            <span class="signatory-date">${s.date}</span>
-          </span>
-        `;
-        list.appendChild(li);
-      });
-    }
+    // Show loading state
+    totalCount.textContent = 'Loading...';
+
+    // Fetch signatories from Cloud Storage
+    fetch(SIGNATORIES_URL)
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch');
+        return response.json();
+      })
+      .then(data => {
+        const signatories = data.signatories || [];
+
+        if (signatories.length === 0) {
+          list.style.display = 'none';
+          emptyState.style.display = 'block';
+          totalCount.textContent = '0';
+        } else {
+          totalCount.textContent = signatories.length;
+          signatories.forEach(s => {
+            const li = document.createElement('li');
+            li.className = 'signatory';
+            li.innerHTML = `
+              <span class="signatory-name">${s.name}</span>
+              <span class="signatory-meta">
+                ${s.location ? `<span class="signatory-location">${s.location}</span>` : ''}
+                <span class="signatory-date">${s.date}</span>
+              </span>
+            `;
+            list.appendChild(li);
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching signatories:', error);
+        // Fallback to showing empty state with error message
+        totalCount.textContent = '—';
+        list.innerHTML = '<li class="signatory" style="text-align:center;color:var(--muted);">Unable to load signatories. Please refresh the page.</li>';
+      })
   </script>
 </body>
 </html>

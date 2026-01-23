@@ -700,7 +700,7 @@ It is about how I hold, question, and revise my conclusions.</div>
       <h2>Sign the Commitment</h2>
       <p>By signing, you make a personal commitment to pursue truth and understanding in good faith.</p>
 
-      <form class="pledge-form" id="pledgeForm" action="https://formspree.io/f/mdakqnbr" method="POST">
+      <form class="pledge-form" id="pledgeForm" action="https://pledge-handler-bc3efnkumq-uc.a.run.app" method="POST">
         <!-- Honeypot spam protection - bots fill this, humans don't see it -->
         <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         <!-- Hidden field for pledge text -->
@@ -898,14 +898,26 @@ It is about how I hold, question, and revise my conclusions.</div>
       // Ensure hidden field is populated
       fullNameHidden.value = name;
 
-      // Get form data
-      const formData = new FormData(form);
+      // Get form data as JSON for Cloud Function
+      const formData = {
+        full_name: fullNameHidden.value,
+        email: document.getElementById('email').value.trim(),
+        location: document.getElementById('location').value.trim(),
+        commitment: document.querySelector('input[name="commitment"]').checked ? 'confirmed' : '',
+        public_ledger: document.querySelector('input[name="public_ledger"]').checked ? 'yes' : '',
+        pledge_version: document.querySelector('input[name="pledge_version"]').value,
+        signup_date: document.getElementById('signupDate').value,
+        _gotcha: document.querySelector('input[name="_gotcha"]').value
+      };
 
       try {
         const response = await fetch(form.action, {
           method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          body: JSON.stringify(formData),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         });
 
         if (response.ok) {
