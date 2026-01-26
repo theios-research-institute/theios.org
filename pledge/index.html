@@ -1011,7 +1011,7 @@ It is about how I hold, question, and revise my conclusions.</div>
           </div>
         </div>
         <!-- Hidden canvas for certificate generation -->
-        <canvas id="certCanvas" width="1200" height="630" style="display:none;"></canvas>
+        <canvas id="certCanvas" width="1200" height="1050" style="display:none;"></canvas>
         <div class="form-message error" id="errorMsg">
           <strong>Unable to process your commitment.</strong>
           <p style="margin:8px 0 0; font-size:.9rem;">This may be a temporary connection issue. Please try again in a moment.</p>
@@ -1310,59 +1310,89 @@ It is about how I hold, question, and revise my conclusions.</div>
       ctx.fillStyle = '#3b82f6';
       ctx.font = 'bold 28px Inter, system-ui, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('COMMITMENT TO TRUTH', width / 2, 100);
+      ctx.fillText('COMMITMENT TO TRUTH', width / 2, 90);
 
       // Decorative line under title
       ctx.strokeStyle = '#3b82f6';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(width / 2 - 200, 120);
-      ctx.lineTo(width / 2 + 200, 120);
+      ctx.moveTo(width / 2 - 200, 110);
+      ctx.lineTo(width / 2 + 200, 110);
       ctx.stroke();
-
-      // "This certifies that"
-      ctx.fillStyle = '#a3afbf';
-      ctx.font = '20px Inter, system-ui, sans-serif';
-      ctx.fillText('This certifies that', width / 2, 180);
 
       // Signer name
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 48px Merriweather, Georgia, serif';
+      ctx.font = 'bold 36px Merriweather, Georgia, serif';
       const displayName = signerNameForCert || 'Truth Seeker';
-      ctx.fillText(displayName, width / 2, 250);
+      ctx.fillText('I, ' + displayName + ',', width / 2, 165);
 
-      // Underline for name
-      const nameWidth = ctx.measureText(displayName).width;
-      ctx.strokeStyle = '#3b82f6';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(width / 2 - nameWidth / 2 - 20, 270);
-      ctx.lineTo(width / 2 + nameWidth / 2 + 20, 270);
-      ctx.stroke();
-
-      // Description
+      // Pledge intro
       ctx.fillStyle = '#e5e7eb';
       ctx.font = '18px Inter, system-ui, sans-serif';
-      ctx.fillText('has made a commitment to seek truth with intellectual honesty,', width / 2, 330);
-      ctx.fillText('even when it challenges beliefs, comfort, or social standing.', width / 2, 360);
+      ctx.fillText('make this commitment freely and in good faith:', width / 2, 200);
 
-      // Commitment badge (action, not identity)
+      // Section header
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 16px Inter, system-ui, sans-serif';
+      ctx.fillText('To the best of my ability, I commit to:', width / 2, 250);
+
+      // Pledge commitments (left-aligned within center block)
+      ctx.fillStyle = '#e5e7eb';
+      ctx.font = '16px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'left';
+      const leftMargin = 180;
+      const commitments = [
+        '•  Seek understanding over comfort or convenience',
+        '•  Follow the evidence wherever it leads, not where I wish it to go',
+        '•  Question my own assumptions and remain open to being wrong',
+        '•  Distinguish confidence from certainty—and curiosity from agreement',
+        '•  Resist letting others decide what is true on my behalf',
+        '•  Revise my beliefs when new evidence or understanding emerges'
+      ];
+      let y = 290;
+      commitments.forEach(line => {
+        ctx.fillText(line, leftMargin, y);
+        y += 32;
+      });
+
+      // Acceptance statement
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#a3afbf';
+      ctx.font = 'italic 16px Inter, system-ui, sans-serif';
+      ctx.fillText('I accept that this commitment may challenge familiar beliefs and assumptions.', width / 2, y + 30);
+
+      // Final statement
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 16px Inter, system-ui, sans-serif';
+      ctx.fillText('This commitment is not about being right.', width / 2, y + 75);
+      ctx.fillStyle = '#e5e7eb';
+      ctx.font = '16px Inter, system-ui, sans-serif';
+      ctx.fillText('It is about how I hold, question, and revise my conclusions.', width / 2, y + 100);
+
+      // Decorative divider
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(200, y + 140);
+      ctx.lineTo(width - 200, y + 140);
+      ctx.stroke();
+
+      // Commitment badge
       ctx.fillStyle = '#22c55e';
-      ctx.font = 'bold 24px Inter, system-ui, sans-serif';
-      ctx.fillText('✓ COMMITMENT AFFIRMED', width / 2, 430);
+      ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+      ctx.fillText('✓ COMMITMENT AFFIRMED', width / 2, y + 185);
 
       // Date
       const date = new Date();
-      const dateStr = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
       ctx.fillStyle = '#a3afbf';
-      ctx.font = '16px Inter, system-ui, sans-serif';
-      ctx.fillText('Signed: ' + dateStr, width / 2, 480);
+      ctx.font = '15px Inter, system-ui, sans-serif';
+      ctx.fillText('Signed: ' + dateStr, width / 2, y + 220);
 
       // Footer - organization
       ctx.fillStyle = '#6b7280';
-      ctx.font = '14px Inter, system-ui, sans-serif';
-      ctx.fillText('Theios Research Institute, Inc.', width / 2, 560);
-      ctx.fillText('theios.org/pledge', width / 2, 585);
+      ctx.font = '13px Inter, system-ui, sans-serif';
+      ctx.fillText('Theios Research Institute, Inc.  •  theios.org/pledge', width / 2, y + 265);
 
       // Download the canvas as PNG
       const link = document.createElement('a');
