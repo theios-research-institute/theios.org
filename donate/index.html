@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>Support Our Research | Theios Research Institute, Inc.</title>
+  <meta name="description" content="Support scientific research at Theios Research Institute. Your tax-deductible donation advances discovery science and structural understanding." />
+  <meta name="theme-color" content="#0b1e34" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../favicon.png" />
+
+  <!-- Social -->
+  <meta property="og:site_name" content="Theios Research Institute, Inc." />
+  <meta property="og:title" content="Support Our Research | Theios Research Institute, Inc." />
+  <meta property="og:description" content="Your tax-deductible donation advances discovery science and structural understanding." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://theios.org/donate/" />
+  <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
+  <link rel="canonical" href="https://theios.org/donate/" />
+
+  <style>
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220; --btn-hover:brightness(1.1);
+      --success:#22c55e;
+    }
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(11,30,52,0.25);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
+    }
+    .wrap{width:100%; max-width:720px; padding:28px 20px 64px; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
+    }
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Back link */
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
+    }
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    /* Logo hero */
+    .logo-hero{
+      display:flex; justify-content:center; margin:10px 0 20px;
+    }
+    .logo-hero a{display:block}
+    .logo-hero .logo-img{
+      width:100px; height:auto;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));
+      transition:transform .15s ease;
+    }
+    .logo-hero .logo-img:hover{transform:scale(1.03)}
+
+    /* Header */
+    .page-header{
+      text-align:center; margin-bottom:28px;
+    }
+    .page-header h1{
+      font-size:2rem; margin:0 0 8px; font-weight:700;
+    }
+    .page-header .sub{
+      font-size:1.1rem; color:var(--muted); margin:0;
+    }
+
+    /* Card */
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:28px 32px; margin-bottom:20px;
+    }
+    .card h2{
+      font-size:1.3rem; margin:0 0 16px; font-weight:600;
+    }
+    .card p{margin:0 0 14px}
+
+    /* Tax badge */
+    .tax-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.3);
+      border-radius:8px;
+      color:var(--success);
+      font-size:.9rem;
+      font-weight:500;
+      margin-bottom:20px;
+    }
+    .tax-badge svg{width:18px;height:18px}
+
+    /* Preset amounts */
+    .amount-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+      margin-bottom:20px;
+    }
+    .amount-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px 12px;
+      font-size:1.2rem;
+      font-weight:600;
+      border:2px solid var(--line);
+      border-radius:12px;
+      background:var(--btn);
+      color:var(--ink);
+      text-decoration:none;
+      transition:all .15s ease;
+      cursor:pointer;
+    }
+    .amount-btn:hover{
+      border-color:var(--accent);
+      background:rgba(59,130,246,.1);
+      transform:translateY(-2px);
+    }
+    .amount-btn.selected{
+      border-color:var(--accent);
+      background:var(--accent);
+      color:#fff;
+    }
+
+    /* Divider */
+    .divider{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:24px 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .divider::before,
+    .divider::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:var(--line);
+    }
+
+    /* Custom amount form */
+    .custom-form{
+      display:flex;
+      gap:12px;
+      align-items:stretch;
+    }
+    .amount-input-wrap{
+      flex:1;
+      position:relative;
+    }
+    .amount-input-wrap .currency{
+      position:absolute;
+      left:16px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:1.2rem;
+      font-weight:600;
+      color:var(--muted);
+    }
+    .amount-input{
+      width:100%;
+      padding:16px 16px 16px 36px;
+      font-size:1.2rem;
+      font-weight:600;
+      border:2px solid var(--line);
+      border-radius:12px;
+      background:var(--btn);
+      color:var(--ink);
+      transition:border-color .15s;
+    }
+    .amount-input:focus{
+      outline:none;
+      border-color:var(--accent);
+    }
+    .amount-input::placeholder{
+      color:var(--muted);
+      font-weight:400;
+    }
+    .donate-btn{
+      padding:16px 28px;
+      font-size:1rem;
+      font-weight:600;
+      border:none;
+      border-radius:12px;
+      background:var(--accent);
+      color:#fff;
+      cursor:pointer;
+      transition:all .15s ease;
+      white-space:nowrap;
+    }
+    .donate-btn:hover{
+      filter:brightness(1.1);
+      transform:translateY(-1px);
+    }
+    .donate-btn:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+      transform:none;
+    }
+    .donate-btn.loading{
+      pointer-events:none;
+    }
+
+    /* Error message */
+    .error-msg{
+      margin-top:12px;
+      padding:12px 16px;
+      background:rgba(239,68,68,.1);
+      border:1px solid rgba(239,68,68,.3);
+      border-radius:8px;
+      color:#ef4444;
+      font-size:.9rem;
+      display:none;
+    }
+
+    /* Info section */
+    .info-section{
+      margin-top:8px;
+    }
+    .info-section h3{
+      font-size:1rem;
+      font-weight:600;
+      margin:0 0 8px;
+      color:var(--muted);
+    }
+    .info-section p{
+      font-size:.95rem;
+      color:var(--muted);
+      margin:0;
+    }
+    .info-section a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .info-section a:hover{
+      text-decoration:underline;
+    }
+
+    /* Light mode adjustments */
+    :root.light .card{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .card{
+        background:#ffffff;
+        border-color:rgba(100,130,160,.2);
+      }
+      :root.auto{ --bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --btn-hover:none; --radial-overlay:rgba(11,30,52,0.25); }
+    }
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .page-header h1{font-size:1.7rem}
+      .card{padding:20px 20px}
+      .amount-grid{grid-template-columns:repeat(2, 1fr)}
+      .custom-form{flex-direction:column}
+      .theme-toggle{top:14px; right:14px}
+    }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+  </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      const root = document.documentElement;
+      root.classList.remove('light','auto');
+      root.classList.add(pref);
+      root.setAttribute('data-theme', pref);
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <!-- Back link -->
+    <a href="../" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Theios Research Institute
+    </a>
+
+    <!-- Logo -->
+    <div class="logo-hero">
+      <a href="../">
+        <img src="../theios-logo-variant.png" alt="Theios Research Institute, Inc." class="logo-img" onerror="this.src='../theios-logo-favicon.png'">
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1>Support Our Research</h1>
+      <p class="sub">Your contribution advances discovery science and structural understanding.</p>
+    </header>
+
+    <!-- Main donation card -->
+    <article class="card">
+      <div class="tax-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        501(c)(3) Tax-Deductible
+      </div>
+
+      <h2>Choose an Amount</h2>
+      <p>Select a preset amount or enter a custom donation below.</p>
+
+      <!-- Preset amounts - Stripe Payment Links -->
+      <div class="amount-grid">
+        <a href="https://donate.stripe.com/9B63cx5OJff735L7hHgQE01" class="amount-btn">$25</a>
+        <a href="https://donate.stripe.com/9B6aEZ4KF2sl9u98lLgQE02" class="amount-btn">$50</a>
+        <a href="https://donate.stripe.com/eVqeVf6SN1oh9u931rgQE03" class="amount-btn">$100</a>
+        <a href="https://donate.stripe.com/eVq9AV7WR6IBaydgShgQE04" class="amount-btn">$250</a>
+        <a href="https://donate.stripe.com/3cIaEZ90V9UN0XDgShgQE05" class="amount-btn">$500</a>
+        <a href="https://donate.stripe.com/bJe5kFelfgjbdKp45vgQE06" class="amount-btn">$1,000</a>
+      </div>
+
+      <div class="divider">or enter a custom amount</div>
+
+      <!-- Custom amount form -->
+      <form class="custom-form" id="customDonateForm">
+        <div class="amount-input-wrap">
+          <span class="currency">$</span>
+          <input type="number"
+                 class="amount-input"
+                 id="customAmount"
+                 name="amount"
+                 placeholder="Other amount"
+                 min="5"
+                 max="50000"
+                 step="1">
+        </div>
+        <button type="submit" class="donate-btn" id="donateBtn">
+          <span class="btn-text">Donate</span>
+          <span class="btn-loading" style="display:none">Processing...</span>
+        </button>
+      </form>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <div class="info-section" style="margin-top:24px;">
+        <h3>About Your Donation</h3>
+        <p>Theios Research Institute, Inc. is a 501(c)(3) nonprofit organization (EIN: 41-3302025). Your donation is tax-deductible to the extent allowed by law. You will receive a receipt via email.</p>
+        <p style="margin-top:8px;">For donations over $5,000 or to discuss other giving options, please contact <a href="mailto:research@theios.org">research@theios.org</a>.</p>
+      </div>
+    </article>
+
+    <!-- What donations support -->
+    <article class="card">
+      <h2>What Your Donation Supports</h2>
+      <p><strong>Discovery Science:</strong> Computational research revealing structural regularities across domains.</p>
+      <p><strong>Open Knowledge:</strong> Public briefs and reproducible research artifacts freely available to all.</p>
+      <p><strong>Research Infrastructure:</strong> Tools and systems that enable rigorous, protocol-governed validation.</p>
+      <p style="margin-bottom:0;"><strong>Independence:</strong> Donor support allows us to pursue questions without institutional constraints.</p>
+    </article>
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> <a href="../">Theios Research Institute, Inc.</a></p>
+    <p style="margin-top:4px;"><a href="../privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode) {
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+
+    // ===================
+    // CUSTOM AMOUNT FORM
+    // ===================
+    // Custom amount link (Customers choose what to pay)
+    const customAmountLink = 'https://donate.stripe.com/fZu14p5OJaYRdKp1XngQE00';
+    const form = document.getElementById('customDonateForm');
+    const amountInput = document.getElementById('customAmount');
+    const donateBtn = document.getElementById('donateBtn');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const amount = parseFloat(amountInput.value);
+
+      // Validate
+      if (isNaN(amount) || amount < 5) {
+        showError('Minimum donation is $5');
+        return;
+      }
+      if (amount > 50000) {
+        showError('For donations over $50,000, please contact research@theios.org');
+        return;
+      }
+
+      // Redirect to custom amount Payment Link
+      hideError();
+      window.location.href = customAmountLink;
+    });
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.style.display = 'block';
+    }
+
+    function hideError() {
+      errorMsg.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
