@@ -107,15 +107,12 @@
     .theme-toggle svg{width:18px;height:18px;display:block}
 
     /* Floating tabs above card */
-    .card-tab{
+    .card-tabs{
       position:absolute; top:-38px; right:24px;
       z-index:10;
+      display:flex; gap:8px;
     }
-    .card-tab-left{
-      position:absolute; top:-38px; left:24px;
-      z-index:10;
-    }
-    .card-tab .btn, .card-tab-left .btn{
+    .card-tabs .btn{
       padding:.7rem 1.3rem; font-size:.95rem; font-weight:600;
       border-radius:12px 12px 0 0;
       border:1px solid var(--line); border-bottom:none;
@@ -123,12 +120,9 @@
       box-shadow:0 -6px 20px rgba(0,0,0,.25), 0 -2px 8px rgba(0,0,0,.1);
       transition:transform .15s ease, box-shadow .15s ease;
     }
-    .card-tab .btn:hover, .card-tab-left .btn:hover{
+    .card-tabs .btn:hover{
       transform:translateY(-3px);
       box-shadow:0 -10px 28px rgba(0,0,0,.3), 0 -4px 12px rgba(0,0,0,.15);
-    }
-    .card-tab-left .btn.donate{
-      background:var(--accent); border-color:var(--accent); color:#fff;
     }
 
     /* Hero emblem */
@@ -239,10 +233,8 @@
     </div>
 
     <article class="card" role="main">
-      <nav class="card-tab-left">
-        <a class="btn donate" href="./donate/">Donate</a>
-      </nav>
-      <nav class="card-tab">
+      <nav class="card-tabs">
+        <a class="btn" href="./donate/">Donate</a>
         <a class="btn" href="./pledge/">The Pledge</a>
       </nav>
       <header class="card-hd">
