@@ -1,1 +1,33 @@
+# macOS
 .DS_Store
+
+# Sensitive documents - DO NOT COMMIT
+*.pdf
+*.zip
+IRS*.jpg
+IRS*.png
+
+# Internal/planning documents
+implementation-plan.md
+*_STRATEGIC*.md
+STRATEGIC_*.md
+*_email*.md
+email-templates.md
+REVISED_EMAIL*.md
+*_AUTHENTIC.md
+Clarifications*.txt
+full_protocol_corpus_data_audit.txt
+
+# Backups
+*.backup
+index.html.backup
+
+# Cloud Functions (not needed for static site)
+functions/
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*
