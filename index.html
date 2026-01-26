@@ -192,7 +192,7 @@
     /* Mobile hamburger menu */
     .hamburger{
       display:none;
-      position:absolute; top:18px; left:18px;
+      position:absolute; top:18px; right:18px;
       padding:.55rem .75rem; border-radius:12px;
       border:1px solid var(--line); background:var(--btn);
       color:var(--ink); cursor:pointer;
@@ -219,6 +219,7 @@
     @media (max-width:960px){
       .card-tabs{display:none !important}
       .hamburger{display:block}
+      .theme-toggle{left:18px; right:auto}
     }
     @media (max-width:640px){
       header.card-hd{flex-direction:column; text-align:center}
