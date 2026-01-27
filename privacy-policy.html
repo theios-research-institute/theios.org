@@ -1,395 +1,491 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Privacy Policy - Theios Research Institute, Inc.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Privacy Policy | Theios Research Institute, Inc.</title>
+  <meta name="description" content="Privacy Policy for Theios Research Institute, Inc." />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./favicon.png" />
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-LHZ0DVLTBB');
   </script>
+
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220;
     }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff;
+      --radial-overlay:rgba(11,30,52,0.25);
     }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
     }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
     }
-    p {
-      margin: 1em 0;
+    .wrap{width:100%; max-width:800px; padding:28px 20px 64px; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
     }
-    a {
-      color: #1a1a1a;
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Back link */
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
     }
-    a:visited {
-      color: #1a1a1a;
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    /* Logo */
+    .logo-hero{
+      display:flex; justify-content:center; margin:10px 0 20px;
     }
-    img {
-      max-width: 100%;
+    .logo-hero a{display:block}
+    .logo-hero .logo-img{
+      width:80px; height:auto;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));
     }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
+
+    /* Card */
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:32px 36px; margin-bottom:20px;
     }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
+
+    /* Summary box */
+    .summary-box{
+      background:rgba(59,130,246,.1);
+      border:1px solid rgba(59,130,246,.3);
+      border-left:4px solid var(--accent);
+      border-radius:8px;
+      padding:16px 20px;
+      margin-bottom:24px;
     }
-    h6 {
-      font-weight: normal;
+    .summary-box p{margin:0}
+
+    /* Typography */
+    h1{
+      font-size:2rem;
+      margin:0 0 8px;
+      font-weight:700;
+      text-align:center;
     }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
+    .subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin:0 0 8px;
     }
-    li > ol, li > ul {
-      margin-top: 0;
+    .last-updated{
+      text-align:center;
+      font-size:.9rem;
+      color:var(--muted);
+      font-style:italic;
+      margin-bottom:24px;
+      padding-bottom:20px;
+      border-bottom:1px solid var(--line);
     }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
+    h2{
+      font-size:1.3rem;
+      margin:28px 0 12px;
+      font-weight:600;
+      color:var(--ink);
     }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
+    h3{
+      font-size:1.1rem;
+      margin:20px 0 8px;
+      font-weight:600;
     }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
+    p{margin:0 0 14px}
+    ul{
+      margin:0 0 14px;
+      padding-left:24px;
     }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
+    li{margin-bottom:6px}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    hr{
+      border:none;
+      border-top:1px solid var(--line);
+      margin:24px 0;
     }
-    .last-updated {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 2em;
+
+    /* Footer nav */
+    .footer-nav{
+      text-align:center;
+      margin-top:28px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
     }
-    .highlight {
-      background-color: #fffacd;
-      padding: 1em;
-      border-left: 4px solid #ddd;
-      margin: 1em 0;
+
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+
+    :root.light .card{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
+    :root.light .summary-box{
+      background:rgba(59,130,246,.08);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .card{background:#ffffff; border-color:rgba(100,130,160,.2)}
+      :root.auto .summary-box{background:rgba(59,130,246,.08)}
+      :root.auto{--bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --radial-overlay:rgba(11,30,52,0.25)}
+    }
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .card{padding:24px 20px}
+      h1{font-size:1.6rem}
+      .theme-toggle{top:14px; right:14px}
     }
   </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Privacy Policy</h1>
-<p class="subtitle">Theios Research Institute, Inc.</p>
-</header>
-
-<p class="last-updated"><strong>Last Updated:</strong> January 26, 2026</p>
-
-<div class="highlight">
-<p><strong>Summary:</strong> We respect your privacy. We collect minimal data, use Google Analytics for website improvement, don't sell personal information, and you can opt out of tracking at any time.</p>
-</div>
-
-<hr />
-
-<h2 id="introduction">1. Introduction</h2>
-
-<p>Theios Research Institute, Inc. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our websites (including theios.org and related domains) and use our services.</p>
-
-<p>This policy applies to all our digital services, research platforms, and educational resources.</p>
-
-<hr />
-
-<h2 id="information-we-collect">2. Information We Collect</h2>
-
-<h3 id="automatically-collected-information">Automatically Collected Information</h3>
-<p>When you visit our websites, we automatically collect certain information through Google Analytics, including:</p>
-<ul>
-<li><strong>Usage Data:</strong> Pages visited, time spent, click patterns</li>
-<li><strong>Device Information:</strong> Browser type, operating system, screen resolution</li>
-<li><strong>Location Data:</strong> General geographic location (country/city level)</li>
-<li><strong>Referral Information:</strong> Which website directed you to us</li>
-<li><strong>Technical Data:</strong> IP address, session duration, bounce rate</li>
-</ul>
-
-<h3 id="information-you-provide">Information You Provide</h3>
-<p>We may collect information you voluntarily provide, such as:</p>
-<ul>
-<li><strong>Contact Information:</strong> When you email us at research@theios.org</li>
-<li><strong>Research Collaboration:</strong> Academic credentials for partnership discussions</li>
-<li><strong>Feedback:</strong> Comments, suggestions, or error reports</li>
-<li><strong>Citation Requests:</strong> Information needed for proper academic attribution</li>
-</ul>
-
-<h3 id="commitment-to-truth-pledge">Commitment to Truth Pledge</h3>
-<p>When you sign the <a href="/pledge/">Commitment to Truth</a>, we collect:</p>
-<ul>
-<li><strong>Full Name:</strong> Required to sign the pledge</li>
-<li><strong>Email Address:</strong> Required for confirmation and optional annual renewal reminders</li>
-<li><strong>Signup Date:</strong> For anniversary tracking</li>
-<li><strong>Public Ledger Consent:</strong> Optional - whether you consent to your name appearing on our public signatories page</li>
-<li><strong>Referral Information:</strong> If you arrived via a referral link</li>
-</ul>
-<p>Pledge submissions are processed through <strong>Formspree</strong>, a third-party form service. Your data is transmitted securely and stored according to <a href="https://formspree.io/legal/privacy-policy/">Formspree's Privacy Policy</a>.</p>
-<p><strong>Your pledge data will:</strong></p>
-<ul>
-<li>Never be sold or shared with third parties for marketing</li>
-<li>Only display your name publicly if you explicitly consent</li>
-<li>Be used solely for pledge-related communications</li>
-</ul>
-
-<h3 id="donation-information">Donation Information</h3>
-<p>When you make a donation through our website, we collect:</p>
-<ul>
-<li><strong>Payment Information:</strong> Processed securely by Stripe; we never see or store your full card number</li>
-<li><strong>Billing Address:</strong> Required for payment processing and tax receipt generation</li>
-<li><strong>Email Address:</strong> For sending donation receipts and tax documentation</li>
-<li><strong>Name:</strong> For donation records and acknowledgment</li>
-</ul>
-<p>Donations are processed through <strong>Stripe</strong>, a PCI-compliant payment processor. Your payment information is transmitted directly to Stripe's secure servers and is subject to <a href="https://stripe.com/privacy">Stripe's Privacy Policy</a>.</p>
-<p><strong>Your donation data will:</strong></p>
-<ul>
-<li>Be used to process your tax-deductible contribution</li>
-<li>Generate receipts for your tax records</li>
-<li>Never be sold or shared with third parties for marketing</li>
-<li>Be retained as required for nonprofit financial record-keeping</li>
-</ul>
-
-<hr />
-
-<h2 id="how-we-use-information">3. How We Use Information</h2>
-
-<p>We use collected information to:</p>
-
-<h3 id="improve-our-services">Improve Our Services</h3>
-<ul>
-<li>Understand which research areas are most valuable to visitors</li>
-<li>Optimize website performance and user experience</li>
-<li>Identify and fix technical issues</li>
-<li>Develop new research tools and resources</li>
-</ul>
-
-<h3 id="research-and-analytics">Research and Analytics</h3>
-<ul>
-<li>Analyze usage patterns to guide research priorities</li>
-<li>Measure the impact of our educational content</li>
-<li>Understand our academic community and audience</li>
-<li>Generate anonymized reports for research improvement</li>
-</ul>
-
-<h3 id="communication">Communication</h3>
-<ul>
-<li>Respond to inquiries and support requests</li>
-<li>Facilitate academic collaborations</li>
-<li>Provide technical support when needed</li>
-</ul>
-
-<hr />
-
-<h2 id="google-analytics">4. Google Analytics</h2>
-
-<p>We use Google Analytics to understand how our website is used. Google Analytics:</p>
-
-<ul>
-<li><strong>Collects:</strong> Anonymous usage statistics and behavioral data</li>
-<li><strong>Uses Cookies:</strong> To track sessions and user interactions</li>
-<li><strong>Provides:</strong> Insights into content effectiveness and user needs</li>
-<li><strong>Retention:</strong> Data is automatically deleted after 26 months</li>
-</ul>
-
-<h3 id="opt-out-options">Opt-Out Options</h3>
-<p>You can opt out of Google Analytics tracking by:</p>
-<ul>
-<li>Installing the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a></li>
-<li>Enabling "Do Not Track" in your browser settings</li>
-<li>Using privacy-focused browsers or extensions</li>
-<li>Disabling JavaScript (though this may affect site functionality)</li>
-</ul>
-
-<hr />
-
-<h2 id="information-sharing">5. Information Sharing and Disclosure</h2>
-
-<p>We do not sell, trade, or rent your personal information. We may share information only in these limited circumstances:</p>
-
-<h3 id="service-providers">Service Providers</h3>
-<ul>
-<li><strong>Google Analytics:</strong> For website analytics (subject to their privacy policy)</li>
-<li><strong>Formspree:</strong> For processing pledge form submissions (subject to <a href="https://formspree.io/legal/privacy-policy/">their privacy policy</a>)</li>
-<li><strong>Stripe:</strong> For secure donation payment processing (subject to <a href="https://stripe.com/privacy">their privacy policy</a>)</li>
-<li><strong>Hosting Providers:</strong> For website infrastructure and security</li>
-</ul>
-
-<h3 id="legal-requirements">Legal Requirements</h3>
-<p>We may disclose information if required by law, legal process, or to protect:</p>
-<ul>
-<li>Our rights and property</li>
-<li>User safety and security</li>
-<li>Public safety and national security</li>
-<li>Investigation of fraud or illegal activities</li>
-</ul>
-
-<h3 id="academic-collaboration">Academic Collaboration</h3>
-<p>Aggregated, anonymized usage data may be shared in academic publications or research collaborations to advance knowledge in our field.</p>
-
-<hr />
-
-<h2 id="data-security">6. Data Security</h2>
-
-<p>We implement appropriate technical and organizational measures to protect your information:</p>
-
-<ul>
-<li><strong>Encryption:</strong> Data transmission is protected by SSL/TLS encryption</li>
-<li><strong>Access Controls:</strong> Limited access to personal data on a need-to-know basis</li>
-<li><strong>Regular Audits:</strong> Security practices are regularly reviewed and updated</li>
-<li><strong>Minimal Collection:</strong> We collect only data necessary for our stated purposes</li>
-</ul>
-
-<p>However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.</p>
-
-<hr />
-
-<h2 id="data-retention">7. Data Retention</h2>
-
-<ul>
-<li><strong>Analytics Data:</strong> Automatically deleted after 26 months</li>
-<li><strong>Contact Information:</strong> Retained only as long as necessary for the purpose provided</li>
-<li><strong>Research Data:</strong> Anonymized data may be retained indefinitely for research purposes</li>
-<li><strong>Legal Requirements:</strong> Some data may be retained longer if required by law</li>
-</ul>
-
-<hr />
-
-<h2 id="your-rights">8. Your Rights and Choices</h2>
-
-<p>You have the following rights regarding your personal information:</p>
-
-<h3 id="access-and-correction">Access and Correction</h3>
-<ul>
-<li>Request information about what personal data we have about you</li>
-<li>Ask us to correct inaccurate or incomplete information</li>
-<li>Request a copy of your personal data in a portable format</li>
-</ul>
-
-<h3 id="deletion-and-restriction">Deletion and Restriction</h3>
-<ul>
-<li>Request deletion of your personal information (subject to legal requirements)</li>
-<li>Ask us to restrict processing of your data</li>
-<li>Object to processing based on legitimate interests</li>
-</ul>
-
-<h3 id="opt-out">Opt-Out</h3>
-<ul>
-<li>Disable analytics tracking (see Google Analytics section above)</li>
-<li>Unsubscribe from any communications (if applicable)</li>
-<li>Use privacy-focused browser settings</li>
-</ul>
-
-<p>To exercise these rights, contact us at <a href="mailto:privacy@theios.org">privacy@theios.org</a>.</p>
-
-<hr />
-
-<h2 id="international-users">9. International Users</h2>
-
-<p>Our services are hosted in the United States. If you access our services from outside the US, your information may be transferred to, stored, and processed in the United States.</p>
-
-<p>By using our services, you consent to the transfer of your information to the United States and other countries where our service providers operate.</p>
-
-<hr />
-
-<h2 id="children-privacy">10. Children's Privacy</h2>
-
-<p>Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
-
-<p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately so we can delete such information.</p>
-
-<hr />
-
-<h2 id="changes-to-policy">11. Changes to This Privacy Policy</h2>
-
-<p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. Material changes will be:</p>
-
-<ul>
-<li>Posted prominently on our website</li>
-<li>Indicated by updating the "Last Updated" date</li>
-<li>Communicated via email if we have your contact information</li>
-</ul>
-
-<p>Your continued use of our services after changes constitutes acceptance of the updated policy.</p>
-
-<hr />
-
-<h2 id="third-party-links">12. Third-Party Links</h2>
-
-<p>Our websites may contain links to third-party sites. We are not responsible for the privacy practices of these external sites. We encourage you to read the privacy policies of any third-party sites you visit.</p>
-
-<hr />
-
-<h2 id="contact-us">13. Contact Us</h2>
-
-<p>For questions about this Privacy Policy or our privacy practices:</p>
-
-<p><strong>Email:</strong> <a href="mailto:privacy@theios.org">privacy@theios.org</a><br />
-<strong>Research Inquiries:</strong> <a href="mailto:research@theios.org">research@theios.org</a><br />
-<strong>Website:</strong> <a href="https://theios.org">https://theios.org</a></p>
-
-<p><strong>Theios Research Institute, Inc.</strong><br />
-Privacy Officer<br />
-United States</p>
-
-<hr />
-
-<p style="text-align: center; margin-top: 3em;">
-<a href="/">← Back to Home</a> |
-<a href="/terms-of-service.html">Terms of Service</a>
-</p>
-
-<p align="center" style="margin-top: 2em;">
-<img src="theios-logo-variant.png" width="80" alt="Theios Research Institute, Inc. logo">
-</p>
-
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+
+    <!-- Back link -->
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </a>
+
+    <!-- Logo -->
+    <div class="logo-hero">
+      <a href="/">
+        <img src="./theios-logo-variant.png" alt="Theios Research Institute, Inc." class="logo-img" onerror="this.src='./theios-logo-favicon.png'">
+      </a>
+    </div>
+
+    <article class="card">
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Theios Research Institute, Inc.</p>
+      <p class="last-updated"><strong>Last Updated:</strong> January 26, 2026</p>
+
+      <div class="summary-box">
+        <p><strong>Summary:</strong> We respect your privacy. We collect minimal data, use Google Analytics for website improvement, don't sell personal information, and you can opt out of tracking at any time.</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+      <p>Theios Research Institute, Inc. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our websites (including theios.org and related domains) and use our services.</p>
+      <p>This policy applies to all our digital services, research platforms, and educational resources.</p>
+
+      <hr />
+
+      <h2>2. Information We Collect</h2>
+
+      <h3>Automatically Collected Information</h3>
+      <p>When you visit our websites, we automatically collect certain information through Google Analytics, including:</p>
+      <ul>
+        <li><strong>Usage Data:</strong> Pages visited, time spent, click patterns</li>
+        <li><strong>Device Information:</strong> Browser type, operating system, screen resolution</li>
+        <li><strong>Location Data:</strong> General geographic location (country/city level)</li>
+        <li><strong>Referral Information:</strong> Which website directed you to us</li>
+        <li><strong>Technical Data:</strong> IP address, session duration, bounce rate</li>
+      </ul>
+
+      <h3>Information You Provide</h3>
+      <p>We may collect information you voluntarily provide, such as:</p>
+      <ul>
+        <li><strong>Contact Information:</strong> When you email us at research@theios.org</li>
+        <li><strong>Research Collaboration:</strong> Academic credentials for partnership discussions</li>
+        <li><strong>Feedback:</strong> Comments, suggestions, or error reports</li>
+        <li><strong>Citation Requests:</strong> Information needed for proper academic attribution</li>
+      </ul>
+
+      <h3>Commitment to Truth Pledge</h3>
+      <p>When you sign the <a href="/pledge/">Commitment to Truth</a>, we collect:</p>
+      <ul>
+        <li><strong>Full Name:</strong> Required to sign the pledge</li>
+        <li><strong>Email Address:</strong> Required for confirmation and optional annual renewal reminders</li>
+        <li><strong>Signup Date:</strong> For anniversary tracking</li>
+        <li><strong>Public Ledger Consent:</strong> Optional - whether you consent to your name appearing on our public signatories page</li>
+        <li><strong>Referral Information:</strong> If you arrived via a referral link</li>
+      </ul>
+      <p>Pledge submissions are processed through our secure systems with <strong>Formspree</strong> as a backup service. Your data is transmitted securely and stored according to <a href="https://formspree.io/legal/privacy-policy/">Formspree's Privacy Policy</a>.</p>
+      <p><strong>Your pledge data will:</strong></p>
+      <ul>
+        <li>Never be sold or shared with third parties for marketing</li>
+        <li>Only display your name publicly if you explicitly consent</li>
+        <li>Be used solely for pledge-related communications</li>
+      </ul>
+
+      <h3>Donation Information</h3>
+      <p>When you make a donation through our website, we collect:</p>
+      <ul>
+        <li><strong>Payment Information:</strong> Processed securely by Stripe; we never see or store your full card number</li>
+        <li><strong>Billing Address:</strong> Required for payment processing and tax receipt generation</li>
+        <li><strong>Email Address:</strong> For sending donation receipts and tax documentation</li>
+        <li><strong>Name:</strong> For donation records and acknowledgment</li>
+      </ul>
+      <p>Donations are processed through <strong>Stripe</strong>, a PCI-compliant payment processor. Your payment information is transmitted directly to Stripe's secure servers and is subject to <a href="https://stripe.com/privacy">Stripe's Privacy Policy</a>.</p>
+      <p><strong>Your donation data will:</strong></p>
+      <ul>
+        <li>Be used to process your tax-deductible contribution</li>
+        <li>Generate receipts for your tax records</li>
+        <li>Never be sold or shared with third parties for marketing</li>
+        <li>Be retained as required for nonprofit financial record-keeping</li>
+      </ul>
+
+      <hr />
+
+      <h2>3. How We Use Information</h2>
+      <p>We use collected information to:</p>
+
+      <h3>Improve Our Services</h3>
+      <ul>
+        <li>Understand which research areas are most valuable to visitors</li>
+        <li>Optimize website performance and user experience</li>
+        <li>Identify and fix technical issues</li>
+        <li>Develop new research tools and resources</li>
+      </ul>
+
+      <h3>Research and Analytics</h3>
+      <ul>
+        <li>Analyze usage patterns to guide research priorities</li>
+        <li>Measure the impact of our educational content</li>
+        <li>Understand our academic community and audience</li>
+        <li>Generate anonymized reports for research improvement</li>
+      </ul>
+
+      <h3>Communication</h3>
+      <ul>
+        <li>Respond to inquiries and support requests</li>
+        <li>Facilitate academic collaborations</li>
+        <li>Provide technical support when needed</li>
+      </ul>
+
+      <hr />
+
+      <h2>4. Google Analytics</h2>
+      <p>We use Google Analytics to understand how our website is used. Google Analytics:</p>
+      <ul>
+        <li><strong>Collects:</strong> Anonymous usage statistics and behavioral data</li>
+        <li><strong>Uses Cookies:</strong> To track sessions and user interactions</li>
+        <li><strong>Provides:</strong> Insights into content effectiveness and user needs</li>
+        <li><strong>Retention:</strong> Data is automatically deleted after 26 months</li>
+      </ul>
+
+      <h3>Opt-Out Options</h3>
+      <p>You can opt out of Google Analytics tracking by:</p>
+      <ul>
+        <li>Installing the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a></li>
+        <li>Enabling "Do Not Track" in your browser settings</li>
+        <li>Using privacy-focused browsers or extensions</li>
+        <li>Disabling JavaScript (though this may affect site functionality)</li>
+      </ul>
+
+      <hr />
+
+      <h2>5. Information Sharing and Disclosure</h2>
+      <p>We do not sell, trade, or rent your personal information. We may share information only in these limited circumstances:</p>
+
+      <h3>Service Providers</h3>
+      <ul>
+        <li><strong>Google Analytics:</strong> For website analytics (subject to their privacy policy)</li>
+        <li><strong>Formspree:</strong> For processing pledge form submissions (subject to <a href="https://formspree.io/legal/privacy-policy/">their privacy policy</a>)</li>
+        <li><strong>Stripe:</strong> For secure donation payment processing (subject to <a href="https://stripe.com/privacy">their privacy policy</a>)</li>
+        <li><strong>Hosting Providers:</strong> For website infrastructure and security</li>
+      </ul>
+
+      <h3>Legal Requirements</h3>
+      <p>We may disclose information if required by law, legal process, or to protect:</p>
+      <ul>
+        <li>Our rights and property</li>
+        <li>User safety and security</li>
+        <li>Public safety and national security</li>
+        <li>Investigation of fraud or illegal activities</li>
+      </ul>
+
+      <h3>Academic Collaboration</h3>
+      <p>Aggregated, anonymized usage data may be shared in academic publications or research collaborations to advance knowledge in our field.</p>
+
+      <hr />
+
+      <h2>6. Data Security</h2>
+      <p>We implement appropriate technical and organizational measures to protect your information:</p>
+      <ul>
+        <li><strong>Encryption:</strong> Data transmission is protected by SSL/TLS encryption</li>
+        <li><strong>Access Controls:</strong> Limited access to personal data on a need-to-know basis</li>
+        <li><strong>Regular Audits:</strong> Security practices are regularly reviewed and updated</li>
+        <li><strong>Minimal Collection:</strong> We collect only data necessary for our stated purposes</li>
+      </ul>
+      <p>However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.</p>
+
+      <hr />
+
+      <h2>7. Data Retention</h2>
+      <ul>
+        <li><strong>Analytics Data:</strong> Automatically deleted after 26 months</li>
+        <li><strong>Contact Information:</strong> Retained only as long as necessary for the purpose provided</li>
+        <li><strong>Research Data:</strong> Anonymized data may be retained indefinitely for research purposes</li>
+        <li><strong>Legal Requirements:</strong> Some data may be retained longer if required by law</li>
+      </ul>
+
+      <hr />
+
+      <h2>8. Your Rights and Choices</h2>
+      <p>You have the following rights regarding your personal information:</p>
+
+      <h3>Access and Correction</h3>
+      <ul>
+        <li>Request information about what personal data we have about you</li>
+        <li>Ask us to correct inaccurate or incomplete information</li>
+        <li>Request a copy of your personal data in a portable format</li>
+      </ul>
+
+      <h3>Deletion and Restriction</h3>
+      <ul>
+        <li>Request deletion of your personal information (subject to legal requirements)</li>
+        <li>Ask us to restrict processing of your data</li>
+        <li>Object to processing based on legitimate interests</li>
+      </ul>
+
+      <h3>Opt-Out</h3>
+      <ul>
+        <li>Disable analytics tracking (see Google Analytics section above)</li>
+        <li>Unsubscribe from any communications (if applicable)</li>
+        <li>Use privacy-focused browser settings</li>
+      </ul>
+      <p>To exercise these rights, contact us at <a href="mailto:privacy@theios.org">privacy@theios.org</a>.</p>
+
+      <hr />
+
+      <h2>9. International Users</h2>
+      <p>Our services are hosted in the United States. If you access our services from outside the US, your information may be transferred to, stored, and processed in the United States.</p>
+      <p>By using our services, you consent to the transfer of your information to the United States and other countries where our service providers operate.</p>
+
+      <hr />
+
+      <h2>10. Children's Privacy</h2>
+      <p>Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
+      <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately so we can delete such information.</p>
+
+      <hr />
+
+      <h2>11. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. Material changes will be:</p>
+      <ul>
+        <li>Posted prominently on our website</li>
+        <li>Indicated by updating the "Last Updated" date</li>
+        <li>Communicated via email if we have your contact information</li>
+      </ul>
+      <p>Your continued use of our services after changes constitutes acceptance of the updated policy.</p>
+
+      <hr />
+
+      <h2>12. Third-Party Links</h2>
+      <p>Our websites may contain links to third-party sites. We are not responsible for the privacy practices of these external sites. We encourage you to read the privacy policies of any third-party sites you visit.</p>
+
+      <hr />
+
+      <h2>13. Contact Us</h2>
+      <p>For questions about this Privacy Policy or our privacy practices:</p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:privacy@theios.org">privacy@theios.org</a><br />
+        <strong>Research Inquiries:</strong> <a href="mailto:research@theios.org">research@theios.org</a><br />
+        <strong>Website:</strong> <a href="https://theios.org">https://theios.org</a>
+      </p>
+      <p>
+        <strong>Theios Research Institute, Inc.</strong><br />
+        Privacy Officer<br />
+        United States
+      </p>
+
+      <div class="footer-nav">
+        <a href="/">← Back to Home</a> · <a href="terms-of-service.html">Terms of Service</a>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> <a href="/">Theios Research Institute, Inc.</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode) {
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+  </script>
 </body>
 </html>

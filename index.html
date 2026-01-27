@@ -3,13 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=1733851200">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   <title>Theios Research Institute, Inc.</title>
   <meta name="description" content="Theios Research Institute, Inc. — A nonprofit dedicated to applied discovery science and structural laws of emergence." />
   <meta name="theme-color" content="#0b1e34" />
@@ -29,6 +25,8 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Theios Research Institute, Inc." />
+  <meta name="twitter:description" content="A nonprofit dedicated to applied discovery science & structural laws of emergence." />
   <meta name="twitter:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
 
   <!-- Structured Data (JSON-LD) -->
@@ -40,7 +38,7 @@
     "alternateName": "Theios Research Institute",
     "url": "https://theios.org",
     "logo": "https://theios.org/theios-logo-variant.png",
-    "description": "A nonprofit organization dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols. Our work reveals recurring patterns that inform a broader scientific understanding of cognition, behavior, and the structures underlying complex systems.",
+    "description": "A nonprofit organization dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols.",
     "foundingDate": "2024",
     "email": "research@theios.org",
     "sameAs": [
@@ -51,22 +49,8 @@
       "https://www.instagram.com/theiosresearch/",
       "https://orcid.org/0009-0004-0776-8634"
     ],
-    "knowsAbout": [
-      "Computational Discovery",
-      "Emergent Systems",
-      "Cross-Domain Synthesis",
-      "Structural Regularities",
-      "Protocol-Governed Validation",
-      "Algorithmic Methods",
-      "Complex Systems Analysis"
-    ],
     "nonprofit": true,
-    "areaServed": "Worldwide",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "Ecom Economics, LLC",
-      "description": "Operational support provider"
-    }
+    "areaServed": "Worldwide"
   }
   </script>
 
@@ -76,273 +60,639 @@
       --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
       --line:#1f2937; --accent:#3b82f6;
       --btn:#0b1220; --btn-hover:brightness(1.1);
+      --success:#22c55e;
     }
-    /* Light tokens (used when data-theme='light') */
     :root.light{
-      --card:#ffffff; --ink:#0e1523; --muted:#4b5563;
-      --line:#e5e7eb; --btn:#ffffff; --btn-hover:none;
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff; --btn-hover:none;
+      --radial-overlay:rgba(11,30,52,0.25);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       background:
-        radial-gradient(1200px 700px at 50% -200px, #1f3b62 0%, transparent 60%),
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
         linear-gradient(135deg,var(--bg1),var(--bg2));
+      background-attachment:fixed;
       color:var(--ink);
-      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      display:grid; place-items:start center;
+      font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
-    .wrap{width:100%; max-width:1100px; padding:28px 20px 64px; position:relative}
+    .wrap{
+      width:100%; max-width:1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
 
-    /* Theme toggle */
+    /* ===== NAV BAR ===== */
+    .navbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,30,52,.85);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      padding:12px 0;
+    }
+    :root.light .navbar{
+      background:rgba(255,255,255,.9);
+    }
+    .navbar .wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .nav-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--ink);
+    }
+    .nav-logo{
+      width:40px; height:40px;
+      border-radius:8px;
+    }
+    .nav-name{
+      font-weight:600;
+      font-size:1.1rem;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .nav-links a{
+      padding:.5rem .9rem;
+      border-radius:8px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:.9rem;
+      font-weight:500;
+      transition:background .15s;
+    }
+    .nav-links a:hover{
+      background:rgba(255,255,255,.1);
+    }
+    :root.light .nav-links a:hover{
+      background:rgba(0,0,0,.05);
+    }
+    .nav-links .btn-donate{
+      background:var(--accent);
+      color:#fff;
+    }
+    .nav-links .btn-donate:hover{
+      filter:brightness(1.1);
+      background:var(--accent);
+    }
+
+    /* Theme toggle in nav */
     .theme-toggle{
-      position:absolute; top:18px; right:18px;
-      display:inline-flex; gap:8px; align-items:center;
-      padding:.55rem .75rem; border-radius:12px;
-      border:1px solid var(--line); background:var(--btn);
-      color:var(--ink); cursor:pointer; user-select:none;
+      display:inline-flex; gap:6px; align-items:center;
+      padding:.45rem .65rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
+      color:var(--ink); cursor:pointer; font-size:.85rem;
     }
-    .theme-toggle svg{width:18px;height:18px;display:block}
+    .theme-toggle svg{width:16px;height:16px;display:block}
 
-    /* Floating tabs above card */
-    .card-tabs{
-      position:absolute; top:-38px; right:24px;
-      z-index:10;
-      display:flex; gap:8px;
-    }
-    .card-tabs .btn{
-      padding:.7rem 1.3rem; font-size:.95rem; font-weight:600;
-      border-radius:12px 12px 0 0;
-      border:1px solid var(--line); border-bottom:none;
-      background:var(--card);
-      box-shadow:0 -6px 20px rgba(0,0,0,.25), 0 -2px 8px rgba(0,0,0,.1);
-      transition:transform .15s ease, box-shadow .15s ease;
-      white-space:nowrap;
-    }
-    .card-tabs .btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 -10px 28px rgba(0,0,0,.3), 0 -4px 12px rgba(0,0,0,.15);
-    }
-
-    /* Hero emblem */
-    .hero{display:grid; place-items:center; padding:46px 0 18px}
-    .hero .emblem{
-      width:clamp(200px, 26vw, 360px);
-      height:auto; filter:drop-shadow(0 14px 32px rgba(0,0,0,.35));
-      image-rendering:auto;
-    }
-
-    /* Card */
-    .card{
-      position:relative;
-      background:var(--card); border:1px solid var(--line);
-      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25); overflow:visible;
-    }
-    header.card-hd{
-      display:flex; gap:20px; align-items:center;
-      padding:22px 24px; border-bottom:1px solid var(--line);
-    }
-    .logo-box{
-      width:72px; height:72px; border-radius:12px;
-      background:rgba(255,255,255,.06);
-      display:grid; place-items:center; flex:0 0 auto; overflow:hidden;
-    }
-    .logo-box img{width:86%; height:auto; display:block}
-    h1{font-size:1.9rem; margin:0}
-    .tag{margin:.35rem 0 0; color:var(--muted)}
-    main{padding:22px 24px}
-    p{margin:0 0 12px}
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px}
-    .btn{
-      display:inline-block; padding:.7rem 1rem; border-radius:12px;
-      text-decoration:none; border:1px solid var(--line); color:var(--ink);
-      background:var(--btn); transition:transform .05s ease, filter .15s ease;
-    }
-    .btn:hover{filter:var(--btn-hover)}
-    .btn.primary{background:var(--accent); border-color:transparent; color:#fff}
-    .meta{
-      display:grid; gap:10px; margin-top:16px;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
-    }
-    .meta .k{font-weight:600}
-    footer.card-ft{
-      padding:16px 24px; border-top:1px solid var(--line);
-      display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center;
-      color:var(--muted); font-size:.95rem;
-    }
-    footer.card-ft .footer-left{
-      display:flex; flex-direction:column; gap:4px;
-    }
-    footer.card-ft .social-links{
-      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; align-items:center;
-    }
-    footer.card-ft .social-links .btn{
-      padding:.4rem .55rem; font-size:.75rem;
-    }
-    footer.card-ft .social-links .divider{
-      color:var(--muted); opacity:0.5; margin:0 2px;
-    }
-    @media (max-width:900px){
-      footer.card-ft{ grid-template-columns:1fr; justify-items:center; text-align:center; }
-      footer.card-ft .social-links{ justify-content:center; }
-    }
-
-    /* Mobile hamburger menu */
+    /* Mobile nav */
     .hamburger{
       display:none;
-      position:absolute; top:18px; right:18px;
-      padding:.55rem .75rem; border-radius:12px;
-      border:1px solid var(--line); background:var(--btn);
+      padding:.5rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
       color:var(--ink); cursor:pointer;
     }
-    .hamburger svg{width:20px; height:20px; display:block}
+    .hamburger svg{width:22px; height:22px; display:block}
     .mobile-menu{
       display:none;
       position:fixed; top:0; left:0; right:0; bottom:0;
-      background:rgba(0,0,0,.85); z-index:100;
-      flex-direction:column; align-items:center; justify-content:center; gap:16px;
+      background:rgba(0,0,0,.9); z-index:100;
+      flex-direction:column; align-items:center; justify-content:center; gap:20px;
     }
     .mobile-menu.open{display:flex}
     .mobile-menu a{
-      font-size:1.3rem; padding:1rem 2rem; border-radius:12px;
+      font-size:1.2rem; padding:.8rem 2rem; border-radius:12px;
       background:var(--card); border:1px solid var(--line);
       color:var(--ink); text-decoration:none;
     }
     .mobile-menu .close-btn{
-      position:absolute; top:18px; right:18px;
-      padding:.55rem .75rem; border-radius:12px;
-      border:1px solid var(--line); background:var(--btn);
-      color:var(--ink); cursor:pointer; font-size:1.2rem;
+      position:absolute; top:16px; right:16px;
+      padding:.5rem .8rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
+      color:var(--ink); cursor:pointer; font-size:1.1rem;
     }
-    @media (max-width:960px){
-      .card-tabs{display:none !important}
+    @media (max-width:768px){
+      .nav-links{display:none}
       .hamburger{display:block}
-      .theme-toggle{left:18px; right:auto}
-    }
-    @media (max-width:640px){
-      header.card-hd{flex-direction:column; text-align:center}
-      .logo-box{width:64px;height:64px}
-      h1{font-size:1.65rem}
-      .theme-toggle{top:14px; left:14px}
+      .nav-name{display:none}
     }
 
-    /* Respect system preference by default when user has not explicitly chosen */
+    /* ===== HERO SECTION ===== */
+    .hero{
+      padding:80px 0 60px;
+      text-align:center;
+    }
+    .hero-logo{
+      width:140px; height:140px;
+      margin-bottom:24px;
+      filter:drop-shadow(0 12px 28px rgba(0,0,0,.3));
+    }
+    .hero .org-name{
+      font-size:1.1rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      color:var(--muted);
+      margin:0 0 8px;
+    }
+    .hero .nonprofit-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 14px;
+      background:rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.3);
+      border-radius:20px;
+      color:var(--success);
+      font-size:.8rem;
+      font-weight:600;
+      margin-bottom:16px;
+    }
+    .hero h1{
+      font-size:2.6rem;
+      margin:0 0 16px;
+      font-weight:700;
+      line-height:1.2;
+    }
+    .hero .tagline{
+      font-size:1.25rem;
+      color:var(--muted);
+      max-width:600px;
+      margin:0 auto 28px;
+    }
+    .hero .hero-cta{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:.85rem 1.4rem;
+      border-radius:12px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      color:var(--ink);
+      background:var(--btn);
+      font-weight:600;
+      font-size:1rem;
+      transition:all .15s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(0,0,0,.2);
+    }
+    .btn.primary{
+      background:var(--accent);
+      border-color:transparent;
+      color:#fff;
+    }
+    .btn.primary:hover{
+      filter:brightness(1.1);
+    }
+    .btn svg{width:18px;height:18px}
+
+    @media (max-width:640px){
+      .hero{padding:50px 0 40px}
+      .hero-logo{width:100px; height:100px}
+      .hero h1{font-size:1.9rem}
+      .hero .tagline{font-size:1.05rem}
+    }
+
+    /* ===== SECTION STYLES ===== */
+    section{
+      padding:60px 0;
+    }
+    section:nth-child(even){
+      background:rgba(0,0,0,.15);
+    }
+    :root.light section:nth-child(even){
+      background:rgba(0,0,0,.03);
+    }
+    .section-title{
+      font-size:1.8rem;
+      margin:0 0 12px;
+      font-weight:700;
+      text-align:center;
+    }
+    .section-sub{
+      color:var(--muted);
+      text-align:center;
+      margin:0 0 40px;
+      font-size:1.05rem;
+    }
+
+    /* ===== WHAT WE DO ===== */
+    .focus-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+    }
+    .focus-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:28px;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .focus-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 32px rgba(0,0,0,.2);
+    }
+    .focus-icon{
+      width:48px; height:48px;
+      background:rgba(59,130,246,.15);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:16px;
+      font-size:1.5rem;
+    }
+    .focus-card h3{
+      margin:0 0 8px;
+      font-size:1.2rem;
+      font-weight:600;
+    }
+    .focus-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* ===== FEATURED PROJECT ===== */
+    .featured-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:40px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+    .featured-content h3{
+      font-size:1.6rem;
+      margin:0 0 8px;
+      font-weight:700;
+    }
+    .featured-content .project-label{
+      display:inline-block;
+      padding:4px 12px;
+      background:rgba(59,130,246,.15);
+      color:var(--accent);
+      border-radius:20px;
+      font-size:.8rem;
+      font-weight:600;
+      margin-bottom:12px;
+    }
+    .featured-content p{
+      margin:0 0 20px;
+      color:var(--muted);
+    }
+    .featured-visual{
+      background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(59,130,246,.02));
+      border:1px solid rgba(59,130,246,.2);
+      border-radius:14px;
+      padding:32px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+    .featured-visual .codex-logo{
+      width:120px;
+      height:120px;
+      margin-bottom:12px;
+      object-fit:contain;
+    }
+    /* Show white logo by default (dark mode) */
+    .codex-logo-light{display:none}
+    .codex-logo-dark{display:block; margin:0 auto}
+    /* Show black logo in light mode */
+    :root.light .codex-logo-light{display:block; margin:0 auto}
+    :root.light .codex-logo-dark{display:none}
+    .featured-visual .codex-name{
+      font-size:1.4rem;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .featured-visual .codex-tagline{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    @media (max-width:768px){
+      .featured-card{
+        grid-template-columns:1fr;
+        padding:28px;
+      }
+      .featured-visual{order:-1}
+    }
+
+    /* ===== SUPPORT SECTION ===== */
+    .support-section{
+      text-align:center;
+    }
+    .tax-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 20px;
+      background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.3);
+      border-radius:50px;
+      color:var(--success);
+      font-weight:600;
+      margin-bottom:20px;
+    }
+    .tax-badge svg{width:20px;height:20px}
+    .support-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+      margin-top:32px;
+    }
+    .support-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:32px 28px;
+      text-align:center;
+    }
+    .support-card h3{
+      margin:0 0 8px;
+      font-size:1.3rem;
+    }
+    .support-card p{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .support-card .btn{
+      width:100%;
+      justify-content:center;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer{
+      padding:40px 0;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      margin-bottom:20px;
+    }
+    .footer-links a{
+      padding:.4rem .7rem;
+      border-radius:8px;
+      text-decoration:none;
+      color:var(--muted);
+      font-size:.85rem;
+      border:1px solid var(--line);
+      transition:all .15s;
+    }
+    .footer-links a:hover{
+      color:var(--ink);
+      border-color:var(--ink);
+    }
+    .footer-legal{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    .footer-legal a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.85rem;
+    }
+    .footer-legal a:hover{
+      color:var(--accent);
+    }
+    .footer-copy{
+      color:var(--muted);
+      font-size:.9rem;
+      margin:0;
+    }
+    .footer-copy a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    /* Light mode adjustments */
+    :root.light .focus-card,
+    :root.light .featured-card,
+    :root.light .support-card{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
     @media (prefers-color-scheme: light){
-      :root.auto{ --card:#ffffff; --ink:#0e1523; --muted:#4b5563; --line:#e5e7eb; --btn:#ffffff; --btn-hover:none; }
+      :root.auto .focus-card,
+      :root.auto .featured-card,
+      :root.auto .support-card{
+        background:#ffffff;
+        border-color:rgba(100,130,160,.2);
+      }
+      :root.auto .codex-logo-light{display:block; margin:0 auto}
+      :root.auto .codex-logo-dark{display:none}
+      :root.auto{
+        --bg1:#c9d6e5; --bg2:#a8bdd4;
+        --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+        --line:#8fa5be; --btn:#ffffff;
+        --radial-overlay:rgba(11,30,52,0.25);
+      }
     }
   </style>
 
-  <!-- Prevent flash: set initial class before paint -->
   <script>
     (function() {
-      const saved = localStorage.getItem('theios.theme'); // 'light'|'dark'|'auto'
+      const saved = localStorage.getItem('theios.theme');
       const pref = saved || 'auto';
-      const root = document.documentElement;
-      root.classList.remove('light','auto');
-      root.classList.add(pref);
-      root.setAttribute('data-theme', pref);
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
     })();
   </script>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Hamburger menu (mobile only) -->
-    <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
 
-    <!-- Mobile menu overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-      <button class="close-btn" id="closeMenu" type="button" aria-label="Close menu">✕</button>
-      <a href="./donate/">Donate</a>
-      <a href="./pledge/">The Pledge</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="wrap">
+      <a href="/" class="nav-brand">
+        <img src="./theios-logo-variant.png" alt="" class="nav-logo" onerror="this.src='./theios-logo-favicon.png'">
+        <span class="nav-name">Theios Research Institute</span>
+      </a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#codex">Codex Nexus</a>
+        <a href="./pledge/">The Pledge</a>
+        <a href="./donate/" class="btn-donate">Donate</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
+          </svg>
+          <span id="themeLabel">Auto</span>
+        </button>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+  </nav>
 
-    <!-- Theme toggle -->
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
-      </svg>
-      <span id="themeLabel">Auto</span>
-    </button>
-
-    <!-- Large hero emblem with fallback -->
-    <div class="hero" aria-hidden="true">
-      <img class="emblem"
-           src="./theios-logo-variant.png"
-           alt=""
-           width="360" height="360" loading="eager"
-           onerror="this.src='./theios-logo-favicon.png'">
-    </div>
-
-    <article class="card" role="main">
-      <nav class="card-tabs">
-        <a class="btn" href="./donate/">Donate</a>
-        <a class="btn" href="./pledge/">The Pledge</a>
-      </nav>
-      <header class="card-hd">
-        <div class="logo-box">
-          <img src="./theios-logo-variant.png"
-               alt="Theios emblem" width="80" height="80" loading="lazy"
-               onerror="this.src='./theios-logo-favicon.png'">
-        </div>
-        <div>
-          <h1 class="site-title">Theios Research Institute, Inc.</h1>
-          <p class="site-tagline tag">A nonprofit dedicated to applied discovery science &amp; structural laws of emergence</p>
-        </div>
-      </header>
-
-      <main>
-        <p>Theios (θείος) Research Institute, Inc. is a nonprofit organization dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols. Our work reveals recurring patterns that inform a broader scientific understanding of cognition, behavior, and the structures underlying complex systems.</p>
-        <p><strong>Our mission</strong> is to advance scientific rigor through deterministic computational discovery, revealing structural regularities that deepen understanding across disciplines. Findings are distilled into accessible briefs, while foundational records are maintained in secure archives for institutional partners and academic collaborators.</p>
-
-        <div class="actions" aria-label="Primary actions">
-          <a class="btn primary" href="https://codex.nexus">Launch Codex Nexus →</a>
-          <a class="btn primary" href="./donate/">Support Our Research</a>
-          <a class="btn" href="mailto:research@theios.org">Contact: research@theios.org</a>
-        </div>
-
-        <section class="meta" aria-label="At a glance">
-          <div><span class="k">Focus:</span> Emergent structure, universals, cross-domain regularities</div>
-          <div><span class="k">Methods:</span> Structured validation, reproducible workflows, cross-domain synthesis</div>
-          <div><span class="k">Outputs:</span> Public briefs, artifacts, and reproducible test harnesses</div>
-        </section>
-      </main>
-
-      <footer class="card-ft">
-        <div class="footer-left">
-          <div>© <span id="y"></span> Theios Research Institute, Inc. — A nonprofit organization</div>
-          <div>Private research graph — collaborations by invitation</div>
-          <div style="margin-top:6px"><a class="btn" href="./privacy-policy.html" style="padding:.3rem .5rem;font-size:.7rem">Privacy</a> <a class="btn" href="./terms-of-service.html" style="padding:.3rem .5rem;font-size:.7rem">Terms</a></div>
-        </div>
-        <nav class="social-links" aria-label="Secondary">
-          <a class="btn" href="https://github.com/theios-research-institute" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
-          <a class="btn" href="https://codex.nexus" title="Codex Nexus">Codex Nexus</a>
-          <a class="btn" href="https://orcid.org/0009-0004-0776-8634" target="_blank" rel="noopener noreferrer" title="ORCID">ORCID</a>
-          <span class="divider">|</span>
-          <a class="btn" href="https://x.com/theios_org" target="_blank" rel="noopener noreferrer" title="X (Twitter)">X</a>
-          <a class="btn" href="https://bsky.app/profile/theios.bsky.social" target="_blank" rel="noopener noreferrer" title="Bluesky">Bluesky</a>
-          <a class="btn" href="https://www.facebook.com/theios.org" target="_blank" rel="noopener noreferrer" title="Facebook">Facebook</a>
-          <a class="btn" href="https://www.instagram.com/theiosresearch/" target="_blank" rel="noopener noreferrer" title="Instagram">Instagram</a>
-        </nav>
-      </footer>
-    </article>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeMenu" type="button" aria-label="Close menu">✕</button>
+    <a href="#research">Research</a>
+    <a href="#codex">Codex Nexus</a>
+    <a href="./pledge/">The Pledge</a>
+    <a href="./donate/">Donate</a>
   </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <img src="./theios-logo-variant.png" alt="Theios Research Institute" class="hero-logo" onerror="this.src='./theios-logo-favicon.png'">
+      <p class="org-name">Theios Research Institute, Inc.</p>
+      <span class="nonprofit-badge">501(c)(3) Nonprofit</span>
+      <h1>Applied Discovery Science and<br>Structural Laws of Emergence</h1>
+      <p class="tagline">We develop systems that rigorously stress-test ideas through structured scientific protocols.</p>
+      <div class="hero-cta">
+        <a href="https://codex.nexus" class="btn primary">
+          Explore Codex Nexus
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#research" class="btn">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- What We Do -->
+  <section id="research">
+    <div class="wrap">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-sub">Rigorous methods for discovering what's true — across every domain.</p>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <div class="focus-icon">🔬</div>
+          <h3>Discovery Science</h3>
+          <p>We build computational frameworks that test for recurring patterns and structural regularities across scientific domains.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon">🧠</div>
+          <h3>Knowledge Systems</h3>
+          <p>We build structured frameworks that organize understanding — connecting ideas across disciplines to reveal deeper truths about how systems work.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon">📖</div>
+          <h3>Open Research</h3>
+          <p>Our findings are published as accessible briefs and reproducible artifacts. Science advances when knowledge is shared, not siloed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section id="codex">
+    <div class="wrap">
+      <div class="featured-card">
+        <div class="featured-content">
+          <span class="project-label">Featured Project</span>
+          <h3>Codex Nexus</h3>
+          <p>A discovery engine that maps the structural laws underlying complex systems. Codex Nexus uses protocol-governed validation to identify patterns that hold true across domains — from physics to psychology to economics.</p>
+          <a href="https://codex.nexus" class="btn primary">Launch Codex Nexus →</a>
+        </div>
+        <div class="featured-visual">
+          <img src="./codex-nexus-logo-white.png" alt="Codex Nexus" class="codex-logo codex-logo-dark">
+          <img src="./codex-nexus-logo-black.png" alt="Codex Nexus" class="codex-logo codex-logo-light">
+          <div class="codex-name">Codex Nexus</div>
+          <div class="codex-tagline">Discovery Engine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="support-section" id="support">
+    <div class="wrap">
+      <div class="tax-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        501(c)(3) Tax-Deductible
+      </div>
+      <h2 class="section-title">Support Our Research</h2>
+      <p class="section-sub">Your contribution advances discovery science and keeps our research open to all.</p>
+
+      <div class="support-cards">
+        <div class="support-card">
+          <h3>Make a Donation</h3>
+          <p>Fund computational research that reveals structural truths. Every contribution directly supports discovery.</p>
+          <a href="./donate/" class="btn primary">Donate Now</a>
+        </div>
+        <div class="support-card">
+          <h3>Take the Pledge</h3>
+          <p>Join a community committed to intellectual honesty, rigorous thinking, and following evidence wherever it leads.</p>
+          <a href="./pledge/" class="btn">Affirm the Commitment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="https://github.com/theios-research-institute" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://codex.nexus">Codex Nexus</a>
+        <a href="https://orcid.org/0009-0004-0776-8634" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://x.com/theios_org" target="_blank" rel="noopener">X</a>
+        <a href="https://bsky.app/profile/theios.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+        <a href="https://www.facebook.com/theios.org" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/theiosresearch/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="footer-legal">
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-of-service.html">Terms of Service</a>
+        <a href="mailto:research@theios.org">Contact</a>
+      </div>
+      <p class="footer-copy">© <span id="y"></span> <a href="/">Theios Research Institute, Inc.</a> — A nonprofit organization</p>
+    </div>
+  </footer>
 
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Theme toggle logic
+    // Theme toggle
     const root = document.documentElement;
-    const btn  = document.getElementById('themeToggle');
+    const btn = document.getElementById('themeToggle');
     const label = document.getElementById('themeLabel');
 
-    function setTheme(mode){ // 'light' | 'dark' | 'auto'
+    function setTheme(mode) {
       root.classList.remove('light','auto');
       root.classList.add(mode);
       root.setAttribute('data-theme', mode);
@@ -350,20 +700,18 @@
       label.textContent = mode[0].toUpperCase() + mode.slice(1);
     }
 
-    // initialize label from current state
     (function(){
       const current = root.getAttribute('data-theme') || 'auto';
       label.textContent = current[0].toUpperCase() + current.slice(1);
     })();
 
-    // cycle Auto → Light → Dark → Auto
     btn.addEventListener('click', () => {
       const cur = root.getAttribute('data-theme') || 'auto';
       const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
       setTheme(next);
     });
 
-    // Mobile menu toggle
+    // Mobile menu
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenu = document.getElementById('closeMenu');
@@ -371,7 +719,9 @@
     hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
     closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
     mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) mobileMenu.classList.remove('open');
+      if (e.target === mobileMenu || e.target.tagName === 'A') {
+        mobileMenu.classList.remove('open');
+      }
     });
   </script>
 </body>

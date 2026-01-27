@@ -1,265 +1,358 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Terms of Service - Theios Research Institute</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Terms of Service | Theios Research Institute, Inc.</title>
+  <meta name="description" content="Terms of Service for Theios Research Institute, Inc." />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./favicon.png" />
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-LHZ0DVLTBB');
   </script>
+
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220;
     }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff;
+      --radial-overlay:rgba(11,30,52,0.25);
     }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
     }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:start center;
     }
-    p {
-      margin: 1em 0;
+    .wrap{width:100%; max-width:800px; padding:28px 20px 64px; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
     }
-    a {
-      color: #1a1a1a;
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    /* Back link */
+    .back-link{
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--muted); text-decoration:none; font-size:.95rem;
+      margin-bottom:18px; transition:color .15s;
     }
-    a:visited {
-      color: #1a1a1a;
+    .back-link:hover{color:var(--ink)}
+    .back-link svg{width:16px;height:16px}
+
+    /* Logo */
+    .logo-hero{
+      display:flex; justify-content:center; margin:10px 0 20px;
     }
-    img {
-      max-width: 100%;
+    .logo-hero a{display:block}
+    .logo-hero .logo-img{
+      width:80px; height:auto;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));
     }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
+
+    /* Card */
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:32px 36px; margin-bottom:20px;
     }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
+
+    /* Typography */
+    h1{
+      font-size:2rem;
+      margin:0 0 8px;
+      font-weight:700;
+      text-align:center;
     }
-    h6 {
-      font-weight: normal;
+    .subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin:0 0 8px;
     }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
+    .last-updated{
+      text-align:center;
+      font-size:.9rem;
+      color:var(--muted);
+      font-style:italic;
+      margin-bottom:24px;
+      padding-bottom:20px;
+      border-bottom:1px solid var(--line);
     }
-    li > ol, li > ul {
-      margin-top: 0;
+    h2{
+      font-size:1.3rem;
+      margin:28px 0 12px;
+      font-weight:600;
+      color:var(--ink);
     }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
+    h3{
+      font-size:1.1rem;
+      margin:20px 0 8px;
+      font-weight:600;
     }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
+    p{margin:0 0 14px}
+    ul{
+      margin:0 0 14px;
+      padding-left:24px;
     }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
+    li{margin-bottom:6px}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    hr{
+      border:none;
+      border-top:1px solid var(--line);
+      margin:24px 0;
     }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
+
+    /* Footer nav */
+    .footer-nav{
+      text-align:center;
+      margin-top:28px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
     }
-    .last-updated {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 2em;
+
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+
+    :root.light .card{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .card{background:#ffffff; border-color:rgba(100,130,160,.2)}
+      :root.auto{--bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --radial-overlay:rgba(11,30,52,0.25)}
+    }
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px 48px}
+      .card{padding:24px 20px}
+      h1{font-size:1.6rem}
+      .theme-toggle{top:14px; right:14px}
     }
   </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Terms of Service</h1>
-<p class="subtitle">Theios Research Institute</p>
-</header>
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
 
-<p class="last-updated"><strong>Last Updated:</strong> September 26, 2025</p>
+    <!-- Back link -->
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </a>
 
-<hr />
+    <!-- Logo -->
+    <div class="logo-hero">
+      <a href="/">
+        <img src="./theios-logo-variant.png" alt="Theios Research Institute, Inc." class="logo-img" onerror="this.src='./theios-logo-favicon.png'">
+      </a>
+    </div>
 
-<h2 id="acceptance-of-terms">1. Acceptance of Terms</h2>
+    <article class="card">
+      <h1>Terms of Service</h1>
+      <p class="subtitle">Theios Research Institute, Inc.</p>
+      <p class="last-updated"><strong>Last Updated:</strong> September 26, 2025</p>
 
-<p>By accessing or using the websites, services, and research materials provided by <strong>Theios Research Institute</strong> (including but not limited to theios.org and related domains), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, then you may not access our services.</p>
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using the websites, services, and research materials provided by <strong>Theios Research Institute</strong> (including but not limited to theios.org and related domains), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, then you may not access our services.</p>
 
-<hr />
+      <hr />
 
-<h2 id="description-of-service">2. Description of Service</h2>
+      <h2>2. Description of Service</h2>
+      <p>Theios Research Institute provides:</p>
+      <ul>
+        <li><strong>Academic Research:</strong> Structured knowledge frameworks and discovery engines</li>
+        <li><strong>Open Source Projects:</strong> Including the Codex Nexus Discovery Engine</li>
+        <li><strong>Educational Content:</strong> Research methodologies, publications, and documentation</li>
+        <li><strong>Professional Services:</strong> Research consultation and collaboration opportunities</li>
+      </ul>
 
-<p>Theios Research Institute provides:</p>
-<ul>
-<li><strong>Academic Research</strong>: Structured knowledge frameworks and discovery engines</li>
-<li><strong>Open Source Projects</strong>: Including the Codex Nexus Discovery Engine</li>
-<li><strong>Educational Content</strong>: Research methodologies, publications, and documentation</li>
-<li><strong>Professional Services</strong>: Research consultation and collaboration opportunities</li>
-</ul>
+      <hr />
 
-<hr />
+      <h2>3. Intellectual Property Rights</h2>
 
-<h2 id="intellectual-property">3. Intellectual Property Rights</h2>
+      <h3>Our Content</h3>
+      <p>The content, organization, graphics, design, compilation, magnetic translation, digital conversion, and other matters related to our services are protected under applicable copyrights, trademarks, and other proprietary rights. The copying, redistribution, use, or publication by you of any such matters or any part of our services, except as allowed by our open source licenses, is strictly prohibited.</p>
 
-<h3 id="our-content">Our Content</h3>
-<p>The content, organization, graphics, design, compilation, magnetic translation, digital conversion, and other matters related to our services are protected under applicable copyrights, trademarks, and other proprietary rights. The copying, redistribution, use, or publication by you of any such matters or any part of our services, except as allowed by our open source licenses, is strictly prohibited.</p>
+      <h3>Open Source Materials</h3>
+      <p>Certain research materials and software are released under open source licenses (such as MIT License). These materials are clearly marked and subject to their respective license terms, which take precedence over these Terms for those specific materials.</p>
 
-<h3 id="open-source-materials">Open Source Materials</h3>
-<p>Certain research materials and software are released under open source licenses (such as MIT License). These materials are clearly marked and subject to their respective license terms, which take precedence over these Terms for those specific materials.</p>
+      <h3>Proprietary Research</h3>
+      <p>Some research methodologies, algorithms, and analytical frameworks remain proprietary to Theios Research Institute. Unauthorized reverse engineering, replication, or commercial use of proprietary elements is prohibited.</p>
 
-<h3 id="proprietary-research">Proprietary Research</h3>
-<p>Some research methodologies, algorithms, and analytical frameworks remain proprietary to Theios Research Institute. Unauthorized reverse engineering, replication, or commercial use of proprietary elements is prohibited.</p>
+      <hr />
 
-<hr />
+      <h2>4. User Conduct</h2>
+      <p>You agree not to use our services to:</p>
+      <ul>
+        <li>Violate any applicable laws or regulations</li>
+        <li>Infringe upon intellectual property rights</li>
+        <li>Transmit harmful, threatening, or harassing content</li>
+        <li>Attempt to gain unauthorized access to our systems</li>
+        <li>Interfere with the proper functioning of our services</li>
+        <li>Extract, scrape, or systematically collect our proprietary data</li>
+        <li>Use our research for harmful or unethical purposes</li>
+      </ul>
 
-<h2 id="user-conduct">4. User Conduct</h2>
+      <hr />
 
-<p>You agree not to use our services to:</p>
-<ul>
-<li>Violate any applicable laws or regulations</li>
-<li>Infringe upon intellectual property rights</li>
-<li>Transmit harmful, threatening, or harassing content</li>
-<li>Attempt to gain unauthorized access to our systems</li>
-<li>Interfere with the proper functioning of our services</li>
-<li>Extract, scrape, or systematically collect our proprietary data</li>
-<li>Use our research for harmful or unethical purposes</li>
-</ul>
+      <h2>5. Academic and Research Use</h2>
 
-<hr />
+      <h3>Citation Requirements</h3>
+      <p>When referencing our research, methodologies, or data in academic work, proper citation is required using our provided citation formats.</p>
 
-<h2 id="academic-use">5. Academic and Research Use</h2>
+      <h3>Collaboration</h3>
+      <p>We welcome academic collaboration. Please contact us at <a href="mailto:research@theios.org">research@theios.org</a> to discuss potential partnerships.</p>
 
-<h3 id="citation-requirements">Citation Requirements</h3>
-<p>When referencing our research, methodologies, or data in academic work, proper citation is required using our provided citation formats.</p>
+      <h3>Data Usage</h3>
+      <p>Public research data may be used for non-commercial academic purposes with proper attribution. Commercial use requires explicit permission.</p>
 
-<h3 id="collaboration">Collaboration</h3>
-<p>We welcome academic collaboration. Please contact us at research@theios.org to discuss potential partnerships.</p>
+      <hr />
 
-<h3 id="data-usage">Data Usage</h3>
-<p>Public research data may be used for non-commercial academic purposes with proper attribution. Commercial use requires explicit permission.</p>
+      <h2>6. Privacy and Data Collection</h2>
+      <p>Our collection and use of personal information is governed by our <a href="privacy-policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+      <p>We use Google Analytics to understand how our services are used. This helps us improve our research and educational offerings.</p>
 
-<hr />
+      <hr />
 
-<h2 id="privacy-and-data">6. Privacy and Data Collection</h2>
+      <h2>7. Disclaimers</h2>
 
-<p>Our collection and use of personal information is governed by our <a href="privacy-policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+      <h3>Research Nature</h3>
+      <p>Our content is provided for research and educational purposes. While we strive for accuracy, research is inherently evolving, and findings may change as new data becomes available.</p>
 
-<p>We use Google Analytics to understand how our services are used. This helps us improve our research and educational offerings.</p>
+      <h3>No Warranties</h3>
+      <p>Our services are provided "as is" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
 
-<hr />
+      <h3>Limitation of Liability</h3>
+      <p>In no event shall Theios Research Institute be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
 
-<h2 id="disclaimers">7. Disclaimers</h2>
+      <hr />
 
-<h3 id="research-nature">Research Nature</h3>
-<p>Our content is provided for research and educational purposes. While we strive for accuracy, research is inherently evolving, and findings may change as new data becomes available.</p>
+      <h2>8. Modifications to Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of our services after changes constitutes acceptance of the new Terms.</p>
+      <p>Material changes will be highlighted with updated "Last Modified" dates and, where appropriate, additional notice.</p>
 
-<h3 id="no-warranties">No Warranties</h3>
-<p>Our services are provided "as is" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+      <hr />
 
-<h3 id="limitation-of-liability">Limitation of Liability</h3>
-<p>In no event shall Theios Research Institute be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+      <h2>9. Termination</h2>
+      <p>We may terminate or suspend access to our services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+      <p>Upon termination, your right to use our services ceases immediately.</p>
 
-<hr />
+      <hr />
 
-<h2 id="modifications">8. Modifications to Terms</h2>
+      <h2>10. Governing Law</h2>
+      <p>These Terms shall be interpreted and governed by the laws of the United States, without regard to conflict of law provisions.</p>
+      <p>Any disputes arising from these Terms or our services shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.</p>
 
-<p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of our services after changes constitutes acceptance of the new Terms.</p>
+      <hr />
 
-<p>Material changes will be highlighted with updated "Last Modified" dates and, where appropriate, additional notice.</p>
+      <h2>11. Severability</h2>
+      <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
 
-<hr />
+      <hr />
 
-<h2 id="termination">9. Termination</h2>
+      <h2>12. Contact Information</h2>
+      <p>For questions about these Terms of Service, please contact:</p>
+      <p>
+        <strong>Theios Research Institute, Inc.</strong><br />
+        Email: <a href="mailto:legal@theios.org">legal@theios.org</a><br />
+        Research Inquiries: <a href="mailto:research@theios.org">research@theios.org</a><br />
+        Website: <a href="https://theios.org">https://theios.org</a>
+      </p>
 
-<p>We may terminate or suspend access to our services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+      <hr />
 
-<p>Upon termination, your right to use our services ceases immediately.</p>
+      <h2>13. Acknowledgment</h2>
+      <p>By using our services, you acknowledge that you have read these Terms of Service and agree to be bound by them.</p>
 
-<hr />
+      <div class="footer-nav">
+        <a href="/">← Back to Home</a> · <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </article>
+  </div>
 
-<h2 id="governing-law">10. Governing Law</h2>
+  <footer>
+    <p>© <span id="y"></span> <a href="/">Theios Research Institute, Inc.</a></p>
+  </footer>
 
-<p>These Terms shall be interpreted and governed by the laws of the United States, without regard to conflict of law provisions.</p>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-<p>Any disputes arising from these Terms or our services shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.</p>
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
 
-<hr />
+    function setTheme(mode) {
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
 
-<h2 id="severability">11. Severability</h2>
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
 
-<p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
-
-<hr />
-
-<h2 id="contact-information">12. Contact Information</h2>
-
-<p>For questions about these Terms of Service, please contact:</p>
-
-<p><strong>Theios Research Institute</strong><br />
-Email: <a href="mailto:legal@theios.org">legal@theios.org</a><br />
-Research Inquiries: <a href="mailto:research@theios.org">research@theios.org</a><br />
-Website: <a href="https://theios.org">https://theios.org</a></p>
-
-<hr />
-
-<h2 id="acknowledgment">13. Acknowledgment</h2>
-
-<p>By using our services, you acknowledge that you have read these Terms of Service and agree to be bound by them.</p>
-
-<hr />
-
-<p style="text-align: center; margin-top: 3em;">
-<a href="README.html">← Back to Home</a> |
-<a href="privacy-policy.html">Privacy Policy</a>
-</p>
-
-<p align="center" style="margin-top: 2em;">
-<img src="theios-logo-variant.png" width="80" alt="Theios Research Institute logo">
-</p>
-
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+  </script>
 </body>
 </html>

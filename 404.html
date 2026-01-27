@@ -1,56 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found - Theios Research Institute</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Page Not Found | Theios Research Institute, Inc.</title>
+  <meta name="robots" content="noindex">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./favicon.png" />
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-LHZ0DVLTBB');
   </script>
+
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      text-align: center;
-      padding: 50px;
-      color: #333;
-      background-color: #fdfdfd;
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff;
+      --radial-overlay:rgba(11,30,52,0.25);
     }
-    p {
-      font-size: 1.1em;
-      margin: 1em 0;
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
     }
-    a {
-      color: #1a1a1a;
-      text-decoration: none;
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      display:grid; place-items:center;
     }
-    a:hover {
-      text-decoration: underline;
+    .wrap{width:100%; max-width:500px; padding:28px 20px; text-align:center; position:relative}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:absolute; top:18px; right:18px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:.55rem .75rem; border-radius:12px;
+      border:1px solid var(--line); background:var(--btn);
+      color:var(--ink); cursor:pointer; user-select:none;
     }
-    .logo {
-      margin: 2em 0;
+    .theme-toggle svg{width:18px;height:18px;display:block}
+
+    .logo-hero{margin-bottom:24px}
+    .logo-img{width:100px; height:auto; filter:drop-shadow(0 8px 20px rgba(0,0,0,.3))}
+
+    .card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.25);
+      padding:40px 32px;
+    }
+
+    .error-code{
+      font-size:4rem;
+      font-weight:700;
+      color:var(--accent);
+      margin:0 0 8px;
+      line-height:1;
+    }
+
+    h1{
+      font-size:1.5rem;
+      margin:0 0 12px;
+      font-weight:600;
+    }
+    p{margin:0 0 20px; color:var(--muted)}
+
+    .btn{
+      display:inline-block;
+      padding:.85rem 1.5rem;
+      border-radius:12px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      color:var(--ink);
+      background:var(--btn);
+      transition:all .15s ease;
+    }
+    .btn:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+    .btn.primary{
+      background:var(--accent);
+      border-color:transparent;
+      color:#fff;
+    }
+    .btn.primary:hover{
+      filter:brightness(1.1);
+    }
+
+    footer{
+      text-align:center;
+      padding:24px 20px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+
+    :root.light .card{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .card{background:#ffffff; border-color:rgba(100,130,160,.2)}
+      :root.auto{--bg1:#c9d6e5; --bg2:#a8bdd4; --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e; --line:#8fa5be; --btn:#ffffff; --radial-overlay:rgba(11,30,52,0.25)}
+    }
+
+    @media (max-width:640px){
+      .wrap{padding:20px 16px}
+      .card{padding:32px 24px}
+      .error-code{font-size:3rem}
+      .theme-toggle{top:14px; right:14px}
     }
   </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
 </head>
 <body>
-  <h1>404 - Page Not Found</h1>
-  <p>The page you're looking for doesn't exist.</p>
-  <p><a href="README.html">← Return to Home</a></p>
+  <div class="wrap">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Zm13.66 6.66a1 1 0 1 1-1.41 1.41l-1.41-1.41a1 1 0 1 1 1.41-1.41l1.41 1.41ZM8.17 6.34a1 1 0 1 1-1.41-1.41L8.17 3.5a1 1 0 1 1 1.41 1.41L8.17 6.34Zm8.48-1.41a1 1 0 1 1 1.41 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41ZM6.34 17.66a1 1 0 1 1 1.41-1.41l1.41 1.41a1 1 0 0 1-1.41 1.41L6.34 17.66Z"/>
+      </svg>
+      <span id="themeLabel">Auto</span>
+    </button>
 
-  <div class="logo">
-    <img src="theios-logo-variant.png" width="100" alt="Theios Research Institute logo">
+    <div class="logo-hero">
+      <a href="/">
+        <img src="./theios-logo-variant.png" alt="Theios Research Institute" class="logo-img" onerror="this.src='./theios-logo-favicon.png'">
+      </a>
+    </div>
+
+    <article class="card">
+      <p class="error-code">404</p>
+      <h1>Page Not Found</h1>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn primary">Return to Home</a>
+    </article>
+
+    <footer>
+      <p>© <span id="y"></span> <a href="/">Theios Research Institute, Inc.</a></p>
+      <p style="margin-top:4px;"><a href="mailto:research@theios.org">research@theios.org</a></p>
+    </footer>
   </div>
 
-  <p><strong>Theios Research Institute</strong><br>
-  <a href="mailto:research@theios.org">research@theios.org</a></p>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+
+    function setTheme(mode) {
+      root.classList.remove('light','auto');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      label.textContent = current[0].toUpperCase() + current.slice(1);
+    })();
+
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    });
+  </script>
 </body>
 </html>
