@@ -168,6 +168,11 @@
     .theme-toggle svg{width:16px;height:16px;display:block}
 
     /* Mobile nav */
+    .nav-right{
+      display:none;
+      align-items:center;
+      gap:8px;
+    }
     .hamburger{
       display:none;
       padding:.5rem; border-radius:8px;
@@ -195,11 +200,9 @@
     }
     @media (max-width:768px){
       .nav-links{display:none}
+      .nav-right{display:flex}
       .hamburger{display:block}
       .nav-name{display:none}
-    }
-    .mobile-theme-toggle{
-      margin-top:12px;
     }
 
     /* ===== HERO SECTION ===== */
@@ -617,11 +620,19 @@
           <span id="themeLabel">Auto</span>
         </button>
       </div>
-      <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" id="mobileThemeToggle" type="button" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
+          </svg>
+          <span id="mobileThemeLabel">Auto</span>
+        </button>
+        <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -632,12 +643,6 @@
     <a href="#codex">Codex Nexus</a>
     <a href="./pledge/">The Pledge</a>
     <a href="./donate/">Donate</a>
-    <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" type="button" aria-label="Toggle theme">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
-      </svg>
-      <span id="mobileThemeLabel">Auto</span>
-    </button>
   </div>
 
   <!-- Hero -->
