@@ -342,7 +342,10 @@
       align-items:center;
       justify-content:center;
       margin-bottom:16px;
-      font-size:1.5rem;
+      color:var(--accent);
+    }
+    .focus-icon svg{
+      width:24px; height:24px;
     }
     .focus-card h3{
       margin:0 0 8px;
@@ -621,17 +624,29 @@
 
       <div class="focus-grid">
         <div class="focus-card">
-          <div class="focus-icon">🔬</div>
+          <div class="focus-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/>
+            </svg>
+          </div>
           <h3>Discovery Science</h3>
           <p>We design, engineer, and apply computational models that test for recurring patterns and structural regularities across scientific domains.</p>
         </div>
         <div class="focus-card">
-          <div class="focus-icon">🧠</div>
+          <div class="focus-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v6M7.5 17.5 11 14M16.5 17.5 13 14"/>
+            </svg>
+          </div>
           <h3>Knowledge Systems</h3>
           <p>We create structured frameworks that synthesize data across disciplines, building clearer models of how complex systems work.</p>
         </div>
         <div class="focus-card">
-          <div class="focus-icon">📖</div>
+          <div class="focus-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8M8 15h5"/>
+            </svg>
+          </div>
           <h3>Open Research</h3>
           <p>Our work is guided by a commitment to sharing findings through accessible briefs and, where appropriate, reproducible artifacts.</p>
         </div>
