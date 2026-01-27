@@ -5,10 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Theios Research Institute, Inc.</title>
   <meta name="description" content="Theios Research Institute, Inc. — A nonprofit dedicated to applied discovery science and structural laws of emergence." />
   <meta name="theme-color" content="#0b1e34" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LHZ0DVLTBB');
+  </script>
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png" />
@@ -767,7 +776,7 @@
     const label = document.getElementById('themeLabel');
 
     function setTheme(mode) {
-      root.classList.remove('light','auto');
+      root.classList.remove('light','auto','dark');
       root.classList.add(mode);
       root.setAttribute('data-theme', mode);
       localStorage.setItem('theios.theme', mode);
