@@ -47,7 +47,7 @@
     "alternateName": "Theios Research Institute",
     "url": "https://theios.org",
     "logo": "https://theios.org/theios-logo-variant.png",
-    "description": "A nonprofit organization dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols.",
+    "description": "A 501(c)(3) nonprofit organization dedicated to developing systems that rigorously stress-test ideas through structured scientific protocols.",
     "foundingDate": "2024",
     "email": "research@theios.org",
     "sameAs": [
@@ -58,7 +58,6 @@
       "https://www.instagram.com/theiosresearch/",
       "https://orcid.org/0009-0004-0776-8634"
     ],
-    "nonprofit": true,
     "areaServed": "Worldwide"
   }
   </script>
@@ -198,6 +197,9 @@
       .nav-links{display:none}
       .hamburger{display:block}
       .nav-name{display:none}
+    }
+    .mobile-theme-toggle{
+      margin-top:12px;
     }
 
     /* ===== HERO SECTION ===== */
@@ -600,7 +602,7 @@
   <nav class="navbar">
     <div class="wrap">
       <a href="/" class="nav-brand">
-        <img src="./theios-logo-web.png" alt="" class="nav-logo" onerror="this.src='./theios-logo-favicon.png'">
+        <img src="./theios-logo-web.png" alt="Theios logo" class="nav-logo" onerror="this.src='./theios-logo-favicon.png'">
         <span class="nav-name">Theios Research Institute, Inc.</span>
       </a>
       <div class="nav-links">
@@ -630,6 +632,12 @@
     <a href="#codex">Codex Nexus</a>
     <a href="./pledge/">The Pledge</a>
     <a href="./donate/">Donate</a>
+    <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
+      </svg>
+      <span id="mobileThemeLabel">Auto</span>
+    </button>
   </div>
 
   <!-- Hero -->
@@ -774,25 +782,34 @@
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
     const label = document.getElementById('themeLabel');
+    const mobileBtn = document.getElementById('mobileThemeToggle');
+    const mobileLabel = document.getElementById('mobileThemeLabel');
 
     function setTheme(mode) {
       root.classList.remove('light','auto','dark');
       root.classList.add(mode);
       root.setAttribute('data-theme', mode);
       localStorage.setItem('theios.theme', mode);
-      label.textContent = mode[0].toUpperCase() + mode.slice(1);
+      const labelText = mode[0].toUpperCase() + mode.slice(1);
+      label.textContent = labelText;
+      mobileLabel.textContent = labelText;
     }
 
     (function(){
       const current = root.getAttribute('data-theme') || 'auto';
-      label.textContent = current[0].toUpperCase() + current.slice(1);
+      const labelText = current[0].toUpperCase() + current.slice(1);
+      label.textContent = labelText;
+      mobileLabel.textContent = labelText;
     })();
 
-    btn.addEventListener('click', () => {
+    function cycleTheme() {
       const cur = root.getAttribute('data-theme') || 'auto';
       const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
       setTheme(next);
-    });
+    }
+
+    btn.addEventListener('click', cycleTheme);
+    mobileBtn.addEventListener('click', cycleTheme);
 
     // Mobile menu
     const hamburger = document.getElementById('hamburgerBtn');
