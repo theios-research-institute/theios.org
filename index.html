@@ -295,32 +295,26 @@
       .hero .tagline{font-size:1rem}
     }
 
-    /* ===== MISSION SECTION ===== */
-    .mission-section{
-      padding:40px 0 50px;
-    }
+    /* ===== MISSION CARD ===== */
     .mission-card{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:18px;
-      padding:36px 40px;
+      padding:32px 36px;
       max-width:800px;
-      margin:0 auto;
+      margin:40px auto 0;
       box-shadow:0 12px 32px rgba(0,0,0,.15);
-    }
-    .mission-card h2{
-      font-size:1.5rem;
-      margin:0 0 16px;
-      font-weight:700;
       text-align:center;
     }
+    .mission-card h3{
+      font-size:1.3rem;
+      margin:0 0 12px;
+      font-weight:700;
+    }
     .mission-card p{
-      margin:0 0 14px;
+      margin:0;
       color:var(--muted);
       line-height:1.7;
-    }
-    .mission-card p:last-child{
-      margin-bottom:0;
     }
 
     /* ===== SECTION STYLES ===== */
@@ -648,16 +642,6 @@
     </div>
   </header>
 
-  <!-- Mission -->
-  <section class="mission-section">
-    <div class="wrap">
-      <div class="mission-card">
-        <h2>Our Mission</h2>
-        <p>To advance scientific rigor through protocol-governed validation across domains. Findings are distilled into accessible briefs, while foundational records are maintained in secure archives for institutional partners.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- What We Do -->
   <section id="research">
     <div class="wrap">
@@ -692,6 +676,11 @@
           <h3>Open Research</h3>
           <p>Our work is guided by a commitment to sharing findings through accessible briefs and, where appropriate, reproducible artifacts.</p>
         </div>
+      </div>
+
+      <div class="mission-card">
+        <h3>Our Mission</h3>
+        <p>To advance scientific rigor through protocol-governed validation across domains. Findings are distilled into accessible briefs, while foundational records are maintained in secure archives for institutional partners.</p>
       </div>
     </div>
   </section>
