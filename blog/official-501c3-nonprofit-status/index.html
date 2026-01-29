@@ -6,8 +6,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>On Patterns and Change | Blog | Theios Research Institute</title>
-  <meta name="description" content="A founder reflection on patterns, habits, and why awareness alone often isn't enough to change them." />
+  <title>Theios Research Institute, Inc. is Now a 501(c)(3) Nonprofit | Blog | Theios Research Institute, Inc.</title>
+  <meta name="description" content="Theios Research Institute, Inc. has received official 501(c)(3) nonprofit status from the IRS, enabling tax-deductible donations to support rigorous, independent research." />
   <meta name="theme-color" content="#0b1e34" />
 
   <!-- Google tag (gtag.js) -->
@@ -20,20 +20,20 @@
   </script>
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
-  <link rel="apple-touch-icon" href="../favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
+  <link rel="apple-touch-icon" href="../../favicon.png" />
 
   <!-- Social -->
   <meta property="og:site_name" content="Theios Research Institute, Inc." />
-  <meta property="og:title" content="On Patterns and Change | Theios Research Institute" />
-  <meta property="og:description" content="A founder reflection on patterns, habits, and why awareness alone often isn't enough to change them." />
+  <meta property="og:title" content="Theios Research Institute, Inc. is Now a 501(c)(3) Nonprofit" />
+  <meta property="og:description" content="We've received official 501(c)(3) nonprofit status from the IRS, enabling tax-deductible donations to support rigorous, independent research." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://theios.org/blog/on-patterns-and-change.html" />
+  <meta property="og:url" content="https://theios.org/blog/official-501c3-nonprofit-status/" />
   <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
-  <meta property="article:published_time" content="2026-01-27" />
+  <meta property="article:published_time" content="2026-01-17" />
   <meta property="article:author" content="Neil Sargisian" />
-  <meta property="article:section" content="Founder Reflections" />
-  <link rel="canonical" href="https://theios.org/blog/on-patterns-and-change.html" />
+  <meta property="article:section" content="Updates" />
+  <link rel="canonical" href="https://theios.org/blog/official-501c3-nonprofit-status/" />
 
   <style>
     :root{
@@ -41,12 +41,14 @@
       --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
       --line:#1f2937; --accent:#3b82f6;
       --btn:#0b1220;
+      --success:#22c55e;
     }
     :root.light{
       --bg1:#c9d6e5; --bg2:#a8bdd4;
       --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
       --line:#8fa5be; --btn:#ffffff;
       --radial-overlay:rgba(11,30,52,0.25);
+      --success:#15803d;
     }
     :root:not(.light){
       --radial-overlay:#1f3b62;
@@ -205,8 +207,8 @@
     .article-category{
       padding:5px 12px;
       border-radius:14px;
-      background:rgba(59,130,246,.12);
-      color:var(--accent);
+      background:rgba(34,197,94,.12);
+      color:var(--success);
       font-size:.8rem;
       font-weight:600;
       text-transform:uppercase;
@@ -248,28 +250,70 @@
       color:var(--ink);
       font-weight:600;
     }
+    .article-content h2{
+      font-size:1.3rem;
+      margin:2em 0 1em;
+      font-weight:600;
+    }
+    .article-content h2:first-child{
+      margin-top:0;
+    }
+    .article-content ul{
+      margin:0 0 1.5em;
+      padding-left:1.5em;
+    }
+    .article-content li{
+      margin-bottom:.5em;
+      line-height:1.7;
+    }
 
-    /* Reflection notice */
-    .reflection-notice{
-      background:rgba(59,130,246,.08);
-      border:1px solid rgba(59,130,246,.2);
+    /* Highlight box */
+    .highlight-box{
+      background:rgba(34,197,94,.08);
+      border:1px solid rgba(34,197,94,.2);
       border-radius:12px;
-      padding:16px 20px;
-      margin-bottom:28px;
-      font-size:.9rem;
-      color:var(--muted);
+      padding:20px 24px;
+      margin:24px 0;
     }
-    .reflection-notice strong{
-      color:var(--accent);
+    .highlight-box p{
+      margin:0;
+    }
+    .highlight-box strong{
+      color:var(--success);
     }
 
-    /* Closing thought */
-    .closing-thought{
-      border-top:1px solid var(--line);
+    /* EIN display */
+    .ein-display{
+      font-family:monospace;
+      font-size:1.1rem;
+      background:rgba(59,130,246,.1);
+      padding:3px 10px;
+      border-radius:6px;
+    }
+
+    /* CTA */
+    .cta-section{
+      text-align:center;
+      margin-top:32px;
       padding-top:24px;
-      margin-top:28px;
-      font-style:italic;
-      color:var(--muted);
+      border-top:1px solid var(--line);
+    }
+    .cta-section p{
+      margin-bottom:16px;
+    }
+    .cta-btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:600;
+      font-size:1rem;
+      transition:opacity .15s;
+    }
+    .cta-btn:hover{
+      opacity:.9;
     }
 
     /* ===== AUTHOR BOX ===== */
@@ -419,15 +463,15 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="wrap">
-      <a href="../" class="nav-brand">
-        <img src="../theios-logo-web.png" alt="Theios logo" class="nav-logo" onerror="this.src='../theios-logo-favicon.png'">
+      <a href="../../" class="nav-brand">
+        <img src="../../theios-logo-web.png" alt="Theios logo" class="nav-logo" onerror="this.src='../../theios-logo-favicon.png'">
         <span class="nav-name">Theios Research Institute</span>
       </a>
       <div class="nav-links">
-        <a href="../#research">Research</a>
-        <a href="./" class="active">Blog</a>
-        <a href="../pledge/">The Pledge</a>
-        <a href="../donate/">Donate</a>
+        <a href="../../#research">Research</a>
+        <a href="../" class="active">Blog</a>
+        <a href="../../pledge/">The Pledge</a>
+        <a href="../../donate/">Donate</a>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
@@ -454,46 +498,59 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-btn" id="closeMenu" type="button" aria-label="Close menu">&#10005;</button>
-    <a href="../#research">Research</a>
-    <a href="./">Blog</a>
-    <a href="../pledge/">The Pledge</a>
-    <a href="../donate/">Donate</a>
+    <a href="../../#research">Research</a>
+    <a href="../">Blog</a>
+    <a href="../../pledge/">The Pledge</a>
+    <a href="../../donate/">Donate</a>
   </div>
 
   <!-- Article Header -->
   <header class="article-header">
     <div class="wrap">
-      <a href="./" class="back-link">
+      <a href="../" class="back-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         Back to Blog
       </a>
       <div class="article-meta">
-        <span class="article-category">Founder Reflection</span>
-        <span class="article-date">January 27, 2026</span>
+        <span class="article-category">Update</span>
+        <span class="article-date">January 17, 2026</span>
       </div>
-      <h1>On Patterns and Change</h1>
-      <p class="article-subtitle">Why awareness often isn't enough</p>
+      <h1>Theios Research Institute, Inc. is Now a 501(c)(3) Nonprofit</h1>
+      <p class="article-subtitle">We're officially recognized to do the work we were created to do</p>
     </div>
   </header>
 
   <!-- Article Content -->
   <main class="wrap">
     <article class="article-content">
-      <div class="reflection-notice">
-        <strong>Founder Reflection:</strong> These are informal observations exploring questions and patterns relevant to Theios' research focus. They are not research findings or institutional positions.
+      <p>We're pleased to announce that Theios Research Institute, Inc. has received official 501(c)(3) nonprofit public charity status from the Internal Revenue Service.</p>
+
+      <p>This recognition marks an important milestone. We're now fully authorized to pursue the mission we were founded for: developing rigorous discovery systems that test ideas, surface structural patterns, and advance knowledge through reproducible scientific protocols.</p>
+
+      <div class="highlight-box">
+        <p><strong>EIN:</strong> <span class="ein-display">41-3302025</span></p>
       </div>
 
-      <p>One of life's most useful "hacks" is learning to notice patterns — our own, and those of others.</p>
+      <h2>What This Means</h2>
 
-      <p>We don't have much control over other people's patterns (and usually shouldn't), but we do have agency over our own. The patterns we create — or quietly fall into — can either support our growth or slowly work against us.</p>
+      <p>Our approval under IRS classification 107(b)(1)(A)(vi) brings several meaningful benefits:</p>
 
-      <p>What makes this difficult is that once a pattern sets in, it can be surprisingly hard to break. Often it takes a real reset: a change of environment, a new job, a move, a loss, or some event that disrupts the momentum we've been living inside.</p>
+      <ul>
+        <li><strong>Tax-deductible donations</strong> under IRC Section 170 &mdash; contributions to Theios can now be deducted on your federal tax return</li>
+        <li><strong>Eligibility for bequests, gifts, and transfers</strong> under Sections 2055, 2106, and 2522</li>
+        <li><strong>Tax-exempt status effective November 7, 2025</strong> &mdash; retroactive to our formation</li>
+      </ul>
 
-      <p>Even awareness isn't always enough. I understand this deeply and still feel how resistant habits can be — because habits are really just patterns with inertia.</p>
+      <h2>Looking Ahead</h2>
 
-      <p>That may be why I'm drawn to novelty. Not as distraction, but as interruption. A way to step outside the loop long enough to see it clearly.</p>
+      <p>This status doesn't change what we do &mdash; it validates it. We remain committed to rigorous, independent research that prioritizes truth over convenience and long-term understanding over short-term attention.</p>
 
-      <p class="closing-thought">I don't have a neat conclusion here. Just noticing something that feels true — and worth paying attention to. Much of what we explore at Theios begins in this space: not with answers, but with noticing the patterns we live inside.</p>
+      <p>We're grateful to everyone who believes that careful, honest inquiry matters. Your support &mdash; whether through attention, engagement, or contribution &mdash; is what makes this work possible.</p>
+
+      <div class="cta-section">
+        <p>If you'd like to support our research, donations are now tax-deductible.</p>
+        <a href="../../donate/" class="cta-btn">Support Our Research</a>
+      </div>
     </article>
 
     <!-- Author Box -->
@@ -507,7 +564,7 @@
 
     <!-- Share -->
     <div class="share-section">
-      <p>Share this reflection</p>
+      <p>Share this update</p>
       <div class="share-buttons">
         <button class="share-btn" id="shareX" aria-label="Share on X">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -529,14 +586,14 @@
   <footer class="site-footer">
     <div class="wrap" style="max-width:900px">
       <div class="footer-links">
-        <a href="../">Home</a>
-        <a href="../#research">Research</a>
-        <a href="../pledge/">The Pledge</a>
-        <a href="../donate/">Donate</a>
-        <a href="../privacy-policy.html">Privacy</a>
-        <a href="../terms-of-service.html">Terms</a>
+        <a href="../../">Home</a>
+        <a href="../../#research">Research</a>
+        <a href="../../pledge/">The Pledge</a>
+        <a href="../../donate/">Donate</a>
+        <a href="../../privacy-policy.html">Privacy</a>
+        <a href="../../terms-of-service.html">Terms</a>
       </div>
-      <p class="footer-copy">&copy; <span id="y"></span> <a href="../">Theios Research Institute, Inc.</a></p>
+      <p class="footer-copy">&copy; <span id="y"></span> <a href="../../">Theios Research Institute, Inc.</a></p>
     </div>
   </footer>
 
