@@ -6,8 +6,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Blog | Theios Research Institute, Inc.</title>
-  <meta name="description" content="Insights, reflections, and updates from Theios Research Institute — exploring patterns, emergence, and the nature of understanding." />
+  <title>Theios Research Institute is Now a 501(c)(3) Nonprofit | Blog | Theios Research Institute</title>
+  <meta name="description" content="Theios Research Institute has received official 501(c)(3) nonprofit status from the IRS, enabling tax-deductible donations to support rigorous, independent research." />
   <meta name="theme-color" content="#0b1e34" />
 
   <!-- Google tag (gtag.js) -->
@@ -25,12 +25,15 @@
 
   <!-- Social -->
   <meta property="og:site_name" content="Theios Research Institute, Inc." />
-  <meta property="og:title" content="Blog | Theios Research Institute, Inc." />
-  <meta property="og:description" content="Insights, reflections, and updates from Theios Research Institute." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://theios.org/blog/" />
+  <meta property="og:title" content="Theios Research Institute is Now a 501(c)(3) Nonprofit" />
+  <meta property="og:description" content="We've received official 501(c)(3) nonprofit status from the IRS, enabling tax-deductible donations to support rigorous, independent research." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://theios.org/blog/official-501c3-nonprofit-status.html" />
   <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png?v=3" />
-  <link rel="canonical" href="https://theios.org/blog/" />
+  <meta property="article:published_time" content="2026-01-17" />
+  <meta property="article:author" content="Neil Sargisian" />
+  <meta property="article:section" content="Updates" />
+  <link rel="canonical" href="https://theios.org/blog/official-501c3-nonprofit-status.html" />
 
   <style>
     :root{
@@ -38,12 +41,14 @@
       --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
       --line:#1f2937; --accent:#3b82f6;
       --btn:#0b1220;
+      --success:#22c55e;
     }
     :root.light{
       --bg1:#c9d6e5; --bg2:#a8bdd4;
       --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
       --line:#8fa5be; --btn:#ffffff;
       --radial-overlay:rgba(11,30,52,0.25);
+      --success:#15803d;
     }
     :root:not(.light){
       --radial-overlay:#1f3b62;
@@ -62,7 +67,7 @@
       min-height:100vh;
     }
     .wrap{
-      width:100%; max-width:900px;
+      width:100%; max-width:720px;
       margin:0 auto;
       padding:0 20px;
     }
@@ -79,6 +84,7 @@
       background:rgba(255,255,255,.9);
     }
     .navbar .wrap{
+      max-width:900px;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -170,129 +176,217 @@
       .nav-name{display:none}
     }
 
-    /* ===== PAGE HEADER ===== */
-    .page-header{
-      text-align:center;
-      padding:50px 0 40px;
+    /* ===== ARTICLE ===== */
+    .article-header{
+      padding:50px 0 32px;
     }
-    .page-header h1{
-      font-size:2.4rem;
-      margin:0 0 12px;
-      font-weight:700;
-    }
-    .page-header .subtitle{
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
       color:var(--muted);
-      font-size:1.1rem;
-      max-width:600px;
-      margin:0 auto;
-    }
-
-    /* ===== CATEGORIES ===== */
-    .categories{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:40px;
-    }
-    .category-tag{
-      padding:.5rem 1rem;
-      border-radius:20px;
-      border:1px solid var(--line);
-      background:transparent;
-      color:var(--muted);
-      font-size:.85rem;
-      font-weight:500;
-      cursor:pointer;
-      transition:all .15s;
       text-decoration:none;
+      font-size:.9rem;
+      margin-bottom:20px;
+      transition:color .15s;
     }
-    .category-tag:hover,
-    .category-tag.active{
-      border-color:var(--accent);
+    .back-link:hover{
       color:var(--accent);
-      background:rgba(59,130,246,.1);
     }
-
-    /* ===== BLOG POSTS ===== */
-    .posts-grid{
-      display:grid;
-      gap:24px;
-      margin-bottom:60px;
+    .back-link svg{
+      width:16px;
+      height:16px;
     }
-    .post-card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:28px 32px;
-      text-decoration:none;
-      color:var(--ink);
-      display:block;
-      transition:transform .15s, box-shadow .15s;
-    }
-    .post-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 32px rgba(0,0,0,.2);
-    }
-    .post-meta{
+    .article-meta{
       display:flex;
       align-items:center;
       gap:12px;
-      margin-bottom:12px;
       flex-wrap:wrap;
+      margin-bottom:16px;
     }
-    .post-category{
-      padding:4px 10px;
-      border-radius:12px;
-      background:rgba(59,130,246,.12);
-      color:var(--accent);
-      font-size:.75rem;
+    .article-category{
+      padding:5px 12px;
+      border-radius:14px;
+      background:rgba(34,197,94,.12);
+      color:var(--success);
+      font-size:.8rem;
       font-weight:600;
       text-transform:uppercase;
       letter-spacing:.03em;
     }
-    .post-date{
+    .article-date{
       color:var(--muted);
-      font-size:.85rem;
-    }
-    .post-card h2{
-      margin:0 0 10px;
-      font-size:1.4rem;
-      font-weight:600;
-      line-height:1.3;
-    }
-    .post-excerpt{
-      margin:0;
-      color:var(--muted);
-      font-size:.95rem;
-      line-height:1.6;
-    }
-    .read-more{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      margin-top:16px;
-      color:var(--accent);
       font-size:.9rem;
-      font-weight:500;
     }
-    .read-more svg{
-      width:16px;
-      height:16px;
-      transition:transform .15s;
+    .article-header h1{
+      font-size:2.2rem;
+      margin:0 0 16px;
+      font-weight:700;
+      line-height:1.25;
     }
-    .post-card:hover .read-more svg{
-      transform:translateX(4px);
+    .article-subtitle{
+      color:var(--muted);
+      font-size:1.1rem;
+      font-style:italic;
+      margin:0;
     }
 
-    /* ===== EMPTY STATE ===== */
-    .empty-state{
-      text-align:center;
-      padding:60px 20px;
-      color:var(--muted);
+    /* ===== ARTICLE CONTENT ===== */
+    .article-content{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:40px 44px;
+      margin-bottom:40px;
     }
-    .empty-state p{
+    .article-content p{
+      margin:0 0 1.5em;
+      line-height:1.8;
+    }
+    .article-content p:last-child{
+      margin-bottom:0;
+    }
+    .article-content strong{
+      color:var(--ink);
+      font-weight:600;
+    }
+    .article-content h2{
+      font-size:1.3rem;
+      margin:2em 0 1em;
+      font-weight:600;
+    }
+    .article-content h2:first-child{
+      margin-top:0;
+    }
+    .article-content ul{
+      margin:0 0 1.5em;
+      padding-left:1.5em;
+    }
+    .article-content li{
+      margin-bottom:.5em;
+      line-height:1.7;
+    }
+
+    /* Highlight box */
+    .highlight-box{
+      background:rgba(34,197,94,.08);
+      border:1px solid rgba(34,197,94,.2);
+      border-radius:12px;
+      padding:20px 24px;
+      margin:24px 0;
+    }
+    .highlight-box p{
       margin:0;
+    }
+    .highlight-box strong{
+      color:var(--success);
+    }
+
+    /* EIN display */
+    .ein-display{
+      font-family:monospace;
+      font-size:1.1rem;
+      background:rgba(59,130,246,.1);
+      padding:3px 10px;
+      border-radius:6px;
+    }
+
+    /* CTA */
+    .cta-section{
+      text-align:center;
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+    .cta-section p{
+      margin-bottom:16px;
+    }
+    .cta-btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:600;
+      font-size:1rem;
+      transition:opacity .15s;
+    }
+    .cta-btn:hover{
+      opacity:.9;
+    }
+
+    /* ===== AUTHOR BOX ===== */
+    .author-box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px 28px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      margin-bottom:40px;
+    }
+    .author-avatar{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:rgba(59,130,246,.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent);
+      font-size:1.4rem;
+      font-weight:700;
+      flex-shrink:0;
+    }
+    .author-info h3{
+      margin:0 0 4px;
+      font-size:1rem;
+      font-weight:600;
+    }
+    .author-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* ===== SHARE ===== */
+    .share-section{
+      text-align:center;
+      padding:32px 0;
+      border-top:1px solid var(--line);
+    }
+    .share-section p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .share-buttons{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+    .share-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--muted);
+      cursor:pointer;
+      transition:all .15s;
+    }
+    .share-btn:hover{
+      color:var(--accent);
+      border-color:var(--accent);
+    }
+    .share-btn svg{
+      width:20px;
+      height:20px;
     }
 
     /* ===== FOOTER ===== */
@@ -328,12 +422,14 @@
     }
 
     /* Light mode */
-    :root.light .post-card{
+    :root.light .article-content,
+    :root.light .author-box{
       background:#ffffff;
       border-color:rgba(100,130,160,.2);
     }
     @media (prefers-color-scheme: light){
-      :root.auto .post-card{
+      :root.auto .article-content,
+      :root.auto .author-box{
         background:#ffffff;
         border-color:rgba(100,130,160,.2);
       }
@@ -346,10 +442,10 @@
     }
 
     @media (max-width:640px){
-      .page-header{padding:32px 0 28px}
-      .page-header h1{font-size:1.8rem}
-      .post-card{padding:22px 20px}
-      .post-card h2{font-size:1.2rem}
+      .article-header{padding:32px 0 24px}
+      .article-header h1{font-size:1.7rem}
+      .article-content{padding:28px 22px}
+      .author-box{flex-direction:column; text-align:center}
     }
   </style>
 
@@ -408,60 +504,87 @@
     <a href="../donate/">Donate</a>
   </div>
 
-  <!-- Page Header -->
-  <header class="page-header">
+  <!-- Article Header -->
+  <header class="article-header">
     <div class="wrap">
-      <h1>Blog</h1>
-      <p class="subtitle">Insights, reflections, and updates from Theios Research Institute</p>
+      <a href="./" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Blog
+      </a>
+      <div class="article-meta">
+        <span class="article-category">Update</span>
+        <span class="article-date">January 17, 2026</span>
+      </div>
+      <h1>Theios Research Institute is Now a 501(c)(3) Nonprofit</h1>
+      <p class="article-subtitle">We're officially recognized to do the work we were created to do</p>
     </div>
   </header>
 
-  <!-- Categories -->
-  <div class="wrap">
-    <div class="categories">
-      <a href="./" class="category-tag active">All</a>
-      <a href="./?category=reflections" class="category-tag">Founder Reflections</a>
-      <a href="./?category=research" class="category-tag">Research</a>
-      <a href="./?category=updates" class="category-tag">Updates</a>
-    </div>
-  </div>
-
-  <!-- Blog Posts -->
+  <!-- Article Content -->
   <main class="wrap">
-    <div class="posts-grid">
+    <article class="article-content">
+      <p>We're pleased to announce that Theios Research Institute, Inc. has received official 501(c)(3) nonprofit public charity status from the Internal Revenue Service.</p>
 
-      <a href="./on-patterns-and-change.html" class="post-card">
-        <div class="post-meta">
-          <span class="post-category">Founder Reflection</span>
-          <span class="post-date">January 27, 2026</span>
-        </div>
-        <h2>On Patterns and Change</h2>
-        <p class="post-excerpt">One of life's most useful "hacks" is learning to notice patterns — our own, and those of others. The patterns we create or quietly fall into can either support our growth or slowly work against us.</p>
-        <span class="read-more">
-          Read more
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
+      <p>This recognition marks an important milestone. We're now fully authorized to pursue the mission we were founded for: developing rigorous discovery systems that test ideas, surface structural patterns, and advance knowledge through reproducible scientific protocols.</p>
 
-      <a href="./official-501c3-nonprofit-status.html" class="post-card">
-        <div class="post-meta">
-          <span class="post-category" style="background:rgba(34,197,94,.12);color:#22c55e">Update</span>
-          <span class="post-date">January 17, 2026</span>
-        </div>
-        <h2>Theios Research Institute is Now a 501(c)(3) Nonprofit</h2>
-        <p class="post-excerpt">We're pleased to announce that Theios Research Institute has received official 501(c)(3) nonprofit public charity status from the IRS, enabling tax-deductible donations to support our research.</p>
-        <span class="read-more">
-          Read more
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </a>
+      <div class="highlight-box">
+        <p><strong>EIN:</strong> <span class="ein-display">41-3302025</span></p>
+      </div>
 
+      <h2>What This Means</h2>
+
+      <p>Our approval under IRS classification 107(b)(1)(A)(vi) brings several meaningful benefits:</p>
+
+      <ul>
+        <li><strong>Tax-deductible donations</strong> under IRC Section 170 &mdash; contributions to Theios can now be deducted on your federal tax return</li>
+        <li><strong>Eligibility for bequests, gifts, and transfers</strong> under Sections 2055, 2106, and 2522</li>
+        <li><strong>Tax-exempt status effective November 7, 2025</strong> &mdash; retroactive to our formation</li>
+      </ul>
+
+      <h2>Looking Ahead</h2>
+
+      <p>This status doesn't change what we do &mdash; it validates it. We remain committed to rigorous, independent research that prioritizes truth over convenience and long-term understanding over short-term attention.</p>
+
+      <p>We're grateful to everyone who believes that careful, honest inquiry matters. Your support &mdash; whether through attention, engagement, or contribution &mdash; is what makes this work possible.</p>
+
+      <div class="cta-section">
+        <p>If you'd like to support our research, donations are now tax-deductible.</p>
+        <a href="../donate/" class="cta-btn">Support Our Research</a>
+      </div>
+    </article>
+
+    <!-- Author Box -->
+    <div class="author-box">
+      <div class="author-avatar">NS</div>
+      <div class="author-info">
+        <h3>Neil Sargisian</h3>
+        <p>Founder, Theios Research Institute</p>
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <p>Share this update</p>
+      <div class="share-buttons">
+        <button class="share-btn" id="shareX" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button class="share-btn" id="shareFB" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </button>
+        <button class="share-btn" id="shareLinkedIn" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </button>
+        <button class="share-btn" id="shareCopy" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </button>
+      </div>
     </div>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap" style="max-width:900px">
       <div class="footer-links">
         <a href="../">Home</a>
         <a href="../#research">Research</a>
@@ -524,17 +647,30 @@
       }
     });
 
-    // Category filtering (simple URL param handling)
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
-    if (category) {
-      document.querySelectorAll('.category-tag').forEach(tag => {
-        tag.classList.remove('active');
-        if (tag.href.includes(category)) {
-          tag.classList.add('active');
-        }
-      });
-    }
+    // Share buttons
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    document.getElementById('shareX').addEventListener('click', () => {
+      window.open(`https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`, '_blank', 'width=550,height=420');
+    });
+
+    document.getElementById('shareFB').addEventListener('click', () => {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`, '_blank', 'width=550,height=420');
+    });
+
+    document.getElementById('shareLinkedIn').addEventListener('click', () => {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`, '_blank', 'width=550,height=420');
+    });
+
+    document.getElementById('shareCopy').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      } catch (err) {
+        prompt('Copy this link:', window.location.href);
+      }
+    });
   </script>
 </body>
 </html>
