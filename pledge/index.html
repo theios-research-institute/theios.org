@@ -926,7 +926,7 @@ It is about how I hold, question, and revise my conclusions.</div>
 
         <div class="form-group">
           <label class="checkbox-group">
-            <input type="checkbox" id="commitment" name="commitment" value="confirmed" required aria-required="true">
+            <input type="checkbox" id="commitment" name="commitment" value="confirmed" required aria-required="true" aria-labelledby="commitmentLabel">
             <span id="commitmentLabel">I have read the pledge above and I commit to it.<span class="required">*</span></span>
           </label>
         </div>
@@ -944,8 +944,8 @@ It is about how I hold, question, and revise my conclusions.</div>
 
         <div class="form-group">
           <label class="checkbox-group">
-            <input type="checkbox" id="publicLedger" name="public_ledger" value="yes" aria-describedby="publicLedgerNote">
-            <span>I choose to have my name listed on the <a href="./signatories/" style="color:var(--accent)">public ledger of signatories</a> (optional).</span>
+            <input type="checkbox" id="publicLedger" name="public_ledger" value="yes" aria-describedby="publicLedgerNote" aria-labelledby="publicLedgerLabel">
+            <span id="publicLedgerLabel">I choose to have my name listed on the <a href="./signatories/" style="color:var(--accent)">public ledger of signatories</a> (optional).</span>
           </label>
           <p id="publicLedgerNote" class="small" style="margin:4px 0 0 24px; color:var(--muted); font-style:italic;">Public listing is optional. You may affirm this pledge privately.</p>
         </div>
