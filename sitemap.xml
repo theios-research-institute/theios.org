@@ -49,14 +49,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theios.org/privacy-policy.html</loc>
-    <lastmod>2026-01-29</lastmod>
+    <loc>https://theios.org/privacy-policy/</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://theios.org/terms-of-service.html</loc>
-    <lastmod>2026-01-29</lastmod>
+    <loc>https://theios.org/terms-of-service/</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
