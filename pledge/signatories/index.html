@@ -363,13 +363,32 @@
           signatories.forEach(s => {
             const li = document.createElement('li');
             li.className = 'signatory';
-            li.innerHTML = `
-              <span class="signatory-name">${s.name}</span>
-              <span class="signatory-meta">
-                ${s.location ? `<span class="signatory-location">${s.location}</span>` : ''}
-                <span class="signatory-date">${s.date}</span>
-              </span>
-            `;
+
+            // Create name element (safe - uses textContent)
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'signatory-name';
+            nameSpan.textContent = s.name || '';
+            li.appendChild(nameSpan);
+
+            // Create meta container
+            const metaSpan = document.createElement('span');
+            metaSpan.className = 'signatory-meta';
+
+            // Add location if present (safe - uses textContent)
+            if (s.location) {
+              const locSpan = document.createElement('span');
+              locSpan.className = 'signatory-location';
+              locSpan.textContent = s.location;
+              metaSpan.appendChild(locSpan);
+            }
+
+            // Add date (safe - uses textContent)
+            const dateSpan = document.createElement('span');
+            dateSpan.className = 'signatory-date';
+            dateSpan.textContent = s.date || '';
+            metaSpan.appendChild(dateSpan);
+
+            li.appendChild(metaSpan);
             list.appendChild(li);
           });
         }
@@ -378,7 +397,13 @@
         console.error('Error fetching signatories:', error);
         // Fallback to showing empty state with error message
         totalCount.textContent = '—';
-        list.innerHTML = '<li class="signatory" style="text-align:center;color:var(--muted);">Unable to load signatories. Please refresh the page.</li>';
+        // Clear list and show error (safe - static content only)
+        while (list.firstChild) list.removeChild(list.firstChild);
+        const errorLi = document.createElement('li');
+        errorLi.className = 'signatory';
+        errorLi.style.cssText = 'text-align:center;color:var(--muted);';
+        errorLi.textContent = 'Unable to load signatories. Please refresh the page.';
+        list.appendChild(errorLi);
       })
   </script>
 </body>
