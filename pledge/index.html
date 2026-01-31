@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://*.googleapis.com https://*.run.app; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -77,6 +78,8 @@
     }
 
     *{box-sizing:border-box}
+    .skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;text-decoration:none;font-weight:600;border-radius:0 0 8px 0}
+    .skip-link:focus{top:0}
     html,body{height:100%}
     body{
       margin:0;
@@ -774,6 +777,8 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Hidden YouTube Player -->
   <div class="yt-player-container">
     <div id="ytPlayer"></div>
@@ -827,7 +832,7 @@
     </header>
 
     <!-- Why This Pledge Exists -->
-    <article class="card intro-card">
+    <article class="card intro-card" id="main-content">
       <h2>Why This Pledge Exists</h2>
       <p>At <strong>Theios Research Institute</strong>, our work focuses on how understanding actually forms. Through this research, one insight became unavoidable: truth-seeking is not just a moral ideal — it is a <strong>practice</strong> that shapes what can be discovered about reality.</p>
 

@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://*.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://donate.stripe.com;" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -75,6 +76,8 @@
     }
 
     *{box-sizing:border-box}
+    .skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;text-decoration:none;font-weight:600;border-radius:0 0 8px 0}
+    .skip-link:focus{top:0}
     html,body{height:100%}
     body{
       margin:0;
@@ -349,6 +352,8 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="wrap">
     <!-- Theme toggle -->
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
@@ -380,7 +385,7 @@
     </header>
 
     <!-- Main donation card -->
-    <article class="card">
+    <article class="card" id="main-content">
       <div class="tax-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
