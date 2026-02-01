@@ -329,6 +329,96 @@
       .theme-toggle{top:14px; right:14px}
     }
 
+    /* Frequency toggle */
+    .frequency-toggle{
+      display:flex;
+      background:var(--btn);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:4px;
+      margin-bottom:24px;
+    }
+    .frequency-btn{
+      flex:1;
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      background:transparent;
+      color:var(--muted);
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .15s ease;
+    }
+    .frequency-btn.active{
+      background:var(--accent);
+      color:#fff;
+    }
+    .frequency-btn:not(.active):hover{
+      color:var(--ink);
+    }
+
+    /* Payment method divider */
+    .payment-divider{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:28px 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .payment-divider::before,
+    .payment-divider::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:var(--line);
+    }
+
+    /* PayPal button */
+    .paypal-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding:16px 24px;
+      border:2px solid #0070ba;
+      border-radius:12px;
+      background:#0070ba;
+      color:#fff;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .15s ease;
+      text-decoration:none;
+    }
+    .paypal-btn:hover{
+      background:#005ea6;
+      border-color:#005ea6;
+      transform:translateY(-1px);
+    }
+    .paypal-btn.placeholder{
+      opacity:0.6;
+      cursor:not-allowed;
+    }
+    .paypal-btn svg{height:20px;width:auto}
+
+    /* Monthly note */
+    .monthly-note{
+      background:rgba(59,130,246,.1);
+      border:1px solid rgba(59,130,246,.3);
+      border-radius:8px;
+      padding:12px 16px;
+      margin-bottom:20px;
+      font-size:.9rem;
+      color:var(--accent);
+    }
+
+    /* Hidden sections */
+    .donation-section{display:none}
+    .donation-section.active{display:block}
+
     /* Footer */
     footer{
       text-align:center;
@@ -394,41 +484,90 @@
         501(c)(3) Tax-Deductible
       </div>
 
-      <h2>Choose an Amount</h2>
-      <p>Select a preset amount or enter a custom donation below.</p>
-
-      <!-- Preset amounts - Stripe Payment Links -->
-      <div class="amount-grid">
-        <a href="https://donate.stripe.com/9B63cx5OJff735L7hHgQE01" class="amount-btn">$25</a>
-        <a href="https://donate.stripe.com/9B6aEZ4KF2sl9u98lLgQE02" class="amount-btn">$50</a>
-        <a href="https://donate.stripe.com/eVqeVf6SN1oh9u931rgQE03" class="amount-btn">$100</a>
-        <a href="https://donate.stripe.com/eVq9AV7WR6IBaydgShgQE04" class="amount-btn">$250</a>
-        <a href="https://donate.stripe.com/3cIaEZ90V9UN0XDgShgQE05" class="amount-btn">$500</a>
-        <a href="https://donate.stripe.com/bJe5kFelfgjbdKp45vgQE06" class="amount-btn">$1,000</a>
+      <!-- Frequency toggle -->
+      <div class="frequency-toggle">
+        <button type="button" class="frequency-btn active" data-frequency="onetime">One-time</button>
+        <button type="button" class="frequency-btn" data-frequency="monthly">Monthly</button>
       </div>
 
-      <div class="divider">or enter a custom amount</div>
+      <!-- ONE-TIME DONATION SECTION -->
+      <div class="donation-section active" id="onetimeSection">
+        <h2>Choose an Amount</h2>
+        <p>Select a preset amount or enter a custom donation below.</p>
 
-      <!-- Custom amount form -->
-      <form class="custom-form" id="customDonateForm">
-        <div class="amount-input-wrap">
-          <span class="currency">$</span>
-          <input type="number"
-                 class="amount-input"
-                 id="customAmount"
-                 name="amount"
-                 placeholder="Other amount"
-                 min="5"
-                 max="50000"
-                 step="1">
+        <!-- Preset amounts - Stripe Payment Links -->
+        <div class="amount-grid">
+          <a href="https://donate.stripe.com/9B63cx5OJff735L7hHgQE01" class="amount-btn">$25</a>
+          <a href="https://donate.stripe.com/9B6aEZ4KF2sl9u98lLgQE02" class="amount-btn">$50</a>
+          <a href="https://donate.stripe.com/eVqeVf6SN1oh9u931rgQE03" class="amount-btn">$100</a>
+          <a href="https://donate.stripe.com/eVq9AV7WR6IBaydgShgQE04" class="amount-btn">$250</a>
+          <a href="https://donate.stripe.com/3cIaEZ90V9UN0XDgShgQE05" class="amount-btn">$500</a>
+          <a href="https://donate.stripe.com/bJe5kFelfgjbdKp45vgQE06" class="amount-btn">$1,000</a>
         </div>
-        <button type="submit" class="donate-btn" id="donateBtn">
-          <span class="btn-text">Donate</span>
-          <span class="btn-loading" style="display:none">Processing...</span>
-        </button>
-      </form>
 
-      <div class="error-msg" id="errorMsg"></div>
+        <div class="divider">or enter a custom amount</div>
+
+        <!-- Custom amount form -->
+        <form class="custom-form" id="customDonateForm">
+          <div class="amount-input-wrap">
+            <span class="currency">$</span>
+            <input type="number"
+                   class="amount-input"
+                   id="customAmount"
+                   name="amount"
+                   placeholder="Other amount"
+                   min="5"
+                   max="50000"
+                   step="1">
+          </div>
+          <button type="submit" class="donate-btn" id="donateBtn">
+            <span class="btn-text">Donate</span>
+            <span class="btn-loading" style="display:none">Processing...</span>
+          </button>
+        </form>
+
+        <div class="error-msg" id="errorMsg"></div>
+      </div>
+
+      <!-- MONTHLY DONATION SECTION -->
+      <div class="donation-section" id="monthlySection">
+        <div class="monthly-note">
+          <strong>Monthly giving</strong> — Sustain our research with a recurring contribution. Cancel anytime.
+        </div>
+
+        <h2>Choose a Monthly Amount</h2>
+        <p>Your card will be charged monthly until you cancel.</p>
+
+        <!-- Monthly amounts - Placeholder links (replace with Stripe recurring links) -->
+        <div class="amount-grid">
+          <a href="#" class="amount-btn" data-monthly="10" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$10/mo</a>
+          <a href="#" class="amount-btn" data-monthly="25" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$25/mo</a>
+          <a href="#" class="amount-btn" data-monthly="50" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$50/mo</a>
+          <a href="#" class="amount-btn" data-monthly="100" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$100/mo</a>
+          <a href="#" class="amount-btn" data-monthly="250" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$250/mo</a>
+          <a href="#" class="amount-btn" data-monthly="500" onclick="alert('Monthly payments coming soon! Please use one-time donation for now.'); return false;">$500/mo</a>
+        </div>
+
+        <p style="text-align:center; color:var(--muted); font-size:.9rem; margin-top:16px;">
+          Monthly giving via Stripe coming soon. <a href="mailto:research@theios.org" style="color:var(--accent)">Contact us</a> to set up recurring donations now.
+        </p>
+      </div>
+
+      <!-- PayPal Alternative -->
+      <div class="payment-divider">or pay with</div>
+
+      <a href="#" class="paypal-btn placeholder" id="paypalBtn" onclick="alert('PayPal donations coming soon! Our nonprofit PayPal account is being verified.'); return false;">
+        <svg viewBox="0 0 101 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.237 4.1H5.596c-.418 0-.774.303-.84.714L2.022 24.63c-.049.305.187.58.498.58h3.173c.418 0 .774-.303.839-.714l.737-4.672c.065-.41.421-.713.84-.713h1.937c4.031 0 6.356-1.95 6.963-5.817.273-1.693.011-3.022-.78-3.952-.868-1.023-2.407-1.542-4.593-1.542h-.4zm.707 5.732c-.334 2.198-2.012 2.198-3.636 2.198h-.923l.648-4.1c.039-.247.252-.428.503-.428h.423c1.104 0 2.147 0 2.685.629.321.376.419.934.3 1.701z"/>
+          <path d="M35.988 9.775h-3.186c-.251 0-.464.181-.503.428l-.14.89-.223-.323c-.69-1.002-2.229-1.337-3.765-1.337-3.524 0-6.533 2.67-7.118 6.415-.304 1.868.128 3.653 1.183 4.9.968 1.145 2.352 1.622 4.001 1.622 2.83 0 4.398-1.819 4.398-1.819l-.142.882c-.05.305.186.58.497.58h2.87c.417 0 .773-.303.839-.714l1.722-10.904c.05-.304-.186-.58-.497-.58h.064zm-4.43 6.208c-.307 1.816-1.749 3.035-3.59 3.035-.924 0-1.663-.297-2.138-.858-.471-.557-.649-1.35-.5-2.232.286-1.8 1.749-3.06 3.562-3.06.903 0 1.637.3 2.122.867.487.573.68 1.37.544 2.248z"/>
+          <path d="M55.156 9.775h-3.2c-.282 0-.547.14-.707.374l-4.083 6.013-1.731-5.78c-.108-.36-.44-.607-.817-.607h-3.145c-.34 0-.577.333-.465.654l3.262 9.573-3.069 4.331c-.232.328.003.78.405.78h3.197c.28 0 .542-.136.703-.365l9.845-14.218c.227-.328-.009-.775-.406-.775h.011z"/>
+          <path d="M67.817 4.1h-6.642c-.417 0-.773.303-.839.714l-2.734 17.326c-.05.305.186.58.497.58h3.406c.292 0 .54-.212.587-.499l.776-4.914c.065-.41.421-.713.839-.713h1.937c4.032 0 6.357-1.95 6.964-5.817.273-1.693.01-3.022-.78-3.952-.87-1.023-2.408-1.542-4.594-1.542h-.417v-.183zm.706 5.732c-.334 2.198-2.011 2.198-3.636 2.198h-.922l.648-4.1c.039-.247.252-.428.503-.428h.423c1.104 0 2.146 0 2.685.629.32.376.418.934.3 1.701z"/>
+          <path d="M91.568 9.775h-3.186c-.251 0-.464.181-.503.428l-.14.89-.223-.323c-.69-1.002-2.229-1.337-3.765-1.337-3.523 0-6.533 2.67-7.117 6.415-.304 1.868.127 3.653 1.182 4.9.969 1.145 2.352 1.622 4.001 1.622 2.83 0 4.399-1.819 4.399-1.819l-.142.882c-.05.305.186.58.497.58h2.87c.417 0 .773-.303.838-.714l1.723-10.904c.05-.304-.186-.58-.497-.58h.063zm-4.429 6.208c-.307 1.816-1.75 3.035-3.59 3.035-.924 0-1.664-.297-2.139-.858-.471-.557-.648-1.35-.5-2.232.287-1.8 1.75-3.06 3.563-3.06.903 0 1.637.3 2.121.867.488.573.68 1.37.545 2.248z"/>
+          <path d="M95.073 4.524l-2.775 17.656c-.049.305.187.58.498.58h2.744c.417 0 .773-.303.839-.714l2.734-17.326c.05-.305-.186-.58-.497-.58h-3.046c-.25 0-.464.181-.503.428l.006-.044z"/>
+        </svg>
+        PayPal
+      </a>
+      <p style="text-align:center; color:var(--muted); font-size:.85rem; margin-top:8px;">PayPal account verification in progress</p>
 
       <div class="info-section" style="margin-top:24px;">
         <h3>About Your Donation</h3>
@@ -490,6 +629,31 @@
       const cur = root.getAttribute('data-theme') || 'auto';
       const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
       setTheme(next);
+    });
+
+    // ===================
+    // FREQUENCY TOGGLE
+    // ===================
+    const frequencyBtns = document.querySelectorAll('.frequency-btn');
+    const onetimeSection = document.getElementById('onetimeSection');
+    const monthlySection = document.getElementById('monthlySection');
+
+    frequencyBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update button states
+        frequencyBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show/hide sections
+        const frequency = btn.dataset.frequency;
+        if (frequency === 'onetime') {
+          onetimeSection.classList.add('active');
+          monthlySection.classList.remove('active');
+        } else {
+          onetimeSection.classList.remove('active');
+          monthlySection.classList.add('active');
+        }
+      });
     });
 
     // ===================
