@@ -626,11 +626,12 @@
       <div class="subscribe-card">
         <h2>Stay Updated</h2>
         <p class="subscribe-intro">New research and insights from Theios Research Institute, delivered when ready.</p>
-        <form class="subscribe-form" id="subscribeForm">
+        <form class="subscribe-form" id="subscribeForm" action="https://buttondown.email/api/emails/embed-subscribe/theios" method="post" target="subscribeFrame">
           <input type="text" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
           <button type="submit">Subscribe</button>
         </form>
+        <iframe name="subscribeFrame" style="display:none"></iframe>
         <p class="subscribe-note">No spam. Unsubscribe anytime.</p>
         <div class="subscribe-message" id="subscribeMessage"></div>
       </div>
@@ -718,43 +719,29 @@
     const subscribeForm = document.getElementById('subscribeForm');
     const subscribeMessage = document.getElementById('subscribeMessage');
 
-    subscribeForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    subscribeForm.addEventListener('submit', (e) => {
       const btn = subscribeForm.querySelector('button');
       const emailInput = subscribeForm.querySelector('input[name="email"]');
       const honeypot = subscribeForm.querySelector('input[name="website"]');
 
-      // Check honeypot
-      if (honeypot.value) return;
-
-      // Disable button
-      btn.disabled = true;
-      btn.textContent = 'Subscribing...';
-      subscribeMessage.style.display = 'none';
-
-      try {
-        const response = await fetch('https://buttondown.email/api/emails/embed-subscribe/theios', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ email: emailInput.value })
-        });
-
-        if (response.ok) {
-          subscribeMessage.className = 'subscribe-message success';
-          subscribeMessage.textContent = 'Check your email to confirm your subscription.';
-          subscribeMessage.style.display = 'block';
-          emailInput.value = '';
-        } else {
-          throw new Error('Subscription failed');
-        }
-      } catch (err) {
-        subscribeMessage.className = 'subscribe-message error';
-        subscribeMessage.textContent = 'Something went wrong. Please try again.';
-        subscribeMessage.style.display = 'block';
+      // Check honeypot - block submission if filled
+      if (honeypot.value) {
+        e.preventDefault();
+        return;
       }
 
-      btn.disabled = false;
-      btn.textContent = 'Subscribe';
+      // Show success message (form submits to hidden iframe)
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+
+      setTimeout(() => {
+        subscribeMessage.className = 'subscribe-message success';
+        subscribeMessage.textContent = 'Check your email to confirm your subscription.';
+        subscribeMessage.style.display = 'block';
+        emailInput.value = '';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }, 1000);
     });
   </script>
 </body>

@@ -795,11 +795,12 @@
         <h3>Stay Updated</h3>
         <p>New research and insights, delivered when ready.</p>
       </div>
-      <form class="subscribe-cta-form" id="subscribeForm">
+      <form class="subscribe-cta-form" id="subscribeForm" action="https://buttondown.email/api/emails/embed-subscribe/theios" method="post" target="subscribeFrame">
         <input type="text" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit">Subscribe</button>
       </form>
+      <iframe name="subscribeFrame" style="display:none"></iframe>
     </div>
     <div class="subscribe-cta-message" id="subscribeMessage"></div>
 
@@ -917,41 +918,27 @@
     const subscribeForm = document.getElementById('subscribeForm');
     const subscribeMessage = document.getElementById('subscribeMessage');
 
-    subscribeForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    subscribeForm.addEventListener('submit', (e) => {
       const btn = subscribeForm.querySelector('button');
       const emailInput = subscribeForm.querySelector('input[name="email"]');
       const honeypot = subscribeForm.querySelector('input[name="website"]');
 
-      if (honeypot.value) return;
+      if (honeypot.value) {
+        e.preventDefault();
+        return;
+      }
 
       btn.disabled = true;
       btn.textContent = 'Subscribing...';
-      subscribeMessage.style.display = 'none';
 
-      try {
-        const response = await fetch('https://buttondown.email/api/emails/embed-subscribe/theios', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ email: emailInput.value })
-        });
-
-        if (response.ok) {
-          subscribeMessage.className = 'subscribe-cta-message success';
-          subscribeMessage.textContent = 'Check your email to confirm your subscription.';
-          subscribeMessage.style.display = 'block';
-          emailInput.value = '';
-        } else {
-          throw new Error('Subscription failed');
-        }
-      } catch (err) {
-        subscribeMessage.className = 'subscribe-cta-message error';
-        subscribeMessage.textContent = 'Something went wrong. Please try again.';
+      setTimeout(() => {
+        subscribeMessage.className = 'subscribe-cta-message success';
+        subscribeMessage.textContent = 'Check your email to confirm your subscription.';
         subscribeMessage.style.display = 'block';
-      }
-
-      btn.disabled = false;
-      btn.textContent = 'Subscribe';
+        emailInput.value = '';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }, 1000);
     });
   </script>
 </body>
