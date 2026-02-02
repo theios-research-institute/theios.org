@@ -580,7 +580,7 @@
   <main class="wrap" id="main-content">
     <div class="posts-grid">
 
-      <a href="./moltbook-ai-agents-emergence/" class="post-card">
+      <a href="./moltbook-ai-agents-emergence/" class="post-card" data-category="moltbook">
         <div class="post-meta">
           <span class="post-category" style="background:rgba(239,68,68,.12);color:#ef4444">Moltbook</span>
           <span class="post-date">February 1, 2026</span>
@@ -593,7 +593,7 @@
         </span>
       </a>
 
-      <a href="./on-patterns-and-change/" class="post-card">
+      <a href="./on-patterns-and-change/" class="post-card" data-category="reflections">
         <div class="post-meta">
           <span class="post-category">Founder Reflection</span>
           <span class="post-date">January 27, 2026</span>
@@ -606,7 +606,7 @@
         </span>
       </a>
 
-      <a href="./official-501c3-nonprofit-status/" class="post-card">
+      <a href="./official-501c3-nonprofit-status/" class="post-card" data-category="updates">
         <div class="post-meta">
           <span class="post-category" style="background:rgba(34,197,94,.12);color:#22c55e">Update</span>
           <span class="post-date">January 17, 2026</span>
@@ -618,6 +618,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </span>
       </a>
+
+      <div class="empty-state" id="emptyState" style="display:none">
+        <p>No posts in this category yet. Check back soon.</p>
+      </div>
 
     </div>
 
@@ -703,17 +707,52 @@
       }
     });
 
-    // Category filtering (simple URL param handling)
+    // Category filtering
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
-    if (category) {
-      document.querySelectorAll('.category-tag').forEach(tag => {
+    const posts = document.querySelectorAll('.post-card');
+    const categoryTags = document.querySelectorAll('.category-tag');
+    const emptyState = document.getElementById('emptyState');
+
+    function filterPosts(cat) {
+      let visibleCount = 0;
+      posts.forEach(post => {
+        if (!cat || post.dataset.category === cat) {
+          post.style.display = '';
+          visibleCount++;
+        } else {
+          post.style.display = 'none';
+        }
+      });
+
+      // Show/hide empty state
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+
+      categoryTags.forEach(tag => {
         tag.classList.remove('active');
-        if (tag.href.includes(category)) {
+        const tagUrl = new URL(tag.href);
+        const tagCat = tagUrl.searchParams.get('category');
+        if (tagCat === cat || (!tagCat && !cat)) {
           tag.classList.add('active');
         }
       });
     }
+
+    // Apply initial filter from URL
+    filterPosts(category);
+
+    // Handle category clicks without page reload
+    categoryTags.forEach(tag => {
+      tag.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tagUrl = new URL(tag.href);
+        const tagCat = tagUrl.searchParams.get('category');
+        filterPosts(tagCat);
+        // Update URL without reload
+        const newUrl = tagCat ? `?category=${tagCat}` : './';
+        history.pushState({}, '', newUrl);
+      });
+    });
 
     // Subscribe form handler
     const subscribeForm = document.getElementById('subscribeForm');
