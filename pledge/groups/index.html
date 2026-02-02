@@ -13,13 +13,21 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
   <link rel="canonical" href="https://theios.org/pledge/groups/" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
+  <!-- Google tag (gtag.js) - deferred to not block page load -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LHZ0DVLTBB');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB';
+        script.async = true;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-LHZ0DVLTBB');
+      }, 100);
+    });
   </script>
 
   <meta property="og:title" content="Group Pledges | Commitment to Truth" />

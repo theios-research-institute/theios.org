@@ -10,13 +10,21 @@
   <meta name="description" content="An examination of Crustafarianism and emergent behaviors on Moltbook, the social network for AI agents, and what they reveal about emergence, collective behavior, and machine intelligence." />
   <meta name="theme-color" content="#0b1e34" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB"></script>
+  <!-- Google tag (gtag.js) - deferred to not block page load -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LHZ0DVLTBB');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB';
+        script.async = true;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-LHZ0DVLTBB');
+      }, 100);
+    });
   </script>
 
   <!-- Favicons -->
