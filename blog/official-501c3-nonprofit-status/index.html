@@ -484,11 +484,94 @@
       }
     }
 
+    /* ===== SUBSCRIBE CTA ===== */
+    .subscribe-cta{
+      background:var(--card);
+      border:2px solid var(--accent);
+      border-radius:14px;
+      padding:24px 28px;
+      margin-bottom:40px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .subscribe-cta-content{
+      flex:1;
+    }
+    .subscribe-cta h3{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+    .subscribe-cta p{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .subscribe-cta-form{
+      display:flex;
+      gap:10px;
+    }
+    .subscribe-cta-form input[type="email"]{
+      padding:12px 16px;
+      font-size:.95rem;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      width:200px;
+    }
+    .subscribe-cta-form input[type="email"]:focus{
+      outline:none;
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(59,130,246,.15);
+    }
+    .subscribe-cta-form input[type="email"]::placeholder{
+      color:var(--muted);
+    }
+    .subscribe-cta-form button{
+      padding:12px 20px;
+      font-size:.95rem;
+      font-weight:600;
+      color:#fff;
+      background:var(--accent);
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      transition:filter .15s;
+      white-space:nowrap;
+    }
+    .subscribe-cta-form button:hover{
+      filter:brightness(1.1);
+    }
+
+    :root.light .subscribe-cta{
+      background:#ffffff;
+      border-color:rgba(59,130,246,.4);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .subscribe-cta{
+        background:#ffffff;
+        border-color:rgba(59,130,246,.4);
+      }
+    }
+
     @media (max-width:640px){
       .article-header{padding:32px 0 24px}
       .article-header h1{font-size:1.7rem}
       .article-content{padding:28px 22px}
       .author-box{flex-direction:column; text-align:center}
+      .subscribe-cta{
+        flex-direction:column;
+        text-align:center;
+      }
+      .subscribe-cta-form{
+        flex-direction:column;
+        width:100%;
+      }
+      .subscribe-cta-form input[type="email"]{
+        width:100%;
+      }
     }
   </style>
 
@@ -603,6 +686,19 @@
         <h3>Neil Sargisian</h3>
         <p>Founder and Director of Research, Theios Research Institute, Inc.</p>
       </div>
+    </div>
+
+    <!-- Subscribe CTA -->
+    <div class="subscribe-cta">
+      <div class="subscribe-cta-content">
+        <h3>Stay Updated</h3>
+        <p>New research and insights, delivered when ready.</p>
+      </div>
+      <form class="subscribe-cta-form" action="https://buttondown.email/api/emails/embed-subscribe/theios" method="post" target="_blank">
+        <input type="text" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
 
     <!-- Share -->

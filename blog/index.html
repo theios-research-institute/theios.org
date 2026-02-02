@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://buttondown.email;" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -378,11 +378,105 @@
       }
     }
 
+    /* ===== SUBSCRIBE SECTION ===== */
+    .subscribe-section{
+      margin-top:20px;
+      margin-bottom:60px;
+    }
+    .subscribe-card{
+      background:var(--card);
+      border:2px solid var(--accent);
+      border-radius:18px;
+      padding:36px 40px;
+      text-align:center;
+      box-shadow:0 12px 32px rgba(0,0,0,.2);
+    }
+    .subscribe-card h2{
+      margin:0 0 10px;
+      font-size:1.5rem;
+      font-weight:700;
+      color:var(--ink);
+    }
+    .subscribe-card .subscribe-intro{
+      margin:0 0 24px;
+      color:var(--muted);
+      font-size:1rem;
+      max-width:480px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .subscribe-form{
+      display:flex;
+      gap:12px;
+      max-width:440px;
+      margin:0 auto 16px;
+    }
+    .subscribe-form input[type="email"]{
+      flex:1;
+      padding:14px 18px;
+      font-size:1rem;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      transition:border-color .15s, box-shadow .15s;
+    }
+    .subscribe-form input[type="email"]:focus{
+      outline:none;
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(59,130,246,.15);
+    }
+    .subscribe-form input[type="email"]::placeholder{
+      color:var(--muted);
+    }
+    .subscribe-form button{
+      padding:14px 24px;
+      font-size:1rem;
+      font-weight:600;
+      color:#fff;
+      background:var(--accent);
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      transition:filter .15s, transform .1s;
+      white-space:nowrap;
+    }
+    .subscribe-form button:hover{
+      filter:brightness(1.1);
+    }
+    .subscribe-form button:active{
+      transform:scale(0.98);
+    }
+    .subscribe-note{
+      margin:0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    /* Light mode */
+    :root.light .subscribe-card{
+      background:#ffffff;
+      border-color:rgba(59,130,246,.4);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .subscribe-card{
+        background:#ffffff;
+        border-color:rgba(59,130,246,.4);
+      }
+    }
+
     @media (max-width:640px){
       .page-header{padding:32px 0 28px}
       .page-header h1{font-size:1.8rem}
       .post-card{padding:22px 20px}
       .post-card h2{font-size:1.2rem}
+      .subscribe-card{padding:28px 24px}
+      .subscribe-form{
+        flex-direction:column;
+      }
+      .subscribe-form button{
+        width:100%;
+      }
     }
   </style>
 
@@ -505,6 +599,20 @@
       </a>
 
     </div>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+      <div class="subscribe-card">
+        <h2>Stay Updated</h2>
+        <p class="subscribe-intro">New research and insights from Theios Research Institute, delivered when ready.</p>
+        <form class="subscribe-form" action="https://buttondown.email/api/emails/embed-subscribe/theios" method="post" target="_blank">
+          <input type="text" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="subscribe-note">No spam. Unsubscribe anytime.</p>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
