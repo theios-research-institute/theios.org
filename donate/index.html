@@ -55,13 +55,13 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NonprofitType",
+    "@type": "Organization",
     "name": "Theios Research Institute, Inc.",
     "description": "A 501(c)(3) nonprofit organization advancing discovery science and structural understanding.",
     "url": "https://theios.org",
     "logo": "https://theios.org/theios-logo-og-wide.png",
     "taxID": "41-3302025",
-    "nonprofitStatus": "501(c)(3)"
+    "nonprofitStatus": "Nonprofit501c3"
   }
   </script>
 
@@ -443,7 +443,7 @@
       const saved = localStorage.getItem('theios.theme');
       const pref = saved || 'auto';
       const root = document.documentElement;
-      root.classList.remove('light','auto');
+      root.classList.remove('light','auto','dark');
       root.classList.add(pref);
       root.setAttribute('data-theme', pref);
     })();
@@ -613,7 +613,7 @@
     const label = document.getElementById('themeLabel');
 
     function setTheme(mode) {
-      root.classList.remove('light','auto');
+      root.classList.remove('light','auto','dark');
       root.classList.add(mode);
       root.setAttribute('data-theme', mode);
       localStorage.setItem('theios.theme', mode);
