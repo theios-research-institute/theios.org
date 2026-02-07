@@ -383,6 +383,27 @@
       background:var(--line);
     }
 
+    /* QR Code section */
+    .qr-section{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:20px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+    }
+    .qr-label{
+      font-size:.85rem;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .qr-code{
+      width:160px;
+      height:160px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+
     /* PayPal button */
     .paypal-btn{
       display:flex;
@@ -568,6 +589,14 @@
         </svg>
         PayPal
       </a>
+
+      <!-- PayPal QR Code -->
+      <div class="qr-section">
+        <span class="qr-label">Or scan to donate with PayPal</span>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=UT4CKW7G9ERYU" target="_blank" rel="noopener">
+          <img src="paypal-qr-code.png" alt="Scan to donate via PayPal" class="qr-code" width="160" height="160">
+        </a>
+      </div>
 
       <div class="info-section" style="margin-top:24px;">
         <h3>About Your Donation</h3>
