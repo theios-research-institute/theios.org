@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self';" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents | Blog | Theios Research Institute, Inc.</title>
+  <meta name="description" content="Two open-source frameworks for controlling what AI coding assistants can access and retain. Protect trade secrets, pre-patent research, and sensitive projects while still using AI tools." />
+  <meta name="theme-color" content="#0b1e34" />
+
+  <!-- Google tag (gtag.js) - deferred to not block page load -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LHZ0DVLTBB';
+        script.async = true;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-LHZ0DVLTBB');
+      }, 100);
+    });
+  </script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
+  <link rel="apple-touch-icon" href="../../favicon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Theios Research Institute, Inc." />
+  <meta property="og:title" content="Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents" />
+  <meta property="og:description" content="Two open-source frameworks for controlling what AI coding assistants can access and retain." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://theios.org/blog/knowledge-tiers-epistemic-guardrails/" />
+  <meta property="og:image" content="https://theios.org/blog/knowledge-tiers-epistemic-guardrails/featured-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <meta property="article:published_time" content="2026-02-06" />
+  <meta property="article:author" content="Neil Sargisian" />
+  <meta property="article:section" content="Research" />
+  <link rel="canonical" href="https://theios.org/blog/knowledge-tiers-epistemic-guardrails/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@theios_org" />
+  <meta name="twitter:creator" content="@theios_org" />
+  <meta name="twitter:title" content="Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents" />
+  <meta name="twitter:description" content="Two open-source frameworks for controlling what AI coding assistants can access and retain." />
+  <meta name="twitter:image" content="https://theios.org/blog/knowledge-tiers-epistemic-guardrails/featured-image.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents",
+    "description": "Two open-source frameworks for controlling what AI coding assistants can access and retain. Protect trade secrets, pre-patent research, and sensitive projects while still using AI tools.",
+    "image": "https://theios.org/blog/knowledge-tiers-epistemic-guardrails/featured-image.png",
+    "datePublished": "2026-02-06",
+    "dateModified": "2026-02-06",
+    "author": {
+      "@type": "Person",
+      "name": "Neil Sargisian",
+      "jobTitle": "Founder and Director of Research",
+      "url": "https://theios.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Theios Research Institute, Inc.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://theios.org/theios-logo-web.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://theios.org/blog/knowledge-tiers-epistemic-guardrails/"
+    },
+    "articleSection": "Research",
+    "keywords": ["AI agents", "Claude Code", "Cursor", "GitHub Copilot", "information security", "trade secrets", "epistemic access control", "open source"]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg1:#0b1e34; --bg2:#143d66;
+      --card:#0f172a; --ink:#e5e7eb; --muted:#a3afbf;
+      --line:#1f2937; --accent:#3b82f6;
+      --btn:#0b1220;
+    }
+    :root.light{
+      --bg1:#c9d6e5; --bg2:#a8bdd4;
+      --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+      --line:#8fa5be; --btn:#ffffff;
+      --radial-overlay:rgba(11,30,52,0.25);
+    }
+    :root:not(.light){
+      --radial-overlay:#1f3b62;
+    }
+
+    *{box-sizing:border-box}
+    .skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;text-decoration:none;font-weight:600;border-radius:0 0 8px 0}
+    .skip-link:focus{top:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 50% -200px, var(--radial-overlay) 0%, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      background-attachment:fixed;
+      color:var(--ink);
+      font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      min-height:100vh;
+    }
+    .wrap{
+      width:100%; max-width:720px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ===== NAV BAR ===== */
+    .navbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,30,52,.85);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      padding:12px 0;
+    }
+    :root.light .navbar{
+      background:rgba(255,255,255,.9);
+    }
+    .navbar .wrap{
+      max-width:900px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .nav-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--ink);
+    }
+    .nav-logo{
+      width:40px; height:40px;
+      border-radius:8px;
+    }
+    .nav-name{
+      font-weight:600;
+      font-size:1.1rem;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .nav-links a{
+      padding:.5rem .9rem;
+      border-radius:8px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:.9rem;
+      font-weight:500;
+      transition:background .15s;
+    }
+    .nav-links a:hover{
+      background:rgba(255,255,255,.1);
+    }
+    :root.light .nav-links a:hover{
+      background:rgba(0,0,0,.05);
+    }
+    .nav-links a.active{
+      background:rgba(59,130,246,.15);
+      color:var(--accent);
+    }
+
+    /* Theme toggle */
+    .theme-toggle{
+      display:inline-flex; gap:6px; align-items:center;
+      padding:.45rem .65rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
+      color:var(--ink); cursor:pointer; font-size:.85rem;
+    }
+    .theme-toggle svg{width:16px;height:16px;display:block}
+
+    /* Mobile nav */
+    .nav-right{
+      display:none;
+      align-items:center;
+      gap:8px;
+    }
+    .hamburger{
+      display:none;
+      padding:.5rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
+      color:var(--ink); cursor:pointer;
+    }
+    .hamburger svg{width:22px; height:22px; display:block}
+    .mobile-menu{
+      display:none;
+      position:fixed; top:0; left:0; right:0; bottom:0;
+      background:rgba(0,0,0,.9); z-index:100;
+      flex-direction:column; align-items:center; justify-content:center; gap:20px;
+    }
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{
+      font-size:1.2rem; padding:.8rem 2rem; border-radius:12px;
+      background:var(--card); border:1px solid var(--line);
+      color:var(--ink); text-decoration:none;
+    }
+    .mobile-menu .close-btn{
+      position:absolute; top:16px; right:16px;
+      padding:.5rem .8rem; border-radius:8px;
+      border:1px solid var(--line); background:transparent;
+      color:var(--ink); cursor:pointer; font-size:1.1rem;
+    }
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .nav-right{display:flex}
+      .hamburger{display:block}
+      .nav-name{display:none}
+    }
+
+    /* ===== ARTICLE ===== */
+    .article-header{
+      padding:50px 0 30px;
+    }
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.9rem;
+      margin-bottom:20px;
+      transition:color .15s;
+    }
+    .back-link:hover{color:var(--accent)}
+    .back-link svg{width:16px;height:16px}
+    .article-meta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .article-category{
+      padding:4px 12px;
+      border-radius:12px;
+      background:rgba(59,130,246,.12);
+      color:var(--accent);
+      font-size:.8rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+    .article-date{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .article-header h1{
+      font-size:2.2rem;
+      margin:0 0 16px;
+      font-weight:700;
+      line-height:1.25;
+    }
+    .article-intro{
+      font-size:1.15rem;
+      color:var(--muted);
+      margin:0;
+      line-height:1.6;
+    }
+    .featured-image{
+      margin-top:28px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 8px 32px rgba(0,0,0,.25);
+    }
+    .featured-image img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* ===== ARTICLE CONTENT ===== */
+    .article-content{
+      padding-bottom:60px;
+    }
+    .article-content h2{
+      font-size:1.5rem;
+      margin:40px 0 16px;
+      font-weight:700;
+    }
+    .article-content h3{
+      font-size:1.2rem;
+      margin:32px 0 12px;
+      font-weight:600;
+    }
+    .article-content p{
+      margin:0 0 20px;
+      line-height:1.75;
+    }
+    .article-content ul, .article-content ol{
+      margin:0 0 20px;
+      padding-left:24px;
+    }
+    .article-content li{
+      margin-bottom:10px;
+      line-height:1.7;
+    }
+    .article-content a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .article-content a:hover{
+      text-decoration:underline;
+    }
+    .article-content strong{
+      font-weight:600;
+    }
+    .article-content blockquote{
+      margin:24px 0;
+      padding:20px 24px;
+      background:var(--card);
+      border-left:4px solid var(--accent);
+      border-radius:0 12px 12px 0;
+      font-style:italic;
+    }
+    .article-content blockquote p{
+      margin:0;
+    }
+    .article-content code{
+      background:rgba(59,130,246,.1);
+      padding:2px 6px;
+      border-radius:4px;
+      font-size:.9em;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    }
+    .article-content pre{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:20px;
+      overflow-x:auto;
+      margin:0 0 20px;
+    }
+    .article-content pre code{
+      background:none;
+      padding:0;
+      font-size:.85rem;
+      line-height:1.6;
+    }
+
+    /* Info box */
+    .info-box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px 28px;
+      margin:28px 0;
+    }
+    .info-box h4{
+      margin:0 0 12px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+    .info-box p{
+      margin:0;
+    }
+
+    /* CTA box */
+    .cta-box{
+      background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(59,130,246,.02));
+      border:2px solid var(--accent);
+      border-radius:16px;
+      padding:28px;
+      margin:32px 0;
+      text-align:center;
+    }
+    .cta-box h3{
+      margin:0 0 12px;
+      font-size:1.3rem;
+    }
+    .cta-box p{
+      margin:0 0 20px;
+      color:var(--muted);
+    }
+    .cta-buttons{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 20px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:.95rem;
+      transition:all .15s;
+    }
+    .cta-btn.primary{
+      background:var(--accent);
+      color:#fff;
+    }
+    .cta-btn.primary:hover{
+      filter:brightness(1.1);
+      text-decoration:none;
+    }
+    .cta-btn.secondary{
+      background:var(--btn);
+      border:1px solid var(--line);
+      color:var(--ink);
+    }
+    .cta-btn.secondary:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .cta-btn svg{width:18px;height:18px}
+
+    /* Tier table */
+    .tier-table{
+      width:100%;
+      border-collapse:collapse;
+      margin:20px 0;
+      font-size:.9rem;
+    }
+    .tier-table th, .tier-table td{
+      padding:12px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--line);
+    }
+    .tier-table th{
+      background:var(--card);
+      font-weight:600;
+    }
+    .tier-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    /* ===== AUTHOR BOX ===== */
+    .author-box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px 28px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      margin-bottom:40px;
+    }
+    .author-avatar{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:rgba(59,130,246,.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent);
+      font-size:1.4rem;
+      font-weight:700;
+      flex-shrink:0;
+    }
+    .author-info h3{
+      margin:0 0 4px;
+      font-size:1rem;
+      font-weight:600;
+    }
+    .author-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* ===== SUBSCRIBE CTA ===== */
+    .subscribe-cta{
+      background:var(--card);
+      border:2px solid var(--accent);
+      border-radius:14px;
+      padding:24px 28px;
+      margin-bottom:40px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .subscribe-cta-content{
+      flex:1;
+    }
+    .subscribe-cta h3{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+    .subscribe-cta p{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .subscribe-cta-form{
+      display:flex;
+      gap:10px;
+    }
+    .subscribe-cta-form input[type="email"]{
+      padding:12px 16px;
+      font-size:.95rem;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.05);
+      color:var(--ink);
+      width:200px;
+    }
+    .subscribe-cta-form input[type="email"]:focus{
+      outline:none;
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(59,130,246,.15);
+    }
+    .subscribe-cta-form input[type="email"]::placeholder{
+      color:var(--muted);
+    }
+    .subscribe-cta-form button{
+      padding:12px 20px;
+      font-size:.95rem;
+      font-weight:600;
+      color:#fff;
+      background:var(--accent);
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      transition:filter .15s;
+      white-space:nowrap;
+    }
+    .subscribe-cta-form button:hover{
+      filter:brightness(1.1);
+    }
+    .subscribe-cta-form button:disabled{
+      opacity:0.7;
+      cursor:not-allowed;
+    }
+    .subscribe-cta-message{
+      margin-top:12px;
+      padding:12px 16px;
+      border-radius:8px;
+      font-size:.9rem;
+      text-align:center;
+      display:none;
+    }
+    .subscribe-cta-message.success{
+      background:rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.3);
+      color:#22c55e;
+    }
+    .subscribe-cta-message.error{
+      background:rgba(239,68,68,.12);
+      border:1px solid rgba(239,68,68,.3);
+      color:#ef4444;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer{
+      padding:40px 0;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    .footer-links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.85rem;
+      transition:color .15s;
+    }
+    .footer-links a:hover{
+      color:var(--accent);
+    }
+    .footer-copy{
+      color:var(--muted);
+      font-size:.9rem;
+      margin:0;
+    }
+    .footer-copy a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    /* Light mode */
+    :root.light .article-content blockquote,
+    :root.light .info-box,
+    :root.light .article-content pre,
+    :root.light .author-box{
+      background:#ffffff;
+      border-color:rgba(100,130,160,.2);
+    }
+    :root.light .subscribe-cta{
+      background:#ffffff;
+      border-color:rgba(59,130,246,.4);
+    }
+    @media (prefers-color-scheme: light){
+      :root.auto .article-content blockquote,
+      :root.auto .info-box,
+      :root.auto .article-content pre,
+      :root.auto .author-box{
+        background:#ffffff;
+        border-color:rgba(100,130,160,.2);
+      }
+      :root.auto .subscribe-cta{
+        background:#ffffff;
+        border-color:rgba(59,130,246,.4);
+      }
+      :root.auto{
+        --bg1:#c9d6e5; --bg2:#a8bdd4;
+        --card:#ffffff; --ink:#0b1e34; --muted:#2c4a6e;
+        --line:#8fa5be; --btn:#ffffff;
+        --radial-overlay:rgba(11,30,52,0.25);
+      }
+    }
+
+    @media (max-width:640px){
+      .article-header{padding:32px 0 20px}
+      .article-header h1{font-size:1.7rem}
+      .article-intro{font-size:1.05rem}
+      .tier-table{font-size:.8rem}
+      .tier-table th, .tier-table td{padding:8px 10px}
+      .author-box{flex-direction:column; text-align:center}
+      .subscribe-cta{
+        flex-direction:column;
+        text-align:center;
+      }
+      .subscribe-cta-form{
+        flex-direction:column;
+        width:100%;
+      }
+      .subscribe-cta-form input[type="email"]{
+        width:100%;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theios.theme');
+      const pref = saved || 'auto';
+      document.documentElement.classList.add(pref);
+      document.documentElement.setAttribute('data-theme', pref);
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="wrap">
+      <a href="../../" class="nav-brand">
+        <img src="../../theios-logo-web.png" alt="Theios logo" class="nav-logo" onerror="this.src='../../theios-logo-favicon.png'">
+        <span class="nav-name">Theios Research Institute, Inc.</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../#research">Research</a>
+        <a href="../" class="active">Blog</a>
+        <a href="../../pledge/">The Pledge</a>
+        <a href="../../donate/">Donate</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
+          </svg>
+          <span id="themeLabel">Auto</span>
+        </button>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="mobileThemeToggle" type="button" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm8-5a1 1 0 0 1 1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1-1 1ZM4 12a1 1 0 0 1-1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1 1-1Z"/>
+          </svg>
+          <span id="mobileThemeLabel">Auto</span>
+        </button>
+        <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeMenu" type="button" aria-label="Close menu">&#10005;</button>
+    <a href="../../#research">Research</a>
+    <a href="../">Blog</a>
+    <a href="../../pledge/">The Pledge</a>
+    <a href="../../donate/">Donate</a>
+  </div>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="wrap">
+      <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Blog
+      </a>
+      <div class="article-meta">
+        <span class="article-category">Research</span>
+        <span class="article-date">February 6, 2026</span>
+      </div>
+      <h1>Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents</h1>
+      <p class="article-intro">Two open-source frameworks for controlling what AI coding assistants can access and retain. Protect your sensitive work while still benefiting from AI tools.</p>
+      <div class="featured-image">
+        <img src="featured-image.png" alt="Knowledge Tier Framework visualization showing four access levels: Public, Internal, Confidential, and Restricted, with an AI agent accessing Internal tier while being blocked from Restricted tier" width="1200" height="800" loading="eager">
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content" id="main-content">
+    <div class="wrap">
+
+      <h2>The Problem</h2>
+
+      <p>AI coding assistants like Claude Code, Cursor, and GitHub Copilot have become indispensable tools for many developers. Their memory features provide continuity across sessions, learning your codebase and preferences over time.</p>
+
+      <p>But this creates a fundamental tension: <strong>How do you work on sensitive projects while using memory-enabled AI tools?</strong></p>
+
+      <p>Consider the scenarios:</p>
+
+      <ul>
+        <li><strong>Pre-patent research</strong> that could lose protection if disclosed</li>
+        <li><strong>Trade secrets</strong> that require "reasonable measures" to maintain secrecy under law</li>
+        <li><strong>Proprietary algorithms</strong> that provide competitive advantage</li>
+        <li><strong>Client work</strong> under confidentiality agreements</li>
+      </ul>
+
+      <p>The current approach for most developers is binary: use memory for everything, or disable it entirely. Neither is ideal. You lose either the security or the productivity benefits.</p>
+
+      <h2>Our Solution: Two Complementary Frameworks</h2>
+
+      <p>Today we're releasing two open-source frameworks that work together to solve this problem:</p>
+
+      <div class="info-box">
+        <h4>Knowledge Tier Framework for AI Agents</h4>
+        <p>A four-tier classification system for categorizing projects by sensitivity. Defines the structure and rules for each level of information protection.</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Epistemic Guardrails for AI Agents</h4>
+        <p>Cross-platform hooks that enforce the tier boundaries. Works with Claude Code, Cursor, and GitHub Copilot to block access when memory settings conflict with project sensitivity.</p>
+      </div>
+
+      <h2>The Four Tiers</h2>
+
+      <p>Not all information requires the same level of protection. The Knowledge Tier Framework provides a structured way to classify projects:</p>
+
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Name</th>
+            <th>Memory</th>
+            <th>Use Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Restricted</td>
+            <td>OFF</td>
+            <td>Trade secrets, pre-patent, proprietary research</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>Confidential</td>
+            <td>Enabled</td>
+            <td>Competitive advantage, internal R&D</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>Internal</td>
+            <td>Enabled</td>
+            <td>Client work, business operations</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>Public</td>
+            <td>Enabled</td>
+            <td>Open source, documentation, tutorials</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The key insight: <strong>Tier 1 (Restricted) projects require memory to be OFF</strong>. If you try to access a Restricted project with memory enabled, Epistemic Guardrails blocks the access and warns you.</p>
+
+      <h2>How It Works</h2>
+
+      <p>Epistemic Guardrails uses a layered approach:</p>
+
+      <ol>
+        <li><strong>Session-Start Guard</strong> warns the AI about sensitive directories when memory is enabled</li>
+        <li><strong>PreToolUse Hook</strong> blocks file access to sensitive directories during active sessions</li>
+        <li><strong>Path + Keyword Detection</strong> identifies sensitive projects by directory path and naming patterns</li>
+      </ol>
+
+      <p>When the system detects a conflict (Restricted project + memory enabled), it blocks access before any information can be retained:</p>
+
+      <pre><code>$ claude
+[Epistemic Guardrails] WARNING: Memory is enabled but you are in a Restricted project.
+Access blocked. Disable memory before working on this project.</code></pre>
+
+      <h2>Cross-Platform by Design</h2>
+
+      <p>Different AI assistants use different hook formats. Epistemic Guardrails abstracts these differences, providing:</p>
+
+      <ul>
+        <li><strong>One configuration</strong> for all platforms</li>
+        <li><strong>Consistent behavior</strong> across Claude Code, Cursor, and GitHub Copilot</li>
+        <li><strong>Easy maintenance</strong> - update core logic once</li>
+      </ul>
+
+      <h2>Why This Matters</h2>
+
+      <p>Under U.S. trade secret law (Defend Trade Secrets Act of 2016), information loses protection if the owner fails to take "reasonable measures" to maintain secrecy. Allowing AI memory to retain proprietary information may constitute inadequate protection.</p>
+
+      <p>Beyond legal concerns, there's a practical reality: <strong>the more powerful AI tools become, the more important it is to control what they can access</strong>.</p>
+
+      <p>These frameworks give you that control without forcing you to abandon the productivity benefits of AI assistance.</p>
+
+      <div class="cta-box">
+        <h3>Get Started</h3>
+        <p>Both frameworks are open source under the MIT license.</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/theios-research-institute/knowledge-tier-framework-for-ai-agents" class="cta-btn primary" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Knowledge Tier Framework
+          </a>
+          <a href="https://github.com/theios-research-institute/epistemic-guardrails-for-ai-agents" class="cta-btn secondary" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Epistemic Guardrails
+          </a>
+        </div>
+      </div>
+
+      <h2>Transparency Note</h2>
+
+      <p>This work is conducted by Theios Research Institute, Inc., a 501(c)(3) nonprofit research organization. The project is currently authored by a single investigator and is released openly to invite external scrutiny, replication, and critique.</p>
+
+      <p>An AI coding assistant was used to help implement memory partitioning and security logic under human-specified constraints. All architectural decisions, threat models, and epistemic guardrails were designed and validated by the author.</p>
+
+      <hr style="border:0;border-top:1px solid var(--line);margin:40px 0;">
+
+      <p><em>Questions or feedback? Reach out at <a href="mailto:research@theios.org">research@theios.org</a>.</em></p>
+
+    </div>
+  </article>
+
+  <!-- Author Box -->
+  <div class="wrap">
+    <div class="author-box">
+      <div class="author-avatar">NS</div>
+      <div class="author-info">
+        <h3>Neil Sargisian</h3>
+        <p>Founder and Director of Research, Theios Research Institute, Inc.</p>
+      </div>
+    </div>
+
+    <!-- Subscribe CTA -->
+    <div class="subscribe-cta">
+      <div class="subscribe-cta-content">
+        <h3>Stay Updated</h3>
+        <p>New research and insights, delivered when ready.</p>
+      </div>
+      <form class="subscribe-cta-form" id="subscribeForm" action="https://buttondown.email/api/emails/embed-subscribe/theios" method="post" target="subscribeFrame">
+        <input type="text" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+      <iframe name="subscribeFrame" style="display:none"></iframe>
+    </div>
+    <div class="subscribe-cta-message" id="subscribeMessage"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="../../">Home</a>
+        <a href="../../#research">Research</a>
+        <a href="../../pledge/">The Pledge</a>
+        <a href="../../donate/">Donate</a>
+        <a href="../../privacy-policy/">Privacy</a>
+        <a href="../../terms-of-service/">Terms</a>
+      </div>
+      <p class="footer-copy">&copy; <span id="y"></span> <a href="../../">Theios Research Institute, Inc.</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+    const mobileBtn = document.getElementById('mobileThemeToggle');
+    const mobileLabel = document.getElementById('mobileThemeLabel');
+
+    function setTheme(mode) {
+      root.classList.remove('light','auto','dark');
+      root.classList.add(mode);
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theios.theme', mode);
+      const labelText = mode[0].toUpperCase() + mode.slice(1);
+      label.textContent = labelText;
+      mobileLabel.textContent = labelText;
+    }
+
+    (function(){
+      const current = root.getAttribute('data-theme') || 'auto';
+      const labelText = current[0].toUpperCase() + current.slice(1);
+      label.textContent = labelText;
+      mobileLabel.textContent = labelText;
+    })();
+
+    function cycleTheme() {
+      const cur = root.getAttribute('data-theme') || 'auto';
+      const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+      setTheme(next);
+    }
+
+    btn.addEventListener('click', cycleTheme);
+    mobileBtn.addEventListener('click', cycleTheme);
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu || e.target.tagName === 'A') {
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    // Subscribe form handler
+    const subscribeForm = document.getElementById('subscribeForm');
+    const subscribeMessage = document.getElementById('subscribeMessage');
+
+    subscribeForm.addEventListener('submit', (e) => {
+      const btn = subscribeForm.querySelector('button');
+      const emailInput = subscribeForm.querySelector('input[name="email"]');
+      const honeypot = subscribeForm.querySelector('input[name="website"]');
+
+      if (honeypot.value) {
+        e.preventDefault();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+
+      setTimeout(() => {
+        subscribeMessage.className = 'subscribe-cta-message success';
+        subscribeMessage.textContent = 'Check your email to confirm your subscription.';
+        subscribeMessage.style.display = 'block';
+        emailInput.value = '';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
