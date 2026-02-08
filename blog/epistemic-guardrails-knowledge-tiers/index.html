@@ -38,9 +38,9 @@
   <meta property="og:description" content="Two open-source frameworks for controlling what AI coding assistants can access and retain." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://theios.org/blog/epistemic-guardrails-knowledge-tiers/" />
-  <meta property="og:image" content="https://theios.org/theios-logo-og-wide.png" />
+  <meta property="og:image" content="https://theios.org/blog/epistemic-guardrails-knowledge-tiers/featured-image.png" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:height" content="800" />
   <meta property="article:published_time" content="2026-02-06" />
   <meta property="article:author" content="Neil Sargisian" />
   <meta property="article:section" content="Research" />
@@ -52,7 +52,7 @@
   <meta name="twitter:creator" content="@theios_org" />
   <meta name="twitter:title" content="Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents" />
   <meta name="twitter:description" content="Two open-source frameworks for controlling what AI coding assistants can access and retain." />
-  <meta name="twitter:image" content="https://theios.org/theios-logo-og-wide.png" />
+  <meta name="twitter:image" content="https://theios.org/blog/epistemic-guardrails-knowledge-tiers/featured-image.png" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -61,7 +61,7 @@
     "@type": "BlogPosting",
     "headline": "Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents",
     "description": "Two open-source frameworks for controlling what AI coding assistants can access and retain. Protect trade secrets, pre-patent research, and sensitive projects while still using AI tools.",
-    "image": "https://theios.org/theios-logo-og-wide.png",
+    "image": "https://theios.org/blog/epistemic-guardrails-knowledge-tiers/featured-image.png",
     "datePublished": "2026-02-06",
     "dateModified": "2026-02-06",
     "author": {
@@ -276,6 +276,17 @@
       color:var(--muted);
       margin:0;
       line-height:1.6;
+    }
+    .featured-image{
+      margin-top:28px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 8px 32px rgba(0,0,0,.25);
+    }
+    .featured-image img{
+      width:100%;
+      height:auto;
+      display:block;
     }
 
     /* ===== ARTICLE CONTENT ===== */
@@ -570,6 +581,9 @@
       </div>
       <h1>Introducing Knowledge Tiers and Epistemic Guardrails for AI Agents</h1>
       <p class="article-intro">Two open-source frameworks for controlling what AI coding assistants can access and retain. Protect your sensitive work while still benefiting from AI tools.</p>
+      <div class="featured-image">
+        <img src="featured-image.png" alt="Knowledge Tier Framework visualization showing four access levels: Public, Internal, Confidential, and Restricted, with an AI agent accessing Internal tier while being blocked from Restricted tier" width="1200" height="800" loading="eager">
+      </div>
     </div>
   </header>
 
