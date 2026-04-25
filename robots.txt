@@ -1,4 +1,138 @@
+# Theios Research Institute — robots.txt
+# AI Search Engine Optimization (29 AI bots configured)
+# Last updated: April 2026
+
+# ============================================
+# SEARCH & BROWSING BOTS (ALLOW)
+# Enable AI assistants to find and cite Theios research
+# ============================================
+
+# OpenAI ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI ChatGPT Browsing
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# xAI Grok
+User-agent: GrokBot
+Allow: /
+
+User-agent: xAI-Grok
+Allow: /
+
+# Microsoft Copilot & Bing
+User-agent: Copilot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# Mistral AI
+User-agent: MistralBot
+Allow: /
+
+# You.com AI Search
+User-agent: YouBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon Alexa
+User-agent: Amazonbot
+Allow: /
+
+# Facebook Social Sharing
+User-agent: FacebookBot
+Allow: /
+
+# ============================================
+# REGIONAL SEARCH BOTS (ALLOW)
+# ============================================
+
+# Baidu (China)
+User-agent: Baiduspider
+Allow: /
+
+# Naver (Korea)
+User-agent: Yeti
+Allow: /
+
+# ============================================
+# TRAINING DATA BOTS (BLOCK)
+# Protect research content from being used for AI training
+# ============================================
+
+# OpenAI Training
+User-agent: GPTBot
+Disallow: /
+
+# Common Crawl
+User-agent: CCBot
+Disallow: /
+
+# Allen Institute for AI
+User-agent: AI2Bot
+Disallow: /
+
+# Diffbot Data Extraction
+User-agent: Diffbot
+Disallow: /
+
+# Omgili Data Aggregator
+User-agent: Omgilibot
+Disallow: /
+
+# Image AI Training
+User-agent: ImagesiftBot
+Disallow: /
+
+# ByteDance/TikTok (aggressive crawler)
+User-agent: Bytespider
+Disallow: /
+
+# SEO Tool Crawlers (high server load)
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+# ============================================
+# DEFAULT RULES
+# ============================================
+
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://theios.org/sitemap.xml

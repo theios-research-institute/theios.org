@@ -1,0 +1,36 @@
+# Theios Research Institute, Inc.
+
+> A 501(c)(3) nonprofit dedicated to applied discovery science and the structural laws of emergence. Theios builds systems that rigorously stress-test ideas through structured scientific protocols.
+
+Theios Research Institute develops Codex.Nexus — a discovery engine that surfaces novel scientific findings through epistemically restrictive law search at 99.9% confidence thresholds. The institute publishes founder reflections, methodology papers, and operational research on the conditions under which composite cognitive systems can be trusted to reason rigorously.
+
+## About
+
+- [About Theios](https://theios.org/): Mission, founding story, and the institute's approach to discovery science
+- [Donate](https://theios.org/donate/): Support the institute as a 501(c)(3) tax-deductible donor
+- [Pledge](https://theios.org/pledge/): Sign the Theios pledge supporting rigorous discovery science
+- [Pledge Signatories](https://theios.org/pledge/signatories/): Individuals who have signed the pledge
+- [Pledge Groups](https://theios.org/pledge/groups/): Organizations supporting Theios research
+
+## Research & Writing
+
+- [Blog](https://theios.org/blog/): All published research notes, founder reflections, and methodology posts
+- [Knowledge Tiers and Epistemic Guardrails](https://theios.org/blog/knowledge-tiers-epistemic-guardrails/): How Theios separates research tiers to protect IP while enabling collaboration
+- [Moltbook, AI Agents, and Emergence](https://theios.org/blog/moltbook-ai-agents-emergence/): Notes on autonomous reasoning systems and the conditions for emergent intelligence
+- [On Patterns and Change](https://theios.org/blog/on-patterns-and-change/): Founder reflection on awareness, habit, and the limits of insight alone
+- [Official 501(c)(3) Status](https://theios.org/blog/official-501c3-nonprofit-status/): Theios receives federal nonprofit recognition
+
+## Legal
+
+- [Privacy Policy](https://theios.org/privacy-policy/)
+- [Terms of Service](https://theios.org/terms-of-service/)
+
+## Contact
+
+- Email: research@theios.org
+- GitHub: https://github.com/theios-research-institute
+- ORCID: https://orcid.org/0009-0004-0776-8634
+
+## Optional
+
+- [Sitemap](https://theios.org/sitemap.xml): Full XML sitemap of all indexable pages
