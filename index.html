@@ -883,8 +883,8 @@
 
 
   <script>
-    // Year
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    // Year (guarded — footer is below this script block)
+    var _fy = document.getElementById('footer-year'); if(_fy) _fy.textContent = new Date().getFullYear();
 
     // Theme toggle
     const root = document.documentElement;
@@ -1005,6 +1005,7 @@
       <p class="footer-copy">© <span id="footer-year"></span> <a href="/">Theios Research Institute, Inc.</a> — A nonprofit organization</p>
     </div>
   </footer>
+  <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
 
 </body>
 </html>
