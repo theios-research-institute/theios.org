@@ -205,15 +205,42 @@
       color:var(--muted);
       margin:0;
     }
-    /* Light mode: regular cards get very subtle blue-gray tint */
+    /* Light mode: cards stand out against blue-gray page background */
     :root.light .card{
-      background:rgba(100,130,160,.06);
-      border-color:rgba(100,130,160,.15);
+      background:#ffffff;
+      border-color:rgba(100,130,160,.3);
+      box-shadow:0 4px 24px rgba(0,0,0,.08);
+    }
+    :root.light .counter-badge{
+      background:rgba(37,99,235,.12);
+      border-color:rgba(37,99,235,.35);
+    }
+    :root.light .signing-card{
+      background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(37,99,235,.02));
+      border-color:rgba(37,99,235,.45);
+    }
+    :root.light .section-divider{
+      background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    }
+    :root.light .card-divider{
+      background:rgba(100,130,160,.3);
+    }
+    :root.light .styled-list li::before{
+      opacity:0.8;
     }
     @media (prefers-color-scheme: light){
       :root.auto .card{
-        background:rgba(100,130,160,.06);
-        border-color:rgba(100,130,160,.15);
+        background:#ffffff;
+        border-color:rgba(100,130,160,.3);
+        box-shadow:0 4px 24px rgba(0,0,0,.08);
+      }
+      :root.auto .counter-badge{
+        background:rgba(37,99,235,.12);
+        border-color:rgba(37,99,235,.35);
+      }
+      :root.auto .signing-card{
+        background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(37,99,235,.02));
+        border-color:rgba(37,99,235,.45);
       }
     }
 
