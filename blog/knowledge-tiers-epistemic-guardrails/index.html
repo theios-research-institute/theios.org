@@ -737,6 +737,28 @@
       color:var(--accent);
       text-decoration:none;
     }
+  
+    /* ── FAQ region: light theme overrides ── */
+    :root.light #theios-faq-region {
+      background: rgba(255,255,255,0.95) !important;
+      border-color: var(--line) !important;
+      color: var(--ink) !important;
+    }
+    :root.light #theios-faq-region h2,
+    :root.light #theios-faq-region h3 {
+      color: var(--ink) !important;
+    }
+    :root.light #theios-faq-region p,
+    :root.light #theios-faq-region time,
+    :root.light #theios-faq-region address {
+      color: var(--muted) !important;
+    }
+    :root.light #theios-faq-region address a {
+      color: var(--accent) !important;
+    }
+    :root.light #theios-faq-region address {
+      border-top-color: var(--line) !important;
+    }
   </style>
 
   <script>
