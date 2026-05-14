@@ -72,6 +72,9 @@ User-agent: Amazonbot
 Allow: /
 
 # Facebook Social Sharing
+User-agent: facebookexternalhit
+Allow: /
+
 User-agent: FacebookBot
 Allow: /
 
